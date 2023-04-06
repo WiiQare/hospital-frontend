@@ -10,7 +10,6 @@ import { useState } from "react";
 import { FormControl, InputLabel, MenuItem, Select, TextField } from "@mui/material";
 import { SWRConfig } from "swr";
 import Fetcher from "../../../lib/Fetcher";
-import { useSession } from "next-auth/react";
 
 
 const TabHistories = [
@@ -23,12 +22,9 @@ const TabHistories = [
 	}
 ]
 
-const Profile = ({phoneNumber, names, email}) => {
+const Profile = () => {
 	const [value, setValue] = useState(0);
-	const { data:session } = useSession();
-    const {data, isLoading, isError} = Fetcher(`/payer/${session.user.data.userId}`, session.user.data.access_token);
 
-	console.log(data);
 
 	const handleChange = (event, newValue) => {
 		setValue(newValue);
@@ -44,7 +40,7 @@ const Profile = ({phoneNumber, names, email}) => {
 						link: "/"
 					},
 					{
-						item: names,
+						item: "Bienvenue Z.",
 						link: "/profile"
 					}
 				]}
@@ -59,12 +55,12 @@ const Profile = ({phoneNumber, names, email}) => {
 					<div className="flex justify-between items-center md:px-6">
 						<div className="flex gap-5 items-center relative">
 							<div className="w-20 h-20">
-								<img src={`https://ui-avatars.com/api/?uppercase=true&background=FE8023&name=${names}&bold=true&color=FFF`} width={80} height={80} className="object-cover rounded-full h-full w-full" />
+								<img src={`https://ui-avatars.com/api/?uppercase=true&background=FE8023&name=Bienvenu Zigabe&bold=true&color=FFF`} width={80} height={80} className="object-cover rounded-full h-full w-full" />
 							</div>
 
 							<div className="">
-								<h1 className="text-sky font-bold text-xl">{names}</h1>
-								<span className="text-xs">{email}</span>
+								<h1 className="text-sky font-bold text-xl">Bienvenu Z.</h1>
+								<span className="text-xs">info@clinic-ngaliema.cd</span>
 							</div>
 						</div>
 
@@ -90,7 +86,7 @@ const Profile = ({phoneNumber, names, email}) => {
 
 							<div className="min-w-full">
 								<SWRConfig>
-									{TabHistories.map((item, index) => <TabPanelContent value={value} index={index} data={{phoneNumber, names, email}} />)}
+									{TabHistories.map((item, index) => <TabPanelContent value={value} index={index} />)}
 								</SWRConfig>
 							</div>
 						</Box>
@@ -136,17 +132,17 @@ function a11yProps(index) {
 	};
 }
 
-function TabPanelContent({ value, index, data }) {
+function TabPanelContent({ value, index }) {
 	return (
 		<TabPanel value={value} index={index} >
 			{
-				index == 0 ? <About {...data}/> : <Settings {...data} />
+				index == 0 ? <About /> : <Settings />
 			}
 		</TabPanel>
 	)
 }
 
-function About({phoneNumber, names, email }) {
+function About() {
 	return (
 		<section className="space-y-8">
 			<h2 className="text-sky font-semibold">Personal Information</h2>
@@ -154,17 +150,17 @@ function About({phoneNumber, names, email }) {
 			<div className="md:w-3/6 space-y-4">
 				<div className="grid grid-cols-2">
 					<h5 className="font-semibold">Name :</h5>
-					<span className="text-gray-500">{names}</span>
+					<span className="text-gray-500">Bienvenue Z.</span>
 				</div>
 
 				<div className="grid grid-cols-2">
 					<h5 className="font-semibold">Email :</h5>
-					<span className="text-gray-500">{email}</span>
+					<span className="text-gray-500">info@clinic-ngaliema.cd</span>
 				</div>
 
 				<div className="grid grid-cols-2">
 					<h5 className="font-semibold">Phone Number :</h5>
-					<span className="text-gray-500">{phoneNumber}</span>
+					<span className="text-gray-500">+243 814 345 911</span>
 				</div>
 
 				<div className="grid grid-cols-2">
