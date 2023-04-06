@@ -2,7 +2,7 @@ import { Avatar, Dropdown, Navbar } from "flowbite-react";
 import Image from "next/image";
 import Link from "next/link";
 import { HiMenuAlt3 } from "react-icons/hi";
-import { MdOutlinePersonOutline, MdMailOutline } from "react-icons/md";
+import { MdOutlinePersonOutline, MdMailOutline, MdQrCodeScanner } from "react-icons/md";
 import {
 	AiOutlineArrowRight,
 	AiOutlineBell,
@@ -16,6 +16,7 @@ import {
 	Menu as MenuMui,
 	MenuItem
 } from "@mui/material";
+import { BsQrCodeScan } from "react-icons/bs";
 
 import logo from "../../../public/images/favicon.png";
 import logoDark from "../../../public/images/logo_dark_2.png";
@@ -73,6 +74,15 @@ const Menu = ({ session, handleSignOut }) => {
 
 			<div className="flex items-center justify-between gap-8 md:gap-20">
 				<div className="flex items-center md:gap-6">
+
+					<div>
+						<Link href={"/scan"} legacyBehavior>
+							<a>
+								<MdQrCodeScanner size={30} className="text-gray-500 hover:text-gray-700" />
+							</a>
+						</Link>
+					</div>
+
 					<div className="">
 						<Box>
 							<IconButton
@@ -185,6 +195,8 @@ const Menu = ({ session, handleSignOut }) => {
 							</Dropdown.Item>
 						</Dropdown>
 					</div>
+
+					
 
 				</div>
 
