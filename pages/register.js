@@ -5,16 +5,14 @@ import { REGISTER_SLIDES } from "../utils/constants";
 import { useMediaQuery, CssBaseline } from "@mui/material";
 import Head from "next/head";
 import React from "react";
-import {useSelector} from 'react-redux';
 
 function Register() {
   const matches = useMediaQuery("(max-width: 992px)");
-  const state = useSelector((state) => state);
 
   return (
     <>
       <Head>
-        <title>Wiiqare | Register</title>
+        <title>Wiiqare | Hospital Register</title>
         <link
           rel="stylesheet"
           href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"

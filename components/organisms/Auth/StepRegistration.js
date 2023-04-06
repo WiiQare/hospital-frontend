@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import Email from "./Forms/email";
 import Information from "./Forms/informations";
+import PersonnalInformation from "./Forms/personalInformations";
 import Otp from "./Forms/otp";
 import { FormContextRegister } from "./RegisterForm";
 
@@ -15,11 +16,13 @@ function StepRegistration() {
       break;
 
     case 1:
-      stepContent = <Otp />;
-      break;
-    case 2:
       stepContent = <Information />;
       break;
+
+      case 2:
+        stepContent = <PersonnalInformation />;
+        break;
+
     default:
       break;
   }

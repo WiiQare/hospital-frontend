@@ -7,7 +7,6 @@ import { setRegister } from "../../../../redux/reducer";
 import { useFormik } from 'formik';
 import { sendEmail, sendOtp } from "../../../../lib/helper";
 import Toast from "../../../atoms/Toast";
-import { FaSpinner } from "react-icons/fa";
 import {useSelector, useDispatch} from 'react-redux';
 import LoadingButton from "../../../atoms/Loader/LoadingButton";
 import Countdown from 'react-countdown';
@@ -39,7 +38,9 @@ function Otp() {
 
     const onSubmit = async (values) => {
         if (Object.keys(values).length == 0) return console.log("Pas de données");
-        sendOtpMutation.mutate({email: client.register.email, otpCode: parseInt(otp)})
+        //sendOtpMutation.mutate({email: client.register.email, otpCode: parseInt(otp)})
+        handleComplete()
+
     };
 
     const closeToast = () => {
@@ -78,7 +79,7 @@ function Otp() {
 
     const resendCode = async () => {
         setResend(true)
-        sendEmailMutation.mutate({email: client.register.email})
+        //sendEmailMutation.mutate({email: client.register.email})
     };
 
 

@@ -15,8 +15,8 @@ export const FormContextRegister = createContext();
 
 const steps = [
 	"Votre adresse email",
-	"Vérification de l'email",
-	"Information personnel",
+	"Configuration du compte",
+	"Personne qui engage la société"
 ];
 
 const ColorlibConnector = styled(StepConnector)(({ theme }) => ({
@@ -101,8 +101,9 @@ const RegisterForm = () => {
 						alignItems="center"
 					>
 						<Stepper
-							sx={{ maxWidth: 450, width: "100%" }}
+
 							alternativeLabel
+							className="w-full md:max-w-[600px]"
 							activeStep={activeStep}
 							connector={<ColorlibConnector />}
 						>

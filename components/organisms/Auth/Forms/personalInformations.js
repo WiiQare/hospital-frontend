@@ -1,25 +1,21 @@
 import React, { useContext, useState } from "react";
 import { FormContextRegister } from "../RegisterForm";
 import { Box, Button, FormControl, IconButton, InputAdornment, InputLabel, MenuItem, OutlinedInput, Select, Stack, TextField, Typography } from "@mui/material";
-import Link from "next/link";
-import { Visibility, VisibilityOff } from "@mui/icons-material";
 import MuiPhoneNumber from "material-ui-phone-number";
 import { useSelector, useDispatch } from 'react-redux';
 import { useQueryClient, useMutation } from 'react-query';
 import { ErrorMessage, useFormik } from 'formik';
 import { register } from "../../../../lib/helper";
 import Toast from "../../../atoms/Toast";
-import { FaSpinner } from "react-icons/fa";
 import { useRouter } from 'next/router'
 import { setRegister } from "../../../../redux/reducer";
-import LoadingButton from "../../../atoms/Loader/LoadingButton";
 import * as yup from "yup";
-import { HiOutlineInformationCircle } from "react-icons/hi";
 
 
-function Information() {
+function PersonnalInformation() {
     const { activeStep, setActiveStep, formData, setFormData, handleComplete } = useContext(FormContextRegister);
     const [state, setState] = useState({ type: 0, message: '' });
+    const [term, setTerm] = useState(false);
     const client = useSelector((state) => state.app.client);
     const router = useRouter();
     const dispatch = useDispatch();
@@ -92,7 +88,7 @@ function Information() {
 
             <Box sx={{ mb: 2, mt: 2, textAlign: "left" }}>
                 <Typography color="primary" variant="body1">
-                    Configuration du compte
+                    Information sur la personne qui engage l'entreprise
                 </Typography>
             </Box>
             <form id="signupform" onSubmit={formik.handleSubmit}>
@@ -102,26 +98,26 @@ function Information() {
                             <TextField
                                 id="outlined-basic"
                                 fullWidth
-                                label="Business Name"
+                                label="Occupation"
                                 variant="outlined"
-                                name="businessName"
-                                {...formik.getFieldProps('businessName')}
+                                name="occupation"
+                                {...formik.getFieldProps('occupation')}
                             />
 
-                            {formik.errors.businessName ? renderError(formik.errors.businessName) : <></>}
+                            {formik.errors.occupation ? renderError(formik.errors.occupation) : <></>}
                         </div>
 
                         <div className="flex flex-col gap-1">
                             <TextField
                                 id="outlined-basic"
                                 fullWidth
-                                label="Business Street Address"
+                                label="Home Address"
                                 variant="outlined"
-                                name="businessAddress"
-                                {...formik.getFieldProps('businessAddress')}
+                                name="homeAddress"
+                                {...formik.getFieldProps('homeAddress')}
                             />
 
-                            {formik.errors.businessAddress ? renderError(formik.errors.businessAddress) : <></>}
+                            {formik.errors.homeAddress ? renderError(formik.errors.homeAddress) : <></>}
                         </div>
 
                     </Stack>
@@ -129,15 +125,30 @@ function Information() {
                     <div className="flex flex-col gap-1">
                         <MuiPhoneNumber
                             fullWidth
-                            label="Business Phone"
+                            label="Personal Contact"
                             variant="outlined"
-                            onChange={(value, country) => { formik.setFieldValue("businessPhone", value); formik.setFieldValue("country", country.countryCode) }}
+                            onChange={(value, country) => { formik.setFieldValue("personnalContact", value); formik.setFieldValue("country", country.countryCode) }}
 
                             defaultCountry={"fr"}
-                            name="businessPhone"
+                            name="personnalContact"
                         />
-                        {formik.errors.businessPhone ? renderError(formik.errors.businessPhone) : <></>}
+                        {formik.errors.personnalContact ? renderError(formik.errors.personnalContact) : <></>}
                     </div>
+
+                    <FormControl fullWidth>
+                        <InputLabel id="demo-simple-select-label">Province</InputLabel>
+                        <Select
+                            labelId="demo-simple-select-label"
+                            id="demo-simple-select"
+                            label="Province"
+                        >
+                            <MenuItem value={"Kinshasa"}>Kinshasa</MenuItem>
+                            <MenuItem value={"Lubumbashi"}>Lubumbashi</MenuItem>
+                            <MenuItem value={"Goma"}>Goma</MenuItem>
+                            <MenuItem value={"Bukavu"}>Bukavu</MenuItem>
+                            <MenuItem value={"Kindu"}>Kindu</MenuItem>
+                        </Select>
+                    </FormControl>
 
                     <Stack direction={{ xs: "column", sm: "row" }} spacing={1.5}>
                         <div className="flex flex-col gap-1">
@@ -168,51 +179,14 @@ function Information() {
 
                     </Stack>
 
-                    <div className="flex flex-col gap-1">
-                            <TextField
-                                id="outlined-basic"
-                                fullWidth
-                                label="Id. Nat."
-                                variant="outlined"
-                                name="idnat"
-                                {...formik.getFieldProps('idnat')}
-                            />
-
-                            {formik.errors.idnat ? renderError(formik.errors.idnat) : <></>}
-                        </div>
-
-                        <div className="flex flex-col gap-1">
-                            <TextField
-                                id="outlined-basic"
-                                fullWidth
-                                label="RCCM"
-                                variant="outlined"
-                                name="rccm"
-                                {...formik.getFieldProps('rccm')}
-                            />
-
-                            {formik.errors.rccm ? renderError(formik.errors.rccm) : <></>}
-                        </div>
-
-                    <FormControl fullWidth>
-                        <InputLabel id="demo-simple-select-label">Type Business</InputLabel>
-                        <Select
-                            labelId="demo-simple-select-label"
-                            id="demo-simple-select"
-                            label="Type Business"
-                        >
-                            <MenuItem value={"Clinic"}>Clinic</MenuItem>
-                            <MenuItem value={"Pharmacy"}>Pharmacy</MenuItem>
-                            <MenuItem value={"Hospital"}>Hospital</MenuItem>
-                            <MenuItem value={"Dentist"}>Dentist</MenuItem>
-                            <MenuItem value={"Medical Cabinet"}>Medical Cabinet</MenuItem>
-                        </Select>
-                    </FormControl>
+                    <div className="flex items-center !mt-10 mb-2">
+                        <input id="link-checkbox" type="checkbox" value="" className="w-4 h-4 text-orange bg-gray-100 border-gray-300 rounded focus:ring-orange focus:ring-1" onChange={(e) => setTerm(e.target.checked)}/>
+                        <label for="link-checkbox" className="h-4 ml-2 text-sm font-normal text-gray-600 dark:text-gray-300">I agree with the <a href="#" className="text-primary hover:underline">terms and conditions</a>.</label>
+                    </div>
 
                     <Box>
-                        <Button size="large" variant="contained" type="submit" className="mt-3">
-                            {/* {newAccountMutation.isLoading ? <LoadingButton /> : 'NEXT'} */}
-                            NEXT
+                        <Button size="large" variant="contained" type="submit" className="disabled:bg-gray-200" disabled={!term}>
+                            CREATE NEW ACCOUNT
                         </Button>
                     </Box>
                 </Stack>
@@ -221,4 +195,4 @@ function Information() {
     );
 }
 
-export default Information;
+export default PersonnalInformation;
