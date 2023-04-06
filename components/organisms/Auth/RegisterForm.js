@@ -16,6 +16,7 @@ export const FormContextRegister = createContext();
 const steps = [
 	"Votre adresse email",
 	"Configuration du compte",
+	"Logo & Image de l'établissement",
 	"Personne qui engage la société"
 ];
 
