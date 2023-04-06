@@ -2,6 +2,7 @@ import Link from 'next/link';
 import React from 'react';
 import { SlHome, SlWallet, SlEqualizer, SlGlobe } from "react-icons/sl";
 import ItemBottom from './ItemBottom';
+import { MdQrCodeScanner } from 'react-icons/md';
 
 const Items = [
     {
@@ -19,12 +20,12 @@ const Items = [
       active: ["/wallet"],
     },
     {
-      title: "Invoices",
+      title: "Scan QR Code",
       icon: ({ size, className }) => (
-        <SlEqualizer size={size} className={className} />
+        <MdQrCodeScanner size={size * 1.3 } className={className} />
       ),
-      link: "/invoices",
-      active: ["/invoices"],
+      link: "/scan",
+      active: ["/scan"],
     },
     {
       title: "Transactions",

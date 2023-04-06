@@ -75,7 +75,7 @@ const Menu = ({ session, handleSignOut }) => {
 			<div className="flex items-center justify-between gap-8 md:gap-20">
 				<div className="flex items-center md:gap-6">
 
-					<div>
+					<div className="hidden md:flex">
 						<Link href={"/scan"} legacyBehavior>
 							<a>
 								<MdQrCodeScanner size={30} className="text-gray-500 hover:text-gray-700" />
