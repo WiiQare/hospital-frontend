@@ -5,6 +5,7 @@ import DashboardLayout from "../layouts/Dashboard";
 import VoucherHome from "../components/organisms/Dashboard/Voucher";
 import ProviderFilter from "../components/organisms/Dashboard/ProviderFilter";
 import Carousel from "../components/organisms/Dashboard/Carousel";
+import HistoryWallet from "../components/organisms/Wallet/History";
 
 const Page = () => {
 
@@ -15,7 +16,8 @@ const Page = () => {
         <script src="https://unpkg.com/flowbite@1.5.3/dist/flowbite.js"></script>
       </Head>
       <Carousel />
-      <ProviderFilter />
+			<HistoryWallet />
+      
     </>
   );
 };
