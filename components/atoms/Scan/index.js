@@ -7,14 +7,28 @@ import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
 import PropTypes from 'prop-types';
 import Typography from '@mui/material/Typography';
+import CopyToClipboard from 'react-copy-to-clipboard';
+import { useQRCode } from "next-qrcode";
+import ButtonNoAction from '../Button/NoAction';
 
 const Scan = () => {
 	const [data, setData] = useState(null);
 	const [step, setStep] = useState(0);
 	const [value, setValue] = useState(0);
+	const [copy, setCopy] = useState(false);
+	const [copyLink, setCopyLink] = useState(false);
+	const { Canvas } = useQRCode();
+
 
 	const handleChange = (event, newValue) => {
 		setValue(newValue);
+	};
+
+	const handleStep = (value, result) => {
+		setStep(value)
+		setData(result)
+
+		console.log(step);
 	};
 
 	if (step === 0)
@@ -53,54 +67,95 @@ const Scan = () => {
 			</div>
 		)
 
+	if (step === 1)
+		return (
+			<Transition appear show={true} as={"div"} className="flex justify-center flex-col gap-6 h-full items-center mx-auto py-4 md:py-10">
+				<Transition.Child
+					enter="ease-out duration-300"
+					enterFrom="opacity-0 scale-95"
+					enterTo="opacity-100 scale-100"
+					leave="ease-in duration-200"
+					leaveFrom="opacity-100 scale-100"
+					leaveTo="opacity-0 scale-95"
+					className={"md:w-1/2 bg-white rounded-xl px-10 py-8 min-h-full"}
+				>
+
+					<TabsModal value={value} handleChange={handleChange} />
+
+
+					<TabItems value={value} handleStep={handleStep} />
+
+
+				</Transition.Child>
+			</Transition>
+
+		)
 
 	return (
-		<Transition appear show={true} as={"div"} className="flex justify-center flex-col gap-6 h-full items-center mx-auto py-4 md:py-10">
-			<Transition.Child
-				enter="ease-out duration-300"
-				enterFrom="opacity-0 scale-95"
-				enterTo="opacity-100 scale-100"
-				leave="ease-in duration-200"
-				leaveFrom="opacity-100 scale-100"
-				leaveTo="opacity-0 scale-95"
-				className={"md:w-1/2 bg-white rounded-xl px-10 py-8 min-h-full"}
-			>
+		<div className='flex justify-center flex-col gap-6 h-full items-center mx-auto py-4 md:py-10'>
+			<div className='md:w-1/2 bg-white rounded-xl px-10 py-8 min-h-fit flex justify-center'>
+				<div className="flex flex-col gap-6 justify-center items-center">
+					<div className="flex flex-col items-center text-center space-y-2">
+						<div className="flex flex-col items-center select-none">
+							<h1 className="font-extrabold text-gray-700 text-lg hidden md:flex">Pass Sante</h1>
+						</div>
+						<span className="text-xs flex items-center gap-1">Pass Sante ID:
+							<CopyToClipboard text={"0xhgfebkzkhgruiezgbuiveriuhbrviubir"} onCopy={() => {
+								setCopy(true); setTimeout(() => {
+									setCopy(false)
+								}, 2000);
+							}}>
+								<div className="flex items-center gap-1">
+									[
+									<div className="tooltip" data-tip={!copy ? "Copy to clipboard" : "✓ Copy"}>
+										<span className="text-orange cursor-pointer">Oxoofofofi...gjbzrjz</span>
+									</div>
+									]
+								</div>
+							</CopyToClipboard>
+						</span>
+					</div>
 
-				<TabsModal value={value} handleChange={handleChange} />
+					<div className="flex flex-col items-center gap-4">
 
+						<div className="border relative border-gray-300 rounded-lg overflow-hidden">
+							<Canvas
+								className="w-full"
+								text={`Oxoofofofirgkrbezogbrzbgnriogbjkbzrgjbzrjz`}
+								options={{
+									level: "M",
+									margin: 1,
+									scale: 4,
+									quality: 100,
+									color: {
+										dark: "#000",
+										light: "#FFF",
+									},
+								}}
+							/>
+							{/* <div className="absolute w-full h-full z-20 top-1/3 left-1.5/3 mx-auto">
+					<Image
+						src={logo}
+						className="h-6 md:h-9 object-left object-contain w-min"
+					/>
+				</div> */}
+						</div>
 
-				<TabItems value={value} />
+						<div className="flex flex-col items-center gap-1">
+							<div className="flex -space-x-2">
+								<img className="inline-block h-[2.875rem] w-[2.875rem] rounded-full ring-2 ring-white dark:ring-gray-800" src="/images/homme.png" alt="Image Description" />
+								<img className="inline-block h-[2.875rem] w-[2.875rem] rounded-full ring-2 ring-white dark:ring-gray-800" src="/images/femme.png" alt="Image Description" />
+							</div>
 
+							<h4 className="text-sm text-center"><span className="font-semibold">$50</span> Health Pass WiiQare <br /> From <span className="text-orange font-semibold">Bienvenu Z.</span> To <span className="text-orange font-semibold">Peter N.</span></h4>
+						</div>
+						<ButtonNoAction color={"orange"} text={"Proceed to payment"}/>
+					</div>
 
-			</Transition.Child>
-		</Transition>
-
-	)
-
-	return (
-
-		<div className='flex flex-col gap-6 py-20'>
-			<div className='text-center'>
-				<h3 className='text-xl font-semibold text-gray-700'>Scan QR Code</h3>
-				<p className='text-sm font-light text-gray-500'>Accorder la demande d'allumer la caméra</p>
-			</div>
-			<div className="">
-				<QrReader
-					onResult={(result, error) => {
-						if (!!result) {
-							setData(result?.text);
-						}
-
-						if (!!error) {
-							console.info(error);
-						}
-					}}
-					constraints={{ facingMode: "environment" }}
-					style={{ width: '100%' }}
-				/>
+				</div>
 			</div>
 		</div>
-	);
+	)
 };
 
 export default Scan;
@@ -119,7 +174,7 @@ function TabsModal({ value, handleChange }) {
 	)
 }
 
-function TabItems({ value }) {
+function TabItems({ value, handleStep }) {
 
 
 	return (
@@ -137,11 +192,8 @@ function TabItems({ value }) {
 							<QrReader
 								onResult={(result, error) => {
 									if (!!result) {
-										setData(result?.text);
-									}
-
-									if (!!error) {
-										console.info(error);
+										//setData(result?.text);
+										handleStep(2, result.text)
 									}
 								}}
 								constraints={{ facingMode: "environment" }}
@@ -155,9 +207,7 @@ function TabItems({ value }) {
 				<TabPanel value={value} index={1} >
 
 					<div className="space-y-8">
-
-						Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem sed alias velit quos possimus in error! Aliquid pariatur distinctio praesentium! Voluptatem error distinctio, nam explicabo repellat reprehenderit officiis vel doloribus.
-						Provident iste nesciunt autem ipsum cumque officiis nulla saepe repudiandae quasi inventore. Quos sit debitis rerum nostrum animi. Molestiae doloribus cum cumque corrupti in nisi voluptate ducimus nemo dolores iure.
+						lorem ipsum dolor s
 					</div>
 
 				</TabPanel>
