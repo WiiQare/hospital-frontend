@@ -8,16 +8,16 @@ import Box from '@mui/material/Box';
 import PropTypes from 'prop-types';
 import Typography from '@mui/material/Typography';
 import CopyToClipboard from 'react-copy-to-clipboard';
-import { useQRCode } from "next-qrcode";
 import ButtonNoAction from '../Button/NoAction';
+import { BiTransferAlt } from 'react-icons/bi';
+import { AiOutlineExclamationCircle } from 'react-icons/ai';
+import { MdPayments } from 'react-icons/md';
 
 const Scan = () => {
 	const [data, setData] = useState(null);
 	const [step, setStep] = useState(0);
 	const [value, setValue] = useState(0);
 	const [copy, setCopy] = useState(false);
-	const [copyLink, setCopyLink] = useState(false);
-	const { Canvas } = useQRCode();
 
 
 	const handleChange = (event, newValue) => {
@@ -30,6 +30,10 @@ const Scan = () => {
 
 		console.log(step);
 	};
+
+	const SliceText = ({ text }) => {
+		return <>{text.slice(0, 9)}...{text.slice(-8)}</>
+	}
 
 	if (step === 0)
 		return (
@@ -93,63 +97,43 @@ const Scan = () => {
 
 	return (
 		<div className='flex justify-center flex-col gap-6 h-full items-center mx-auto py-4 md:py-10'>
-			<div className='md:w-1/2 bg-white rounded-xl px-10 py-8 min-h-fit flex justify-center'>
-				<div className="flex flex-col gap-6 justify-center items-center">
+			<div className='md:w-1/3 bg-white rounded-xl py-8 min-h-fit flex '>
+				<div className="flex flex-col gap-6 justify-center w-full">
 					<div className="flex flex-col items-center text-center space-y-2">
 						<div className="flex flex-col items-center select-none">
-							<h1 className="font-extrabold text-gray-700 text-lg hidden md:flex">Pass Sante</h1>
+							<h1 className="font-extrabold text-gray-700 text-lg hidden md:flex">Voucher Details</h1>
 						</div>
-						<span className="text-xs flex items-center gap-1">Pass Sante ID:
-							<CopyToClipboard text={"0xhgfebkzkhgruiezgbuiveriuhbrviubir"} onCopy={() => {
-								setCopy(true); setTimeout(() => {
-									setCopy(false)
-								}, 2000);
-							}}>
-								<div className="flex items-center gap-1">
-									[
-									<div className="tooltip" data-tip={!copy ? "Copy to clipboard" : "✓ Copy"}>
-										<span className="text-orange cursor-pointer">Oxoofofofi...gjbzrjz</span>
-									</div>
-									]
-								</div>
-							</CopyToClipboard>
-						</span>
 					</div>
 
-					<div className="flex flex-col items-center gap-4">
+					<div className="flex gap-4 items-center px-5 justify-center">
+						<img className="inline-block h-[2.875rem] w-[2.875rem] rounded-full ring-2 ring-white dark:ring-gray-800" src="/images/homme.png" alt="Image Description" />
+						<BiTransferAlt size={30} className='text-gray-400' />
+						<img className="inline-block h-[2.875rem] w-[2.875rem] rounded-full ring-2 ring-white dark:ring-gray-800" src="/images/femme.png" alt="Image Description" />
+					</div>
 
-						<div className="border relative border-gray-300 rounded-lg overflow-hidden">
-							<Canvas
-								className="w-full"
-								text={`Oxoofofofirgkrbezogbrzbgnriogbjkbzrgjbzrjz`}
-								options={{
-									level: "M",
-									margin: 1,
-									scale: 4,
-									quality: 100,
-									color: {
-										dark: "#000",
-										light: "#FFF",
-									},
-								}}
-							/>
-							{/* <div className="absolute w-full h-full z-20 top-1/3 left-1.5/3 mx-auto">
-					<Image
-						src={logo}
-						className="h-6 md:h-9 object-left object-contain w-min"
-					/>
-				</div> */}
-						</div>
 
-						<div className="flex flex-col items-center gap-1">
-							<div className="flex -space-x-2">
-								<img className="inline-block h-[2.875rem] w-[2.875rem] rounded-full ring-2 ring-white dark:ring-gray-800" src="/images/homme.png" alt="Image Description" />
-								<img className="inline-block h-[2.875rem] w-[2.875rem] rounded-full ring-2 ring-white dark:ring-gray-800" src="/images/femme.png" alt="Image Description" />
+					<span className="text-xs flex justify-center items-center gap-1">Pass Sante ID:
+						<CopyToClipboard text={data.transactionHash} onCopy={() => {
+							setCopy(true); setTimeout(() => {
+								setCopy(false)
+							}, 2000);
+						}}>
+							<div className="flex items-center gap-1">
+								[
+								<div className="tooltip" data-tip={!copy ? "Copy to clipboard" : "✓ Copy"}>
+									<span className="text-orange cursor-pointer"><SliceText text={"0xf59b12eccfc5faedbc4657bd593d6d6a0c679623"} /></span>
+								</div>
+								]
 							</div>
+						</CopyToClipboard>
+					</span>
 
-							<h4 className="text-sm text-center"><span className="font-semibold">$50</span> Health Pass WiiQare <br /> From <span className="text-orange font-semibold">Bienvenu Z.</span> To <span className="text-orange font-semibold">Peter N.</span></h4>
-						</div>
-						<ButtonNoAction color={"orange"} text={"Proceed to payment"}/>
+					<ItemsDetails title={"Name Sender"} value={"Peter NDENGO"} exclamation={true} />
+					<ItemsDetails title={"Name Receiver"} value={"Bienvenu Zigabe"} exclamation={true} />
+					<ItemsDetails title={"Amount Send"} value={"$85"} otherValue={"2023 April 10"} />
+
+					<div className='flex justify-center'>
+						<button className='capitalize bg-orange w-fit  px-6 py-4 rounded-xl text-white flex gap-2 items-center effect-up shadow-md'><MdPayments size={20}/> Proceed to payment</button>
 					</div>
 
 				</div>
@@ -247,4 +231,24 @@ function a11yProps(index) {
 		id: `simple-tab-${index}`,
 		'aria-controls': `simple-tabpanel-${index}`,
 	};
+}
+
+function ItemsDetails({ title, value, otherValue, exclamation = false, last = true }) {
+	return (
+		<div className="flex flex-col hover:shadow-sm w-full">
+			<div className='flex justify-between px-6 py-2 items-center'>
+				<div className='flex flex-col  mb-2 gap-1'>
+					<h1 className='font-normal text-md text-gray-400 text-sm'>{title}</h1>
+					<div className='flex gap-2 items-center'>
+						<h3 className='font-bold text-xl text-gray-700'>{value}</h3>
+						{otherValue && <span className='text-sm text-gray-400'> - {otherValue}</span>}
+					</div>
+				</div>
+
+				{exclamation && <AiOutlineExclamationCircle size={24} className='text-gray-300 cursor-pointer hover:text-orange transition-all duration-200' />}
+			</div>
+
+			{last && <hr /> }
+		</div>
+	)
 }
