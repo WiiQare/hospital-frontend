@@ -96,8 +96,8 @@ const Scan = () => {
 		)
 
 	return (
-		<div className='flex justify-center flex-col gap-6 h-full items-center mx-auto py-4 md:py-10'>
-			<div className='md:w-1/3 bg-white rounded-xl py-8 min-h-fit flex '>
+		<div className='flex justify-center flex-col gap-6 h-full items-center mx-auto py-4 md:py-10 mb-20'>
+			<div className='md:w-1/3 w-full bg-white rounded-xl py-8 min-h-fit flex '>
 				<div className="flex flex-col gap-6 justify-center w-full">
 					<div className="flex flex-col items-center text-center space-y-2">
 						<div className="flex flex-col items-center select-none">
