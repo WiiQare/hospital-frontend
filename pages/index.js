@@ -21,9 +21,9 @@ const Page = () => {
 
 			<div className="">
 
-				<section className=" flex flex-col gap-6">
-					<div className="mx-auto max-w-screen-xl pt-6 grid grid-cols-2 md:grid-cols-3 gap-6">
-						<div className="flex justify-between items-end bg-gray-50 shadow-sm col-span-2 border border-gray-200 rounded-lg h-fit overflow-hidden">
+				<section className=" flex flex-col gap-6 w-full">
+					<div className="w-full flex flex-col pt-6 md:grid md:grid-cols-3 gap-6">
+						<div className="flex justify-between items-end bg-gray-50 shadow-sm col-span-2 border border-gray-200 rounded-lg h-fit">
 							<div className=" p-8 md:p-12">
 								<a href="#" className="bg-blue-100 text-blue-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded-md mb-6">
 									<svg className="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -45,7 +45,7 @@ const Page = () => {
 								<img src="/images/sketch.png" alt="Sketch" className="h-full object-cover w-full" />
 							</div>
 						</div>
-						<div className="md:grid flex gap-6 w-full md:grid-cols-2 md:gap-4">
+						<div className="grid gap-6 w-full grid-cols-2 md:gap-4">
 							<div className="bg-gray-50 w-full border border-gray-200 rounded-lg py-8 px-4 shadow-sm h-fit">
 
 								<div className="">
@@ -294,7 +294,7 @@ const Page = () => {
 							</div>
 						</div>
 
-						<div className="flex flex-col min-h-max gap-6">
+						<div className="flex flex-col w-full min-h-max gap-6">
 							<div className="md:grid flex gap-6 w-full md:grid-cols-2 md:gap-4">
 								<div className="bg-gray-50 w-full border border-gray-200 rounded-lg py-8 px-4 shadow-sm h-fit">
 
@@ -329,7 +329,7 @@ const Page = () => {
 							</div>
 
 
-							<div className="block h-full max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 ">
+							<div className="flex flex-col w-full h-full p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 ">
 								<h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 ">Noteworthy technology acquisitions 2021</h5>
 								<p className="font-normal text-gray-700 ">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
 							</div>
