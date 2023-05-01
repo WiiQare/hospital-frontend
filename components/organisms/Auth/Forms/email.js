@@ -55,8 +55,6 @@ function Email() {
     const formik = useFormik({
         initialValues: {
             email: '',
-            firstName: '',
-            lastName: '',
             password: '',
             confirm_password: '',
         },
@@ -77,35 +75,6 @@ function Email() {
             </Box>
             <form id="signupform" onSubmit={formik.handleSubmit}>
                 <Stack spacing={2}>
-
-                    <Stack direction={{ xs: "column", sm: "row" }} spacing={1.5}>
-                        <div className="flex flex-col gap-1">
-                            <TextField
-                                id="outlined-basic"
-                                fullWidth
-                                label="FirstName"
-                                variant="outlined"
-                                name="firstName"
-                                {...formik.getFieldProps('firstName')}
-                            />
-					        
-                            {formik.errors.firstName ?  renderError(formik.errors.firstName): <></>}
-                        </div>
-
-                        <div className="flex flex-col gap-1">
-                            <TextField
-                                id="outlined-basic"
-                                fullWidth
-                                label="LastName"
-                                variant="outlined"
-                                name="lastName"
-                                {...formik.getFieldProps('lastName')}
-                            />
-					        
-                            {formik.errors.lastName ?  renderError(formik.errors.lastName): <></>}
-                        </div>
-
-                    </Stack>
 
                     <div className="space-y-1">
                         <TextField

@@ -98,6 +98,48 @@ function PersonnalInformation() {
                             <TextField
                                 id="outlined-basic"
                                 fullWidth
+                                label="FirstName"
+                                variant="outlined"
+                                name="firstName"
+                                {...formik.getFieldProps('firstName')}
+                            />
+
+                            {formik.errors.firstName ? renderError(formik.errors.firstName) : <></>}
+                        </div>
+
+                        <div className="flex flex-col gap-1">
+                            <TextField
+                                id="outlined-basic"
+                                fullWidth
+                                label="LastName"
+                                variant="outlined"
+                                name="lastName"
+                                {...formik.getFieldProps('lastName')}
+                            />
+
+                            {formik.errors.lastName ? renderError(formik.errors.lastName) : <></>}
+                        </div>
+
+                    </Stack>
+
+                    <div className="flex flex-col gap-1">
+                        <MuiPhoneNumber
+                            fullWidth
+                            label="Personal Contact"
+                            variant="outlined"
+                            onChange={(value, country) => { formik.setFieldValue("personnalContact", value); formik.setFieldValue("country", country.countryCode) }}
+
+                            defaultCountry={"fr"}
+                            name="personnalContact"
+                        />
+                        {formik.errors.personnalContact ? renderError(formik.errors.personnalContact) : <></>}
+                    </div>
+
+                    <Stack direction={{ xs: "column", sm: "row" }} spacing={1.5}>
+                        <div className="flex flex-col gap-1">
+                            <TextField
+                                id="outlined-basic"
+                                fullWidth
                                 label="Occupation"
                                 variant="outlined"
                                 name="occupation"
@@ -121,19 +163,6 @@ function PersonnalInformation() {
                         </div>
 
                     </Stack>
-
-                    <div className="flex flex-col gap-1">
-                        <MuiPhoneNumber
-                            fullWidth
-                            label="Personal Contact"
-                            variant="outlined"
-                            onChange={(value, country) => { formik.setFieldValue("personnalContact", value); formik.setFieldValue("country", country.countryCode) }}
-
-                            defaultCountry={"fr"}
-                            name="personnalContact"
-                        />
-                        {formik.errors.personnalContact ? renderError(formik.errors.personnalContact) : <></>}
-                    </div>
 
                     <FormControl fullWidth>
                         <InputLabel id="demo-simple-select-label">Province</InputLabel>
@@ -180,7 +209,7 @@ function PersonnalInformation() {
                     </Stack>
 
                     <div className="flex items-center !mt-10 mb-2">
-                        <input id="link-checkbox" type="checkbox" value="" className="w-4 h-4 text-orange bg-gray-100 border-gray-300 rounded focus:ring-orange focus:ring-1" onChange={(e) => setTerm(e.target.checked)}/>
+                        <input id="link-checkbox" type="checkbox" value="" className="w-4 h-4 text-orange bg-gray-100 border-gray-300 rounded focus:ring-orange focus:ring-1" onChange={(e) => setTerm(e.target.checked)} />
                         <label for="link-checkbox" className="h-4 ml-2 text-sm font-normal text-gray-600 dark:text-gray-300">I agree with the <a href="#" className="text-primary hover:underline">terms and conditions</a>.</label>
                     </div>
 
