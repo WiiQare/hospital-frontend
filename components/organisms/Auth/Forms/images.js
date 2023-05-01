@@ -5,6 +5,9 @@ import { useFormik } from 'formik';
 import Toast from "../../../atoms/Toast";
 import { useSelector, useDispatch } from 'react-redux';
 import { BiCloudUpload } from "react-icons/bi";
+import { FileUploader } from "react-drag-drop-files";
+
+const fileTypes = ["JPEG", "PNG", "GIF", "JPG", "WEBP"];
 
 function Images() {
 	const { activeStep, setActiveStep, formData, setFormData, handleComplete } = useContext(FormContextRegister);
@@ -12,6 +15,12 @@ function Images() {
 	const client = useSelector((state) => state.app.client);
 	const dispatch = useDispatch();
 	const hiddenFileInput = useRef(null);
+	const [file, setFile] = useState(null);
+
+
+	const handleChangeUp = (file) => {
+		setFile(file);
+	};
 
 
 	const onSubmit = async (values) => {
@@ -35,7 +44,7 @@ function Images() {
 
 
 	const handleChange = event => {
-console.log(event.target);
+		console.log(event.target);
 		if (event.target.files && event.target.files[0]) {
 			const i = event.target.files[0];
 			const body = new FormData();
@@ -55,20 +64,21 @@ console.log(event.target);
 			{state.type > 0 ? state.type == 2 ? <Toast type={"danger"} message={state.message} close={closeToast} /> : (state.type == 1 ? <Toast type={"success"} message={state.message} close={closeToast} /> : <></>) : <></>}
 
 			<Box sx={{ mb: 2, mt: 2, textAlign: "left" }}>
-				<Typography color="primary" variant="body1">
-					Un code vous a été envoyé, verifiez votre email
+				<Typography color="primary" variant="body1" className="text-sm">
+					Télécharger le logo de l'hôpital
 				</Typography>
 			</Box>
 
 			<form id="signupform" onSubmit={formik.handleSubmit}>
 
-				<input type="file"
-					ref={hiddenFileInput}
-					onChange={handleChange}
-					accept="image/*"
+				<FileUploader
+					multiple={false}
+					handleChange={handleChangeUp}
+					name="file"
+					types={fileTypes}
+					
 				/>
-
-				<IconButton onClick={handleClick} size="medium" aria-label="file upload " icon={<BiCloudUpload size={30}/>} />
+				<p className="text-sm text-gray-400">{file ? `File name: ${file[0].name}` : "no files uploaded yet"}</p>
 
 				<div className="form-button">
 					<Button size="large" variant="contained" type="submit">
