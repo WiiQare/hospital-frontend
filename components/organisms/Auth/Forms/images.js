@@ -78,7 +78,7 @@ function Images() {
 					types={fileTypes}
 					
 				/>
-				<p className="text-sm text-gray-400">{file ? `File name: ${file[0].name}` : "no files uploaded yet"}</p>
+				<p className="text-sm text-gray-400">{file ? `Nom du fichier: ${file.name}` : "Aucun fichier uploader..."}</p>
 
 				<div className="form-button">
 					<Button size="large" variant="contained" type="submit">
