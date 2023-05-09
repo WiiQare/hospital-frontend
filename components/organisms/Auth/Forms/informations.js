@@ -97,6 +97,20 @@ function Information() {
             </Box>
             <form id="signupform" onSubmit={formik.handleSubmit}>
                 <Stack spacing={1.5}>
+                <FormControl fullWidth>
+                        <InputLabel id="demo-simple-select-label">Type Business</InputLabel>
+                        <Select
+                            labelId="demo-simple-select-label"
+                            id="demo-simple-select"
+                            label="Type Business"
+                        >
+                            <MenuItem value={"Clinic"}>Clinic</MenuItem>
+                            <MenuItem value={"Pharmacy"}>Pharmacy</MenuItem>
+                            <MenuItem value={"Hospital"}>Hospital</MenuItem>
+                            <MenuItem value={"Dentist"}>Dentist</MenuItem>
+                            <MenuItem value={"Medical Cabinet"}>Medical Cabinet</MenuItem>
+                        </Select>
+                    </FormControl>
                     <Stack direction={{ xs: "column", sm: "row" }} spacing={1.5}>
                         <div className="flex flex-col gap-1">
                             <TextField
@@ -194,25 +208,10 @@ function Information() {
                             {formik.errors.rccm ? renderError(formik.errors.rccm) : <></>}
                         </div>
 
-                    <FormControl fullWidth>
-                        <InputLabel id="demo-simple-select-label">Type Business</InputLabel>
-                        <Select
-                            labelId="demo-simple-select-label"
-                            id="demo-simple-select"
-                            label="Type Business"
-                        >
-                            <MenuItem value={"Clinic"}>Clinic</MenuItem>
-                            <MenuItem value={"Pharmacy"}>Pharmacy</MenuItem>
-                            <MenuItem value={"Hospital"}>Hospital</MenuItem>
-                            <MenuItem value={"Dentist"}>Dentist</MenuItem>
-                            <MenuItem value={"Medical Cabinet"}>Medical Cabinet</MenuItem>
-                        </Select>
-                    </FormControl>
-
                     <Box>
                         <Button size="large" variant="contained" type="submit" className="mt-3">
                             {/* {newAccountMutation.isLoading ? <LoadingButton /> : 'NEXT'} */}
-                            NEXT
+                            SUIVANT
                         </Button>
                     </Box>
                 </Stack>

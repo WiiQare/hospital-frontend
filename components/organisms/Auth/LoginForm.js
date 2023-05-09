@@ -82,7 +82,6 @@ function LoginForm() {
 			email: '',
 			password: ''
 		},
-		validate: loginValidate,
 		onSubmit
 	})
 

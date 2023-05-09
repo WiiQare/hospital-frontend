@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { createContext, useState } from "react";
 
 import { StepLabel, Stack } from "@mui/material";
@@ -10,6 +10,7 @@ import { styled } from "@mui/material/styles";
 import MenuHolder from "../../atoms/MenuHolder";
 import BlinkSnackbar from "../../atoms/BlinkSnackbar";
 import StepRegistration from "./StepRegistration";
+import { useRouter } from "next/router";
 
 export const FormContextRegister = createContext();
 
@@ -46,9 +47,18 @@ const ColorlibConnector = styled(StepConnector)(({ theme }) => ({
 }));
 
 const RegisterForm = () => {
-	const [activeStep, setActiveStep] = React.useState(0);
-	const [completed, setCompleted] = React.useState({});
+    const query = useRouter().query;
+
+	const [activeStep, setActiveStep] = useState(0);
+	const [completed, setCompleted] = useState({});
     const [formData, setFormData] = useState({});
+
+	useEffect(() => {
+		if(query["email-verification"]) {
+			setCompleted({"0": true})
+			setActiveStep(1)
+		}
+	}, [query["email-verification"]]);
 
 	const totalSteps = () => {
 		return steps.length;
@@ -76,18 +86,11 @@ const RegisterForm = () => {
 		setActiveStep(newActiveStep);
 	};
 
-	const handleBack = () => {
-		setActiveStep((prevActiveStep) => prevActiveStep - 1);
-	};
-
-	const handleStep = (step) => () => {
-		setActiveStep(step);
-	};
-
 	const handleComplete = (values) => {
 		const newCompleted = completed;
 		newCompleted[activeStep] = true;
 		setCompleted(newCompleted);
+
 		handleNext();
 	};
 
@@ -127,7 +130,7 @@ const RegisterForm = () => {
 					</div>
 				</div>
 			</div>
-			<BlinkSnackbar />
+			{/* <BlinkSnackbar /> */}
 		</>
 	);
 }
