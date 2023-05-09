@@ -6,6 +6,7 @@ import Toast from "../../../atoms/Toast";
 import { useSelector, useDispatch } from 'react-redux';
 import { BiCloudUpload } from "react-icons/bi";
 import { FileUploader } from "react-drag-drop-files";
+import { setRegister } from "../../../../redux/reducer";
 
 const fileTypes = ["JPEG", "PNG", "GIF", "JPG", "WEBP"];
 
@@ -15,18 +16,28 @@ function Images() {
 	const client = useSelector((state) => state.app.client);
 	const dispatch = useDispatch();
 	const hiddenFileInput = useRef(null);
-	const [file, setFile] = useState(null);
+  	const [createObjectURL, setCreateObjectURL] = useState(null);
+	  const [file, setFile] = useState(null);
 
-
-	const handleChangeUp = (file) => {
+	  const handleChangeUp = (file) => {
 		setFile(file);
+		uploadToClient(file)
+	  };
+
+	const uploadToClient = (event) => {
+		setCreateObjectURL(URL.createObjectURL(event));
 	};
+
+	const uploadToServer = async (event) => {
+		
+        dispatch(setRegister({...client.register, logo: file}))
+        handleComplete()
+
+	  };
 
 
 	const onSubmit = async (values) => {
 		if (Object.keys(values).length == 0) return console.log("Pas de données");
-
-		handleComplete()
 
 	};
 
@@ -41,23 +52,6 @@ function Images() {
 		},
 		onSubmit
 	})
-
-
-	const handleChange = event => {
-		console.log(event.target);
-		if (event.target.files && event.target.files[0]) {
-			const i = event.target.files[0];
-			const body = new FormData();
-			body.append("image", i);
-
-			console.log(body);
-		}
-	};
-
-
-	const handleClick = event => {
-		hiddenFileInput.current.click();
-	};
 
 	return (
 		<>
@@ -78,11 +72,11 @@ function Images() {
 					types={fileTypes}
 					
 				/>
-				<p className="text-sm text-gray-400">{file ? `Nom du fichier: ${file.name}` : "Aucun fichier uploader..."}</p>
-
+				{/* <p className="text-sm text-gray-400">{file ? `Nom du fichier: ${file.name}` : "Aucun fichier uploader..."}</p> */}
+				{createObjectURL && <img src={createObjectURL} alt="img" className="my-5 w-36 mx-auto rounded-xl shadow-sm"/>}
 				<div className="form-button">
-					<Button size="large" variant="contained" type="submit">
-						NEXT STEP
+					<Button size="large" variant="contained" type="submit" onClick={uploadToServer}>
+						SUIVANT
 					</Button>
 				</div>
 			</form>

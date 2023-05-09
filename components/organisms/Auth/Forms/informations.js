@@ -20,38 +20,17 @@ import { HiOutlineInformationCircle } from "react-icons/hi";
 function Information() {
     const { activeStep, setActiveStep, formData, setFormData, handleComplete } = useContext(FormContextRegister);
     const [state, setState] = useState({ type: 0, message: '' });
+    const query = useRouter().query;
     const client = useSelector((state) => state.app.client);
-    const router = useRouter();
     const dispatch = useDispatch();
 
 
-    const newAccountMutation = useMutation(register, {
-        onSuccess: (res) => {
-
-            if (res.code) {
-                setState({ type: 2, message: res.message ?? res.description })
-                setTimeout(() => {
-                    setState({ type: 0, message: "" })
-                }, 3000);
-
-            } else {
-                setState({ type: 1, message: "Successfully registered" })
-                dispatch(setRegister({}))
-
-                setTimeout(() => {
-                    router.push('/login')
-                }, 2500);
-
-            };
-        }
-    });
-
     const onSubmit = async (values) => {
         if (Object.keys(values).length == 0) return console.log("Pas de données");
-        //dispatch(setRegsiter({...values}))
 
-        let { confirm_password, ...info } = values;
-        //newAccountMutation.mutate({ ...info, ...client.register })
+        console.log(values);
+        let { confirm_password, rccm, ...info } = values;
+        dispatch(setRegister({...info, emailVerificationToken: query["email-verification"]}))
         handleComplete()
     };
 
@@ -60,22 +39,27 @@ function Information() {
     }
 
     const ValidationSchema = yup.object().shape({
-        businessName: yup.string().required("Business Name is a required field"),
-        businessPhone: yup.string().required("Phone number is a required field"),
-        businessAddress: yup.string().required(),
+        businessType: yup.string().required("Sélectionnez un type d'établissement"),
+        businessName: yup.string().required("Nom est requis"),
+        businessPhone: yup.string().required("Téléphoe est requis"),
+        businessAddress: yup.string().required("L'adresse est requise"),
         country: yup.string().required(),
         city: yup.string().required(),
         postalCode: yup.string().required(),
+        nationalId: yup.string().required("ID. Nat. requis")
     });
 
     const formik = useFormik({
         initialValues: {
+            businessType: '',
             businessName: '',
             businessPhone: '',
             businessAddress: '',
             country: '',
             postalCode: '',
             city: '',
+            nationalId: '',
+            rccm: '',
         },
         validationSchema: ValidationSchema,
         onSubmit
@@ -103,39 +87,42 @@ function Information() {
                             labelId="demo-simple-select-label"
                             id="demo-simple-select"
                             label="Type Business"
+                            onChange={(e) => formik.setFieldValue("businessType", e.target.value)}
                         >
-                            <MenuItem value={"Clinic"}>Clinic</MenuItem>
-                            <MenuItem value={"Pharmacy"}>Pharmacy</MenuItem>
-                            <MenuItem value={"Hospital"}>Hospital</MenuItem>
-                            <MenuItem value={"Dentist"}>Dentist</MenuItem>
-                            <MenuItem value={"Medical Cabinet"}>Medical Cabinet</MenuItem>
+                            <MenuItem value={"Clinique"}>Clinique</MenuItem>
+                            <MenuItem value={"Pharmacie"}>Pharmacie</MenuItem>
+                            <MenuItem value={"Hôpital"}>Hôpital</MenuItem>
+                            <MenuItem value={"Dentiste"}>Dentiste</MenuItem>
+                            <MenuItem value={"Cabinet Medical"}>Cabinet Medical</MenuItem>
                         </Select>
+                        {formik.errors.businessType && formik.touched.businessType ? renderError(formik.errors.businessType) : <></>}
+
                     </FormControl>
                     <Stack direction={{ xs: "column", sm: "row" }} spacing={1.5}>
                         <div className="flex flex-col gap-1">
                             <TextField
                                 id="outlined-basic"
                                 fullWidth
-                                label="Business Name"
+                                label="Nom Etablissement"
                                 variant="outlined"
                                 name="businessName"
                                 {...formik.getFieldProps('businessName')}
                             />
 
-                            {formik.errors.businessName ? renderError(formik.errors.businessName) : <></>}
+                            {formik.errors.businessName  && formik.touched.businessName ? renderError(formik.errors.businessName) : <></>}
                         </div>
 
                         <div className="flex flex-col gap-1">
                             <TextField
                                 id="outlined-basic"
                                 fullWidth
-                                label="Business Street Address"
+                                label="Adresse Etablissement"
                                 variant="outlined"
                                 name="businessAddress"
                                 {...formik.getFieldProps('businessAddress')}
                             />
 
-                            {formik.errors.businessAddress ? renderError(formik.errors.businessAddress) : <></>}
+                            {formik.errors.businessAddress  && formik.touched.businessAddress ? renderError(formik.errors.businessAddress) : <></>}
                         </div>
 
                     </Stack>
@@ -143,14 +130,14 @@ function Information() {
                     <div className="flex flex-col gap-1">
                         <MuiPhoneNumber
                             fullWidth
-                            label="Business Phone"
+                            label="N° Téléphone Etablissement"
                             variant="outlined"
                             onChange={(value, country) => { formik.setFieldValue("businessPhone", value); formik.setFieldValue("country", country.countryCode) }}
 
                             defaultCountry={"fr"}
                             name="businessPhone"
                         />
-                        {formik.errors.businessPhone ? renderError(formik.errors.businessPhone) : <></>}
+                        {formik.errors.businessPhone && formik.touched.businessPhone ? renderError(formik.errors.businessPhone) : <></>}
                     </div>
 
                     <Stack direction={{ xs: "column", sm: "row" }} spacing={1.5}>
@@ -158,29 +145,31 @@ function Information() {
                             <TextField
                                 id="outlined-basic"
                                 fullWidth
-                                label="City"
+                                label="Ville"
                                 variant="outlined"
                                 name="city"
                                 {...formik.getFieldProps('city')}
                             />
 
-                            {formik.errors.city ? renderError(formik.errors.city) : <></>}
+                            {formik.errors.city && formik.touched.city ? renderError(formik.errors.city) : <></>}
                         </div>
 
                         <div className="flex flex-col gap-1">
                             <TextField
                                 id="outlined-basic"
                                 fullWidth
-                                label="Postal Code"
+                                label="Code Postal"
                                 variant="outlined"
                                 name="postalCode"
                                 {...formik.getFieldProps('postalCode')}
                             />
 
-                            {formik.errors.postalCode ? renderError(formik.errors.postalCode) : <></>}
+                            {formik.errors.postalCode && formik.touched.postalCode ? renderError(formik.errors.postalCode) : <></>}
                         </div>
 
                     </Stack>
+
+                    <Stack direction={{ xs: "column", sm: "row" }} spacing={1.5}>
 
                     <div className="flex flex-col gap-1">
                             <TextField
@@ -188,11 +177,11 @@ function Information() {
                                 fullWidth
                                 label="Id. Nat."
                                 variant="outlined"
-                                name="idnat"
-                                {...formik.getFieldProps('idnat')}
+                                name="nationalId"
+                                {...formik.getFieldProps('nationalId')}
                             />
 
-                            {formik.errors.idnat ? renderError(formik.errors.idnat) : <></>}
+                            {formik.errors.nationalId && formik.touched.nationalId ? renderError(formik.errors.nationalId) : <></>}
                         </div>
 
                         <div className="flex flex-col gap-1">
@@ -205,8 +194,9 @@ function Information() {
                                 {...formik.getFieldProps('rccm')}
                             />
 
-                            {formik.errors.rccm ? renderError(formik.errors.rccm) : <></>}
+                            {formik.errors.rccm && formik.touched.rccm ? renderError(formik.errors.rccm) : <></>}
                         </div>
+                    </Stack>
 
                     <Box>
                         <Button size="large" variant="contained" type="submit" className="mt-3">

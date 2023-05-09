@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-    client: {register: {}, patient: {}}
+    client: {register: {}}
 }
 
 export const ReducerSlice = createSlice({
