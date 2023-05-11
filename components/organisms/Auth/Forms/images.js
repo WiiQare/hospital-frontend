@@ -20,12 +20,19 @@ function Images() {
 	  const [file, setFile] = useState(null);
 
 	  const handleChangeUp = (file) => {
-		setFile(file);
 		uploadToClient(file)
 	  };
 
 	const uploadToClient = (event) => {
+		
 		setCreateObjectURL(URL.createObjectURL(event));
+
+		const reader = new FileReader();
+		const file = event;
+		
+		reader.readAsDataURL(file);
+
+		setFile(reader);
 	};
 
 	const uploadToServer = async (event) => {

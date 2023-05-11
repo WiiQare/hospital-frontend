@@ -10,7 +10,6 @@ function StepRegistration() {
 
   const { activeStep } = useContext(FormContextRegister);
   let stepContent;
-  console.log(activeStep);
 
   switch (activeStep) {
     case 0:

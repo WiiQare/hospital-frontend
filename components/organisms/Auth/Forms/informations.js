@@ -28,7 +28,6 @@ function Information() {
     const onSubmit = async (values) => {
         if (Object.keys(values).length == 0) return console.log("Pas de données");
 
-        console.log(values);
         let { confirm_password, rccm, ...info } = values;
         dispatch(setRegister({...info, emailVerificationToken: query["email-verification"]}))
         handleComplete()
@@ -40,26 +39,25 @@ function Information() {
 
     const ValidationSchema = yup.object().shape({
         businessType: yup.string().required("Sélectionnez un type d'établissement"),
-        businessName: yup.string().required("Nom est requis"),
-        businessPhone: yup.string().required("Téléphoe est requis"),
-        businessAddress: yup.string().required("L'adresse est requise"),
-        country: yup.string().required(),
+        name: yup.string().required("Nom de l'établissement est requis"),
+        phone: yup.string().required("Téléphoe est requis"),
+        address: yup.string().required("L'adresse est requise"),
         city: yup.string().required(),
         postalCode: yup.string().required(),
-        nationalId: yup.string().required("ID. Nat. requis")
+        nationalId: yup.string().required("ID. Nat. requis"),
+        businessRegistrationNo: yup.string().required("RCCM est requis")
     });
 
     const formik = useFormik({
         initialValues: {
             businessType: '',
-            businessName: '',
-            businessPhone: '',
-            businessAddress: '',
-            country: '',
+            name: '',
+            phone: '',
+            address: '',
             postalCode: '',
             city: '',
             nationalId: '',
-            rccm: '',
+            businessRegistrationNo: '',
         },
         validationSchema: ValidationSchema,
         onSubmit
@@ -105,11 +103,11 @@ function Information() {
                                 fullWidth
                                 label="Nom Etablissement"
                                 variant="outlined"
-                                name="businessName"
-                                {...formik.getFieldProps('businessName')}
+                                name="name"
+                                {...formik.getFieldProps('name')}
                             />
 
-                            {formik.errors.businessName  && formik.touched.businessName ? renderError(formik.errors.businessName) : <></>}
+                            {formik.errors.name  && formik.touched.name ? renderError(formik.errors.name) : <></>}
                         </div>
 
                         <div className="flex flex-col gap-1">
@@ -118,11 +116,11 @@ function Information() {
                                 fullWidth
                                 label="Adresse Etablissement"
                                 variant="outlined"
-                                name="businessAddress"
-                                {...formik.getFieldProps('businessAddress')}
+                                name="address"
+                                {...formik.getFieldProps('address')}
                             />
 
-                            {formik.errors.businessAddress  && formik.touched.businessAddress ? renderError(formik.errors.businessAddress) : <></>}
+                            {formik.errors.address  && formik.touched.address ? renderError(formik.errors.address) : <></>}
                         </div>
 
                     </Stack>
@@ -132,12 +130,12 @@ function Information() {
                             fullWidth
                             label="N° Téléphone Etablissement"
                             variant="outlined"
-                            onChange={(value, country) => { formik.setFieldValue("businessPhone", value); formik.setFieldValue("country", country.countryCode) }}
+                            onChange={(value, country) => { formik.setFieldValue("phone", value) }}
 
                             defaultCountry={"fr"}
-                            name="businessPhone"
+                            name="phone"
                         />
-                        {formik.errors.businessPhone && formik.touched.businessPhone ? renderError(formik.errors.businessPhone) : <></>}
+                        {formik.errors.phone && formik.touched.phone ? renderError(formik.errors.phone) : <></>}
                     </div>
 
                     <Stack direction={{ xs: "column", sm: "row" }} spacing={1.5}>
@@ -190,11 +188,11 @@ function Information() {
                                 fullWidth
                                 label="RCCM"
                                 variant="outlined"
-                                name="rccm"
-                                {...formik.getFieldProps('rccm')}
+                                name="businessRegistrationNo"
+                                {...formik.getFieldProps('businessRegistrationNo')}
                             />
 
-                            {formik.errors.rccm && formik.touched.rccm ? renderError(formik.errors.rccm) : <></>}
+                            {formik.errors.businessRegistrationNo && formik.touched.businessRegistrationNo ? renderError(formik.errors.businessRegistrationNo) : <></>}
                         </div>
                     </Stack>
 

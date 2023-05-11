@@ -20,6 +20,8 @@ function PersonnalInformation() {
     const router = useRouter();
     const dispatch = useDispatch();
 
+    console.log(client);
+
 
     const newAccountMutation = useMutation(register, {
         onSuccess: (res) => {
@@ -31,7 +33,7 @@ function PersonnalInformation() {
                 }, 3000);
 
             } else {
-                setState({ type: 1, message: "Successfully registered" })
+                setState({ type: 1, message: "Votre compte a été enregistré !" })
                 dispatch(setRegister({}))
 
                 setTimeout(() => {
@@ -44,11 +46,9 @@ function PersonnalInformation() {
 
     const onSubmit = async (values) => {
         if (Object.keys(values).length == 0) return console.log("Pas de données");
-        //dispatch(setRegsiter({...values}))
 
-        let { confirm_password, ...info } = values;
-        //newAccountMutation.mutate({ ...info, ...client.register })
-        handleComplete()
+        console.log(values);
+        newAccountMutation.mutate({ ...client.register, contactPerson: values})
     };
 
     const closeToast = () => {
@@ -56,22 +56,24 @@ function PersonnalInformation() {
     }
 
     const ValidationSchema = yup.object().shape({
-        businessName: yup.string().required("Business Name is a required field"),
-        businessPhone: yup.string().required("Phone number is a required field"),
-        businessAddress: yup.string().required(),
+        firstName: yup.string().required("Prenom est requis"),
+        lastName: yup.string().required("Nom est requis"),
+        phone: yup.string().required("Phone est requis"),
+		email: yup.string().email().required("Adresse email obligatoire"),
         country: yup.string().required(),
-        city: yup.string().required(),
-        postalCode: yup.string().required(),
+        occupation: yup.string().required("Quel poste occupez-vous ?"),
+        homeAddress: yup.string().required("Adresse est requis"),
     });
 
     const formik = useFormik({
         initialValues: {
-            businessName: '',
-            businessPhone: '',
-            businessAddress: '',
+            firstName: '',
+            lastName: '',
+            phone: '',
+            email: '',
+            occupation: '',
             country: '',
-            postalCode: '',
-            city: '',
+            homeAddress: '',
         },
         validationSchema: ValidationSchema,
         onSubmit
@@ -98,26 +100,26 @@ function PersonnalInformation() {
                             <TextField
                                 id="outlined-basic"
                                 fullWidth
-                                label="FirstName"
+                                label="Prenom"
                                 variant="outlined"
                                 name="firstName"
                                 {...formik.getFieldProps('firstName')}
                             />
 
-                            {formik.errors.firstName ? renderError(formik.errors.firstName) : <></>}
+                            {formik.errors.firstName && formik.touched.firstName ? renderError(formik.errors.firstName) : <></>}
                         </div>
 
                         <div className="flex flex-col gap-1">
                             <TextField
                                 id="outlined-basic"
                                 fullWidth
-                                label="LastName"
+                                label="Nom"
                                 variant="outlined"
                                 name="lastName"
                                 {...formik.getFieldProps('lastName')}
                             />
 
-                            {formik.errors.lastName ? renderError(formik.errors.lastName) : <></>}
+                            {formik.errors.lastName && formik.touched.lastName  ? renderError(formik.errors.lastName) : <></>}
                         </div>
 
                     </Stack>
@@ -125,29 +127,46 @@ function PersonnalInformation() {
                     <div className="flex flex-col gap-1">
                         <MuiPhoneNumber
                             fullWidth
-                            label="Personal Contact"
+                            label="N° Téléphone personnel"
                             variant="outlined"
-                            onChange={(value, country) => { formik.setFieldValue("personnalContact", value); formik.setFieldValue("country", country.countryCode) }}
+                            onChange={(value, country) => { formik.setFieldValue("phone", value); formik.setFieldValue("country", country.countryCode) }}
 
-                            defaultCountry={"fr"}
-                            name="personnalContact"
+                            defaultCountry={"cd"}
+                            name="phone"
                         />
-                        {formik.errors.personnalContact ? renderError(formik.errors.personnalContact) : <></>}
+                        {formik.errors.phone && formik.touched.phone ? renderError(formik.errors.phone) : <></>}
                     </div>
 
-                    <Stack direction={{ xs: "column", sm: "row" }} spacing={1.5}>
-                        <div className="flex flex-col gap-1">
-                            <TextField
-                                id="outlined-basic"
-                                fullWidth
-                                label="Occupation"
-                                variant="outlined"
-                                name="occupation"
-                                {...formik.getFieldProps('occupation')}
-                            />
+                    <div className="flex flex-col gap-1">
+                        <TextField
+                            id="outlined-basic"
+                            fullWidth
+                            label="Adresse email"
+                            variant="outlined"
+                            name="email"
+                            {...formik.getFieldProps('email')}
+                        />
 
-                            {formik.errors.occupation ? renderError(formik.errors.occupation) : <></>}
-                        </div>
+                        {formik.errors.email && formik.touched.email ? renderError(formik.errors.email) : <></>}
+                    </div>
+
+                    <div className="flex gap-4">
+
+                        <FormControl className="w-1/2 flex flex-col gap-1">
+                            <InputLabel id="demo-simple-select-label">Occupation</InputLabel>
+                            <Select
+                                labelId="demo-simple-select-label"
+                                id="demo-simple-select"
+                                label="Occupation"
+                                name="occupation"
+                                onChange={(e) => formik.setFieldValue("occupation", e.target.value)}
+                            >
+                                <MenuItem value={"Gérant"}>Gérant</MenuItem>
+                                <MenuItem value={"Propriétaire"}>Propriétaire</MenuItem>
+                                <MenuItem value={"Autres"}>Autres</MenuItem>
+                            </Select>
+                            {formik.errors.occupation && formik.touched.occupation ? renderError(formik.errors.occupation) : <></>}
+                        </FormControl>
 
                         <div className="flex flex-col gap-1">
                             <TextField
@@ -159,54 +178,10 @@ function PersonnalInformation() {
                                 {...formik.getFieldProps('homeAddress')}
                             />
 
-                            {formik.errors.homeAddress ? renderError(formik.errors.homeAddress) : <></>}
+                            {formik.errors.homeAddress && formik.touched.homeAddress ? renderError(formik.errors.homeAddress) : <></>}
                         </div>
 
-                    </Stack>
-
-                    <FormControl fullWidth>
-                        <InputLabel id="demo-simple-select-label">Province</InputLabel>
-                        <Select
-                            labelId="demo-simple-select-label"
-                            id="demo-simple-select"
-                            label="Province"
-                        >
-                            <MenuItem value={"Kinshasa"}>Kinshasa</MenuItem>
-                            <MenuItem value={"Lubumbashi"}>Lubumbashi</MenuItem>
-                            <MenuItem value={"Goma"}>Goma</MenuItem>
-                            <MenuItem value={"Bukavu"}>Bukavu</MenuItem>
-                            <MenuItem value={"Kindu"}>Kindu</MenuItem>
-                        </Select>
-                    </FormControl>
-
-                    <Stack direction={{ xs: "column", sm: "row" }} spacing={1.5}>
-                        <div className="flex flex-col gap-1">
-                            <TextField
-                                id="outlined-basic"
-                                fullWidth
-                                label="City"
-                                variant="outlined"
-                                name="city"
-                                {...formik.getFieldProps('city')}
-                            />
-
-                            {formik.errors.city ? renderError(formik.errors.city) : <></>}
-                        </div>
-
-                        <div className="flex flex-col gap-1">
-                            <TextField
-                                id="outlined-basic"
-                                fullWidth
-                                label="Postal Code"
-                                variant="outlined"
-                                name="postalCode"
-                                {...formik.getFieldProps('postalCode')}
-                            />
-
-                            {formik.errors.postalCode ? renderError(formik.errors.postalCode) : <></>}
-                        </div>
-
-                    </Stack>
+                    </div>
 
                     <div className="flex items-center !mt-10 mb-2">
                         <input id="link-checkbox" type="checkbox" value="" className="w-4 h-4 text-orange bg-gray-100 border-gray-300 rounded focus:ring-orange focus:ring-1" onChange={(e) => setTerm(e.target.checked)} />
