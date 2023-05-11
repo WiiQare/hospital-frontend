@@ -10,6 +10,7 @@ import Toast from "../../../atoms/Toast";
 import { useRouter } from 'next/router'
 import { setRegister } from "../../../../redux/reducer";
 import * as yup from "yup";
+import LoadingButton from "../../../atoms/Loader/LoadingButton";
 
 
 function PersonnalInformation() {
@@ -19,8 +20,6 @@ function PersonnalInformation() {
     const client = useSelector((state) => state.app.client);
     const router = useRouter();
     const dispatch = useDispatch();
-
-    console.log(client);
 
 
     const newAccountMutation = useMutation(register, {
@@ -190,7 +189,7 @@ function PersonnalInformation() {
 
                     <Box>
                         <Button size="large" variant="contained" type="submit" className="disabled:bg-gray-200" disabled={!term}>
-                            CREATE NEW ACCOUNT
+                            {newAccountMutation.isLoading ? <LoadingButton /> : 'CREATE NEW ACCOUNT'}
                         </Button>
                     </Box>
                 </Stack>
