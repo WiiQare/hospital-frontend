@@ -52,6 +52,7 @@ const RegisterForm = () => {
 	const [activeStep, setActiveStep] = useState(0);
 	const [completed, setCompleted] = useState({});
     const [formData, setFormData] = useState({});
+	const [file, setFile] = useState(null);
 
 	useEffect(() => {
 		if(query["email-verification"]) {
@@ -123,7 +124,7 @@ const RegisterForm = () => {
 
 					<div className="form-items">
 
-						<FormContextRegister.Provider value={{ activeStep, setActiveStep, handleComplete, formData, setFormData }}>
+						<FormContextRegister.Provider value={{ activeStep, setActiveStep, handleComplete, formData, setFormData, file, setFile }}>
 							<StepRegistration />
 						</FormContextRegister.Provider>
 

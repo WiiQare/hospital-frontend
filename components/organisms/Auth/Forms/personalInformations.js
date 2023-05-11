@@ -14,7 +14,7 @@ import LoadingButton from "../../../atoms/Loader/LoadingButton";
 
 
 function PersonnalInformation() {
-    const { activeStep, setActiveStep, formData, setFormData, handleComplete } = useContext(FormContextRegister);
+    const { activeStep, setActiveStep, formData, setFormData, file, handleComplete } = useContext(FormContextRegister);
     const [state, setState] = useState({ type: 0, message: '' });
     const [term, setTerm] = useState(false);
     const client = useSelector((state) => state.app.client);
@@ -46,8 +46,9 @@ function PersonnalInformation() {
     const onSubmit = async (values) => {
         if (Object.keys(values).length == 0) return console.log("Pas de données");
 
-        console.log(values);
-        newAccountMutation.mutate({ ...client.register, contactPerson: values})
+        console.log(`${file.name} ${file.size} ${file.type}`)
+
+        newAccountMutation.mutate({ ...client.register, contactPerson: values, logo: file })
     };
 
     const closeToast = () => {

@@ -8,51 +8,25 @@ import { BiCloudUpload } from "react-icons/bi";
 import { FileUploader } from "react-drag-drop-files";
 import { setRegister } from "../../../../redux/reducer";
 
-const fileTypes = ["JPEG", "PNG", "GIF", "JPG", "WEBP"];
+const fileTypes = ["JPEG", "PNG", "JPG", "WEBP"];
 
 function Images() {
-	const { activeStep, setActiveStep, formData, setFormData, handleComplete } = useContext(FormContextRegister);
+	const { activeStep, setActiveStep, formData, setFormData, setFile, handleComplete } = useContext(FormContextRegister);
 	const [state, setState] = useState({ type: 0, message: '' });
 	const client = useSelector((state) => state.app.client);
 	const dispatch = useDispatch();
-	const hiddenFileInput = useRef(null);
-  	const [createObjectURL, setCreateObjectURL] = useState(null);
-	  const [file, setFile] = useState(null);
 
-	  const handleChangeUp = (file) => {
-		uploadToClient(file)
-	  };
-
-	const uploadToClient = (event) => {
-		
-		setCreateObjectURL(URL.createObjectURL(event));
-
-		const reader = new FileReader();
-		const file = event;
-		
-		reader.readAsDataURL(file);
-
-		setFile(reader);
-	};
-
-	const uploadToServer = async (event) => {
-		
-        dispatch(setRegister({...client.register, logo: file}))
-        handleComplete()
-
-	  };
-
+	const handleChangeUp = (file) => setFile(file);
+	const uploadToServer = async (event) => handleComplete()
 
 	const onSubmit = async (values) => {
 		if (Object.keys(values).length == 0) return console.log("Pas de données");
-
 	};
 
 	const closeToast = () => {
 		setState({ type: 0, message: "" })
 	}
 
-	// Formik hook
 	const formik = useFormik({
 		initialValues: {
 			logo: ''
@@ -79,8 +53,6 @@ function Images() {
 					types={fileTypes}
 					
 				/>
-				{/* <p className="text-sm text-gray-400">{file ? `Nom du fichier: ${file.name}` : "Aucun fichier uploader..."}</p> */}
-				{createObjectURL && <img src={createObjectURL} alt="img" className="my-5 w-36 mx-auto rounded-xl shadow-sm"/>}
 				<div className="form-button">
 					<Button size="large" variant="contained" type="submit" onClick={uploadToServer}>
 						SUIVANT
