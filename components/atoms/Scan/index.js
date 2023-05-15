@@ -8,10 +8,12 @@ import Box from '@mui/material/Box';
 import PropTypes from 'prop-types';
 import Typography from '@mui/material/Typography';
 import CopyToClipboard from 'react-copy-to-clipboard';
-import ButtonNoAction from '../Button/NoAction';
 import { BiTransferAlt } from 'react-icons/bi';
 import { AiOutlineExclamationCircle } from 'react-icons/ai';
 import { MdPayments } from 'react-icons/md';
+import { Button, Stack, TextField } from '@mui/material';
+import { useFormik } from 'formik';
+import * as yup from "yup";
 
 const Scan = () => {
 	const [data, setData] = useState(null);
@@ -81,7 +83,7 @@ const Scan = () => {
 					leave="ease-in duration-200"
 					leaveFrom="opacity-100 scale-100"
 					leaveTo="opacity-0 scale-95"
-					className={"md:w-1/2 bg-white rounded-xl px-10 py-8 min-h-full"}
+					className={"md:w-1/2 bg-white rounded-xl px-10 py-8 min-h-fit"}
 				>
 
 					<TabsModal value={value} handleChange={handleChange} />
@@ -161,10 +163,32 @@ function TabsModal({ value, handleChange }) {
 function TabItems({ value, handleStep }) {
 
 
+	const onSubmit = async (values) => {
+        if (Object.keys(values).length == 0) return console.log("Pas de données");
+
+        handleStep(2, {transactionHash: "0xf59b12eccfc5faedbc4657bd593d6d6a0c679623"})
+    };
+
+	const ValidationSchema = yup.object().shape({
+        pass: yup.string().required("Pass Santé est requis")
+    });
+
+	const formik = useFormik({
+        initialValues: {
+            pass: '',
+        },
+        validationSchema: ValidationSchema,
+        onSubmit
+    })
+
+	const renderError = (message) => (
+        <p className="text-xs text-red-600 font-light flex items-center gap-1 px-1">{message}</p>
+    );
+
 	return (
 		<div className="mt-2">
-			{/* For Email */}
 			<div className="text-sm text-gray-500">
+				{/* For Scan */}
 				<TabPanel value={value} index={0} >
 					<div className="mt-4">
 
@@ -190,8 +214,31 @@ function TabItems({ value, handleStep }) {
 
 				<TabPanel value={value} index={1} >
 
-					<div className="space-y-8">
-						lorem ipsum dolor s
+					<div className="space-y-8 py-10 px-20">
+                       
+                        <form id="signupform" onSubmit={formik.handleSubmit}>
+                            <Stack spacing={2}>
+
+                                <div className="space-y-1">
+                                    <TextField
+                                        id="outlined-basic"
+                                        fullWidth
+                                        label="Entrez le code Pass Santé"
+                                        variant="outlined"
+                                        name="pass"
+										{...formik.getFieldProps('pass')}
+
+                                    />
+                            		{formik.errors.pass && formik.touched.pass ? renderError(formik.errors.pass) : <></>}
+                                </div>
+
+                                <div className="form-button flex flex-row-reverse">
+                                    <Button size="medium" variant="contained" type="submit">
+										Soumettre
+                                    </Button>
+                                </div>
+                            </Stack>
+                        </form>
 					</div>
 
 				</TabPanel>
