@@ -214,7 +214,7 @@ const Menu = ({ session, handleSignOut }) => {
 						label={
 							<Avatar
 								alt="User settings"
-								img={session?.user?.data.image ?? `https://ui-avatars.com/api/?uppercase=true&background=FE8023&name=Ngaliema Center&bold=true&color=FFF`}
+								img={session?.user?.data.image ?? `https://ui-avatars.com/api/?uppercase=true&background=FE8023&name=${session?.user?.data.names ?? session?.user?.data.name ?? "Ngaliema Center"}&bold=true&color=FFF`}
 								rounded={true}
 								size={30}
 								className="w-12 h-12"

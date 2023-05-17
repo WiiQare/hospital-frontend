@@ -35,7 +35,6 @@ function Email() {
             if(!res.code) {
                 setState({type: 1, message: "Un mail vous a été envoyé"})
                 setComplete(true)
-                handleComplete()
             } else {
                 setState({type: 2, message:res.message ?? res.description})
                 setTimeout(() => {

@@ -4,10 +4,11 @@ import CredentialsProvider from 'next-auth/providers/credentials';
 
 const authOptions = {
     session: {
+        maxAge: 86400,
         strategy: 'jwt'
     },
     callbacks: {
-        async jwt({token, user}) {
+        async jwt({ token, user }) {
 
             if (user) {
                 token.id = user.access_token;
@@ -16,7 +17,7 @@ const authOptions = {
 
             return token;
         },
-        
+
         async session({ session, token, user }) {
 
             session.user.id = token.id;
@@ -36,13 +37,13 @@ const authOptions = {
                     headers: {
                         'Content-Type': 'application/json',
                     },
-                    body: JSON.stringify({email: credentials.email, password: credentials.password})
+                    body: JSON.stringify({ email: credentials.email, password: credentials.password })
                 }
-        
-                const response = await fetch("http://34.205.37.182/api/v1/session", Options);
-                const json = await response.json();
 
-                if(json.code) throw new Error(json.message)
+                const response = await fetch("https://api.wiiqare-app.com/api/v1/session", Options);
+                const json = await response.json();
+ 
+                if (json.code) throw new Error(json.description)
                 return json
             }
         }),
@@ -52,11 +53,11 @@ const authOptions = {
             clientSecret: process.env.GOOGLE_CLIENT_SECRET
         }),
     ],
-    
+
     pages: {
         signIn: "/login"
     },
-    secret: 'secretpeterwiiqareuniceftoken'
+    secret: 'secretpeterwiiqareunicehospitalftoken'
 }
 
 export default NextAuth(authOptions)

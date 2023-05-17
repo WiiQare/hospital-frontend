@@ -14,7 +14,7 @@ import LoadingButton from "../../../atoms/Loader/LoadingButton";
 
 
 function PersonnalInformation() {
-    const { activeStep, setActiveStep, formData, setFormData, file, handleComplete } = useContext(FormContextRegister);
+    const { activeStep, setActiveStep, formData, setFormData, handleComplete } = useContext(FormContextRegister);
     const [state, setState] = useState({ type: 0, message: '' });
     const [term, setTerm] = useState(false);
     const client = useSelector((state) => state.app.client);
@@ -25,6 +25,7 @@ function PersonnalInformation() {
     const newAccountMutation = useMutation(register, {
         onSuccess: (res) => {
 
+            console.log(res);
             if (res.code) {
                 setState({ type: 2, message: res.message ?? res.description })
                 setTimeout(() => {
@@ -35,9 +36,9 @@ function PersonnalInformation() {
                 setState({ type: 1, message: "Votre compte a été enregistré !" })
                 dispatch(setRegister({}))
 
-                setTimeout(() => {
-                    router.push('/login')
-                }, 2500);
+                // setTimeout(() => {
+                //     router.push('/login')
+                // }, 2500);
 
             };
         }
@@ -46,9 +47,9 @@ function PersonnalInformation() {
     const onSubmit = async (values) => {
         if (Object.keys(values).length == 0) return console.log("Pas de données");
 
-        console.log(`${file.name} ${file.size} ${file.type}`)
-
-        newAccountMutation.mutate({ ...client.register, contactPerson: values, logo: file })
+        console.log(client);
+        console.log(values);
+        newAccountMutation.mutate({ ...client.register, ...values })
     };
 
     const closeToast = () => {
@@ -56,24 +57,24 @@ function PersonnalInformation() {
     }
 
     const ValidationSchema = yup.object().shape({
-        firstName: yup.string().required("Prenom est requis"),
-        lastName: yup.string().required("Nom est requis"),
-        phone: yup.string().required("Phone est requis"),
-		email: yup.string().email().required("Adresse email obligatoire"),
-        country: yup.string().required(),
-        occupation: yup.string().required("Quel poste occupez-vous ?"),
-        homeAddress: yup.string().required("Adresse est requis"),
+        contactPersonFirstName: yup.string().required("Prenom est requis"),
+        contactPersonLastName: yup.string().required("Nom est requis"),
+        contactPersonPhone: yup.string().required("Phone est requis"),
+		contactPersonEmail: yup.string().email().required("Adresse email obligatoire"),
+        contactPersonCountry: yup.string().required(),
+        contactPersonOccupation: yup.string().required("Quel poste occupez-vous ?"),
+        contactPersonHomeAddress: yup.string().required("Adresse est requis"),
     });
 
     const formik = useFormik({
         initialValues: {
-            firstName: '',
-            lastName: '',
-            phone: '',
-            email: '',
-            occupation: '',
-            country: '',
-            homeAddress: '',
+            contactPersonFirstName: '',
+            contactPersonLastName: '',
+            contactPersonPhone: '',
+            contactPersonEmail: '',
+            contactPersonOccupation: '',
+            contactPersonCountry: '',
+            contactPersonHomeAddress: '',
         },
         validationSchema: ValidationSchema,
         onSubmit
@@ -102,11 +103,11 @@ function PersonnalInformation() {
                                 fullWidth
                                 label="Prenom"
                                 variant="outlined"
-                                name="firstName"
-                                {...formik.getFieldProps('firstName')}
+                                name="contactPersonFirstName"
+                                {...formik.getFieldProps('contactPersonFirstName')}
                             />
 
-                            {formik.errors.firstName && formik.touched.firstName ? renderError(formik.errors.firstName) : <></>}
+                            {formik.errors.contactPersonFirstName && formik.touched.contactPersonFirstName ? renderError(formik.errors.contactPersonFirstName) : <></>}
                         </div>
 
                         <div className="flex flex-col gap-1">
@@ -115,11 +116,11 @@ function PersonnalInformation() {
                                 fullWidth
                                 label="Nom"
                                 variant="outlined"
-                                name="lastName"
-                                {...formik.getFieldProps('lastName')}
+                                name="contactPersonLastName"
+                                {...formik.getFieldProps('contactPersonLastName')}
                             />
 
-                            {formik.errors.lastName && formik.touched.lastName  ? renderError(formik.errors.lastName) : <></>}
+                            {formik.errors.contactPersonLastName && formik.touched.contactPersonLastName  ? renderError(formik.errors.contactPersonLastName) : <></>}
                         </div>
 
                     </Stack>
@@ -129,12 +130,12 @@ function PersonnalInformation() {
                             fullWidth
                             label="N° Téléphone personnel"
                             variant="outlined"
-                            onChange={(value, country) => { formik.setFieldValue("phone", value); formik.setFieldValue("country", country.countryCode) }}
+                            onChange={(value, country) => { formik.setFieldValue("contactPersonPhone", value); formik.setFieldValue("contactPersonCountry", country.countryCode) }}
 
                             defaultCountry={"cd"}
-                            name="phone"
+                            name="contactPersonPhone"
                         />
-                        {formik.errors.phone && formik.touched.phone ? renderError(formik.errors.phone) : <></>}
+                        {formik.errors.contactPersonPhone && formik.touched.contactPersonPhone ? renderError(formik.errors.contactPersonPhone) : <></>}
                     </div>
 
                     <div className="flex flex-col gap-1">
@@ -143,11 +144,11 @@ function PersonnalInformation() {
                             fullWidth
                             label="Adresse email"
                             variant="outlined"
-                            name="email"
-                            {...formik.getFieldProps('email')}
+                            name="contactPersonEmail"
+                            {...formik.getFieldProps('contactPersonEmail')}
                         />
 
-                        {formik.errors.email && formik.touched.email ? renderError(formik.errors.email) : <></>}
+                        {formik.errors.contactPersonEmail && formik.touched.contactPersonEmail ? renderError(formik.errors.contactPersonEmail) : <></>}
                     </div>
 
                     <div className="flex gap-4">
@@ -158,14 +159,14 @@ function PersonnalInformation() {
                                 labelId="demo-simple-select-label"
                                 id="demo-simple-select"
                                 label="Occupation"
-                                name="occupation"
-                                onChange={(e) => formik.setFieldValue("occupation", e.target.value)}
+                                name="contactPersonOccupation"
+                                onChange={(e) => formik.setFieldValue("contactPersonOccupation", e.target.value)}
                             >
                                 <MenuItem value={"Gérant"}>Gérant</MenuItem>
                                 <MenuItem value={"Propriétaire"}>Propriétaire</MenuItem>
                                 <MenuItem value={"Autres"}>Autres</MenuItem>
                             </Select>
-                            {formik.errors.occupation && formik.touched.occupation ? renderError(formik.errors.occupation) : <></>}
+                            {formik.errors.contactPersonOccupation && formik.touched.contactPersonOccupation ? renderError(formik.errors.contactPersonOccupation) : <></>}
                         </FormControl>
 
                         <div className="flex flex-col gap-1">
@@ -174,11 +175,11 @@ function PersonnalInformation() {
                                 fullWidth
                                 label="Home Address"
                                 variant="outlined"
-                                name="homeAddress"
-                                {...formik.getFieldProps('homeAddress')}
+                                name="contactPersonHomeAddress"
+                                {...formik.getFieldProps('contactPersonHomeAddress')}
                             />
 
-                            {formik.errors.homeAddress && formik.touched.homeAddress ? renderError(formik.errors.homeAddress) : <></>}
+                            {formik.errors.contactPersonHomeAddress && formik.touched.contactPersonHomeAddress ? renderError(formik.errors.contactPersonHomeAddress) : <></>}
                         </div>
 
                     </div>

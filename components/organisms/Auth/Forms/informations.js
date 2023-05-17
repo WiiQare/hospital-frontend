@@ -28,7 +28,9 @@ function Information() {
     const onSubmit = async (values) => {
         if (Object.keys(values).length == 0) return console.log("Pas de données");
 
-        let { confirm_password, rccm, ...info } = values;
+        let { confirm_password, ...info } = values;
+        info.businessRegistrationNo = parseInt(info.businessRegistrationNo);
+        console.log(info);
         dispatch(setRegister({...info, emailVerificationToken: query["email-verification"]}))
         handleComplete()
     };
@@ -45,7 +47,7 @@ function Information() {
         city: yup.string().required(),
         postalCode: yup.string().required(),
         nationalId: yup.string().required("ID. Nat. requis"),
-        businessRegistrationNo: yup.string().required("RCCM est requis")
+        businessRegistrationNo: yup.number().required("RCCM est requis")
     });
 
     const formik = useFormik({
@@ -87,11 +89,11 @@ function Information() {
                             label="Type Business"
                             onChange={(e) => formik.setFieldValue("businessType", e.target.value)}
                         >
-                            <MenuItem value={"Clinique"}>Clinique</MenuItem>
-                            <MenuItem value={"Pharmacie"}>Pharmacie</MenuItem>
-                            <MenuItem value={"Hôpital"}>Hôpital</MenuItem>
-                            <MenuItem value={"Dentiste"}>Dentiste</MenuItem>
-                            <MenuItem value={"Cabinet Medical"}>Cabinet Medical</MenuItem>
+                            <MenuItem value={"CLINIC"}>Clinique</MenuItem>
+                            <MenuItem value={"PHARMACY"}>Pharmacie</MenuItem>
+                            <MenuItem value={"HOSPITAL"}>Hôpital</MenuItem>
+                            <MenuItem value={"DENTIST"}>Dentiste</MenuItem>
+                            <MenuItem value={"MEDICAL_CABINET"}>Cabinet Medical</MenuItem>
                         </Select>
                         {formik.errors.businessType && formik.touched.businessType ? renderError(formik.errors.businessType) : <></>}
 

@@ -11,12 +11,14 @@ import { setRegister } from "../../../../redux/reducer";
 const fileTypes = ["JPEG", "PNG", "JPG", "WEBP"];
 
 function Images() {
-	const { activeStep, setActiveStep, formData, setFormData, setFile, handleComplete } = useContext(FormContextRegister);
+	const { activeStep, setActiveStep, formData, setFormData, handleComplete } = useContext(FormContextRegister);
 	const [state, setState] = useState({ type: 0, message: '' });
 	const client = useSelector((state) => state.app.client);
 	const dispatch = useDispatch();
 
-	const handleChangeUp = (file) => setFile(file);
+	console.log(client);
+
+	// const handleChangeUp = (file) => setFile(file);
 	const uploadToServer = async (event) => handleComplete()
 
 	const onSubmit = async (values) => {
@@ -48,7 +50,6 @@ function Images() {
 
 				<FileUploader
 					multiple={false}
-					handleChange={handleChangeUp}
 					name="file"
 					types={fileTypes}
 					
