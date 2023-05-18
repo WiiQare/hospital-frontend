@@ -44,6 +44,8 @@ const authOptions = {
                 const json = await response.json();
  
                 if (json.code) throw new Error(json.description)
+                if (json.type != "PROVIDER") throw new Error("Vous n'êtes pas authoriser de vous connecter")
+
                 return json
             }
         }),
