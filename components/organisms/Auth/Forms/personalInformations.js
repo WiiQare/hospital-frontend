@@ -36,9 +36,9 @@ function PersonnalInformation() {
                 setState({ type: 1, message: "Votre compte a été enregistré !" })
                 dispatch(setRegister({}))
 
-                // setTimeout(() => {
-                //     router.push('/login')
-                // }, 2500);
+                setTimeout(() => {
+                    router.push('/login')
+                }, 2500);
 
             };
         }
