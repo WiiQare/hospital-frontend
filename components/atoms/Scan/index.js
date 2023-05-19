@@ -1,5 +1,4 @@
-import MuiPhoneNumber from 'material-ui-phone-number';
-import React, { Fragment, useState } from 'react';
+import React, { createContext, useRef, useState } from "react";
 import { QrReader } from 'react-qr-reader';
 import { Dialog, Transition } from '@headlessui/react';
 import Tabs from '@mui/material/Tabs';
@@ -12,6 +11,8 @@ import { useFormik } from 'formik';
 import * as yup from "yup";
 import ScanDetails from './details';
 import SecurityCode from './security';
+export const StepContext = createContext();
+
 
 const Scan = () => {
 	const [data, setData] = useState(null);
@@ -23,11 +24,13 @@ const Scan = () => {
 	};
 
 	const handleStep = (result = null) => {
-		
-		setStep(step+1)
-		result && setData(result && result.slice(0, 8))
+		setStep(step + 1)
 
-	};	
+		if (result) {
+			setData(result && result.slice(0, 8))
+		}
+
+	};
 
 	if (step === 0)
 		return (
@@ -53,9 +56,21 @@ const Scan = () => {
 
 		)
 
-	if (step === 1) return <ScanDetails shorten={data} handleStep={handleStep} />
+	if (step === 1) return (
+		<StepContext.Provider value={{ step, setStep }}>
+			<ScanDetails shorten={data} />
+		</StepContext.Provider>
+	)
 
-	return <SecurityCode />
+	if (step === 2) return (
+		<StepContext.Provider value={{ step, setStep }}>
+			<SecurityCode shorten={data} />
+		</StepContext.Provider>
+	)
+
+	return (
+		<>Complete</>
+	)
 };
 
 export default Scan;
@@ -67,7 +82,7 @@ function TabsModal({ value, handleChange }) {
 			<Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
 				<Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
 					<Tab label={"Scan QR Code"} {...a11yProps(0)} key={0} />
-					<Tab label={"Write Code Voucher"} {...a11yProps(1)} key={1} />
+					<Tab label={"Saisir Pass Santé"} {...a11yProps(1)} key={1} />
 				</Tabs>
 			</Box>
 		</div>
@@ -76,28 +91,29 @@ function TabsModal({ value, handleChange }) {
 
 function TabItems({ value, handleStep }) {
 
-
 	const onSubmit = async (values) => {
-        if (Object.keys(values).length == 0) return console.log("Pas de données");
+		if (Object.keys(values).length == 0) return console.log("Pas de données");
 
-        handleStep(1, {transactionHash: "0xf59b12eccfc5faedbc4657bd593d6d6a0c679623"})
-    };
+		console.log("submit", values);
+		handleStep(values.pass)
+	};
 
 	const ValidationSchema = yup.object().shape({
-        pass: yup.string().required("Pass Santé est requis")
-    });
+		pass: yup.string().required("Pass Santé est requis")
+	});
 
 	const formik = useFormik({
-        initialValues: {
-            pass: '',
-        },
-        validationSchema: ValidationSchema,
-        onSubmit
-    })
+		initialValues: {
+			pass: '',
+		},
+		validationSchema: ValidationSchema,
+		onSubmit
+	})
 
 	const renderError = (message) => (
-        <p className="text-xs text-red-600 font-light flex items-center gap-1 px-1">{message}</p>
-    );
+		<p className="text-xs text-red-600 font-light flex items-center gap-1 px-1">{message}</p>
+	);
+
 
 	return (
 		<div className="mt-2">
@@ -112,9 +128,14 @@ function TabItems({ value, handleStep }) {
 						</div>
 						<div className="">
 							<QrReader
+								delay={300}
 								onResult={(result, error) => {
 									if (!!result) {
-										handleStep(result.text)
+										handleStep(result.text);
+									}
+
+									if(!!error) {
+										console.log(error);
 									}
 								}}
 								constraints={{ facingMode: "environment" }}
@@ -128,30 +149,30 @@ function TabItems({ value, handleStep }) {
 				<TabPanel value={value} index={1} >
 
 					<div className="space-y-8 py-10 px-20">
-                       
-                        <form id="signupform" onSubmit={formik.handleSubmit}>
-                            <Stack spacing={2}>
 
-                                <div className="space-y-1">
-                                    <TextField
-                                        id="outlined-basic"
-                                        fullWidth
-                                        label="Entrez le code Pass Santé"
-                                        variant="outlined"
-                                        name="pass"
+						<form id="signupform" onSubmit={formik.handleSubmit}>
+							<Stack spacing={2}>
+
+								<div className="space-y-1">
+									<TextField
+										id="outlined-basic"
+										fullWidth
+										label="Entrez le code Pass Santé"
+										variant="outlined"
+										name="pass"
 										{...formik.getFieldProps('pass')}
 
-                                    />
-                            		{formik.errors.pass && formik.touched.pass ? renderError(formik.errors.pass) : <></>}
-                                </div>
+									/>
+									{formik.errors.pass && formik.touched.pass ? renderError(formik.errors.pass) : <></>}
+								</div>
 
-                                <div className="form-button flex flex-row-reverse">
-                                    <Button size="medium" variant="contained" type="submit">
+								<div className="form-button flex flex-row-reverse">
+									<Button size="medium" variant="contained" type="submit">
 										Soumettre
-                                    </Button>
-                                </div>
-                            </Stack>
-                        </form>
+									</Button>
+								</div>
+							</Stack>
+						</form>
 					</div>
 
 				</TabPanel>

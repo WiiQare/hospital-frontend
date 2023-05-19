@@ -1,26 +1,46 @@
-import React, { useState } from 'react';
+import React, { useContext, useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
 import Fetcher from '../../../lib/Fetcher';
 import { BiTransferAlt } from 'react-icons/bi';
 import CopyToClipboard from 'react-copy-to-clipboard';
 import { AiOutlineExclamationCircle } from 'react-icons/ai';
 import { MdPayments } from 'react-icons/md';
+import { StepContext } from ".";
 
 
-const ScanDetails = ({shorten, handleStep}) => {
+const ScanDetails = ({shorten}) => {
+
+	const { step, setStep } = useContext(StepContext);
+
+    console.log(shorten);
 
 	const { data:session } = useSession();
 	const [copy, setCopy] = useState(false);
+	const [data, setData] = useState(null);
 
-    const {data, isLoading, isError} = Fetcher(`/provider/provider-voucher-details?shortenHash=${shorten}`, session.user.data.access_token);
+	const Options = {
+		method: "GET",
+		headers: {
+			'Content-Type': 'application/json',
+			'Authorization': `Bearer ${session.user.data.access_token}`
+		}
+	}
 
-    console.log(data);
+	useEffect(() => {
+		fetch(`https://api.wiiqare-app.com/api/v1/provider/provider-voucher-details?shortenHash=${shorten}`, Options).then(async res =>{
+			let json = await res.json();	 
+			
+			setData(json)
+		});
+	}, [shorten]);
+
+
 
     const SliceText = ({ text }) => {
 		return <>{text.slice(0, 9)}...{text.slice(-8)}</>
 	}
 
-    if (isLoading) return <p>Loading...</p>
+    if (!data) return <p>Loading...</p>
 
     if(data.code) return (
         <div className='mx-auto flex justify-center items-center flex-col h-full gap-3'>
@@ -63,12 +83,12 @@ const ScanDetails = ({shorten, handleStep}) => {
 						</CopyToClipboard>
 					</span>
 
-					<ItemsDetails title={"Hôpital"} value={session?.user?.data.names ?? session?.user?.data.name} otherValue={session?.user?.data.email} exclamation={false} />
 					<ItemsDetails title={"Nom du Patient"} value={data.patientNames} exclamation={true} />
-					<ItemsDetails title={"Montant envoyé"} value={new Intl.NumberFormat("en-US", {style: 'currency', currency: data.currency}).format(data.amount)} otherValue={new Intl.DateTimeFormat('fr-FR', { dateStyle: 'full' }).format(new Date())} />
+					<ItemsDetails title={"Hôpital"} value={session?.user?.data.names ?? session?.user?.data.name} exclamation={false} />
+					<ItemsDetails title={"Montant envoyé"} value={new Intl.NumberFormat("en-US", {style: 'currency', currency: data.currency}).format(data.amount)} otherValue={new Intl.DateTimeFormat('fr-FR', { dateStyle: 'medium' }).format(new Date())} />
 
 					<div className='flex justify-center'>
-						<button className='capitalize bg-orange w-fit  px-6 py-4 rounded-xl text-white flex gap-2 items-center effect-up shadow-md' onClick={handleStep}><MdPayments size={20}/> Procéder au paiment</button>
+						<button className='capitalize bg-orange w-fit  px-6 py-4 rounded-xl text-white flex gap-2 items-center effect-up shadow-md' onClick={() => setStep(step+1)}><MdPayments size={20}/> Procéder au paiment</button>
 					</div>
 
 				</div>
