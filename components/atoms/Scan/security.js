@@ -35,7 +35,7 @@ const SecurityCode = ({shorten}) => {
 	const onSubmit = async (values) => {
         if (Object.keys(values).length == 0) return console.log("Pas de données");
         //dispatch(setRegister({...values}))
-        sendEmailMutation.mutate({...values, shortenHash: shorten, providerId: session.user.data.userId, accessToken: session.user.data.access_token})
+        sendEmailMutation.mutate({...values, shortenHash: shorten, providerId: session.user.data.providerId, accessToken: session.user.data.access_token})
     };
 
 	const formik = useFormik({
