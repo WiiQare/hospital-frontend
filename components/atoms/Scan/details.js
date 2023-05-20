@@ -32,7 +32,7 @@ const ScanDetails = ({shorten}) => {
 			
 			setData(json)
 		});
-	}, [shorten]);
+	}, []);
 
 
 
@@ -40,7 +40,13 @@ const ScanDetails = ({shorten}) => {
 		return <>{text.slice(0, 9)}...{text.slice(-8)}</>
 	}
 
-    if (!data) return <p>Loading...</p>
+    if (!data) return (
+		<div className="flex flex-col gap-3 items-center mt-14 h-full">
+			<div className="animate-spin inline-block w-4 h-4 border-[2px] border-current border-t-transparent text-gray-700 rounded-full" role="status" ariaLabel="loading">
+                <span className="sr-only">Loading...</span>
+            </div>
+		</div>
+	)
 
     if(data.code) return (
         <div className='mx-auto flex justify-center items-center flex-col h-full gap-3'>
@@ -63,7 +69,7 @@ const ScanDetails = ({shorten}) => {
 					<div className="flex gap-4 items-center px-5 justify-center">
 						<img className="inline-block h-[2.875rem] w-[2.875rem] rounded-full ring-2 ring-white dark:ring-gray-800" src="/images/homme.png" alt="Image Description" />
 						<BiTransferAlt size={30} className='text-gray-400' />
-						<img className="inline-block h-[2.875rem] w-[2.875rem] rounded-full ring-2 ring-white dark:ring-gray-800" src="/images/femme.png" alt="Image Description" />
+						<img className="inline-block h-[2.875rem] w-[2.875rem] rounded-full ring-2 ring-white dark:ring-gray-800" src="https://i.goopics.net/9w9mvb.png" alt="Image Description" />
 					</div>
 
 
