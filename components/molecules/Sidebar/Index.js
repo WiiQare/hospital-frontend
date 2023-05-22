@@ -1,5 +1,5 @@
 import React from "react";
-import { SlHome, SlWallet, SlEqualizer, SlGlobe } from "react-icons/sl";
+import { SlHome, SlWallet, SlEqualizer, SlGlobe, SlEvent } from "react-icons/sl";
 import ItemSidebar from "./ItemSidebar";
 
 const Items = [
@@ -18,12 +18,12 @@ const Items = [
     active: ["/wallet"],
   },
   {
-    title: "Invoices",
+    title: "Services",
     icon: ({ size, className }) => (
-      <SlEqualizer size={size} className={className} />
+      <SlEvent size={size} className={className} />
     ),
-    link: "/invoices",
-    active: ["/invoices"],
+    link: "/services",
+    active: ["/services"],
   },
   {
     title: "Transactions",
