@@ -6,8 +6,10 @@ import HistoryWallet from "../components/organisms/Wallet/History";
 import Stat from "../components/atoms/Card/Stat";
 import { BsFillCreditCardFill } from "react-icons/bs";
 import { FaEthereum } from "react-icons/fa";
+import { useSession } from "next-auth/react";
 
 const Page = () => {
+	const { status, data } = useSession();
 
 	return (
 		<>
@@ -31,11 +33,11 @@ const Page = () => {
 									</svg>
 									Vous revoilà !
 								</a>
-								<h1 className="text-purple  text-md md:text-lg font-normal mb-2">Bon retour, Ngaliema Center</h1>
+								<h1 className="text-purple  text-md md:text-lg font-normal mb-2">Bon retour, {data.user.data.names}</h1>
 								<p className="text-sm font-light text-gray-500 mb-6">
-									Votre dashboard pour prendre en main la compte WiiQare de l'hopital <span className="text-orange">HJ Hospital</span>
+									Votre dashboard pour prendre en main la compte WiiQare de l'hopital <span className="text-orange">{data.user.data.names}</span>
 								</p>
-								<a href="#" className="inline-flex justify-center items-center py-2.5 px-5 text-base font-medium text-center text-white rounded-lg bg-orange effect-up">
+								<a href={`tel:${data.user.data.phoneNumber}`} className="inline-flex justify-center items-center py-2.5 px-5 text-base font-medium text-center text-white rounded-lg bg-orange effect-up">
 									Contact
 									<svg aria-hidden="true" className="ml-2 -mr-1 w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
 								</a>
