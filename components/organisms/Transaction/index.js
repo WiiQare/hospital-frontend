@@ -63,8 +63,7 @@ const Transaction = () => {
 			  allowOutsideClick: () => !Swal.isLoading()
 		}).then((result) => {
 			if (result.isConfirmed) {
-				
-				
+				location.reload()
 			} else if (result.dismiss === Swal.DismissReason.cancel) {
 
 				selected.length > 0 && swalWithBootstrapButtons.fire(
