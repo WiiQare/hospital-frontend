@@ -29,12 +29,12 @@ const DropdownFilter = ({
       </label>
       <ul
         tabIndex={0}
-        className={`${dropClassName} w-full mt-14 dropdown-content menu p-2 bg-white border rounded-box text-gray-700 font-light`}
+        className={`${dropClassName} w-48 mt-14 dropdown-content menu p-2 bg-white border rounded-box text-gray-700 font-light`}
       >
         {items ? (
           items.map((item, index) => (
             <li onClick={onClick} key={index}>
-              <a>{item}</a>
+              <a className="text-sm">{item}</a>
             </li>
           ))
         ) : (

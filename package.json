@@ -58,6 +58,7 @@
     "slick-carousel": "^1.8.1",
     "stripe": "^11.16.0",
     "styled-components": "^5.3.6",
+    "sweetalert2": "^11.7.5",
     "swr": "^2.1.1",
     "yup": "^1.0.2"
   },
