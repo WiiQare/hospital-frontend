@@ -4,7 +4,6 @@ import Identity from "./Forms/identity";
 import Payment from "./Forms/payment";
 import Send from "./Forms/send";
 
-
 function Step() {
   const { activeStepIndex } = useContext(FormContext);
   let stepContent;
