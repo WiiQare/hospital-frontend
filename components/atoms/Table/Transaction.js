@@ -1,171 +1,134 @@
 import Link from "next/link";
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
+import Fetcher from "../../../lib/Fetcher";
+import { TableContext } from "../../organisms/Transaction";
 
 export default function TransactionTable() {
-  return (
-    <div className="border rounded-lg overflow-x-auto w-full">
-      <table className=" table w-full">
-        <thead>
-          <tr>
-            <th className="bg-white">
-              <label>
-                <input type="checkbox" className="checkbox" />
-              </label>
-            </th>
-            <th className="bg-white">Name</th>
-            <th className="bg-white">Job</th>
-            <th className="bg-white">Favorite Color</th>
-            <th className="bg-white"></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th>
-              <label>
-                <input type="checkbox" className="checkbox" />
-              </label>
-            </th>
-            <td>
-              <Link href={"/transactions/12345"} legacyBehavior>
-                <div className="flex items-center space-x-3 cursor-pointer">
-                  <div className="avatar">
-                    <div className="mask mask-squircle w-12 h-12">
-                      <img
-                        src="/images/avatar.jpg"
-                        alt="Avatar Tailwind CSS Component"
-                      />
-                    </div>
-                  </div>
-                  <div>
-                    <div className="font-bold">Hart Hagerty</div>
-                    <div className="text-sm opacity-50">United States</div>
-                  </div>
-                </div>
-              </Link>
-            </td>
-            <td>
-              Zemlak, Daniel and Leannon
-              <br />
-              <span className="badge badge-ghost badge-sm">
-                Desktop Support Technician
-              </span>
-            </td>
-            <td>Purple</td>
-            <th>
-              <button className="btn btn-ghost btn-xs">details</button>
-            </th>
-          </tr>
+	const { selected, setSelected, isChecked, setIsChecked, session } = useContext(TableContext);
 
-          <tr>
-            <th>
-              <label>
-                <input type="checkbox" className="checkbox" />
-              </label>
-            </th>
-            <td>
-              <Link href={"/transactions/12345"} legacyBehavior>
-                <div className="flex items-center space-x-3 cursor-pointer">
-                  <div className="avatar">
-                    <div className="mask mask-squircle w-12 h-12">
-                      <img
-                        src="/images/avatar.jpg"
-                        alt="Avatar Tailwind CSS Component"
-                      />
-                    </div>
-                  </div>
-                  <div>
-                    <div className="font-bold">Brice Swyre</div>
-                    <div className="text-sm opacity-50">China</div>
-                  </div>
-                </div>
-              </Link>
-            </td>
-            <td>
-              Carroll Group
-              <br />
-              <span className="badge badge-ghost badge-sm">Tax Accountant</span>
-            </td>
-            <td>Red</td>
-            <th>
-              <button className="btn btn-ghost btn-xs">details</button>
-            </th>
-          </tr>
+	const { data, isLoading, isError } = Fetcher(`/provider/transactions?providerId=${session.user.data.providerId}`, session.accessToken);
 
-          <tr>
-            <th>
-              <label>
-                <input type="checkbox" className="checkbox" />
-              </label>
-            </th>
-            <td>
-              <Link href={"/transactions/12345"} legacyBehavior>
-                <div className="flex items-center space-x-3 cursor-pointer">
-                  <div className="avatar">
-                    <div className="mask mask-squircle w-12 h-12">
-                      <img
-                        src="/images/avatar.jpg"
-                        alt="Avatar Tailwind CSS Component"
-                      />
-                    </div>
-                  </div>
-                  <div>
-                    <div className="font-bold">Marjy Ferencz</div>
-                    <div className="text-sm opacity-50">Russia</div>
-                  </div>
-                </div>
-              </Link>
-            </td>
-            <td>
-              Rowe-Schoen
-              <br />
-              <span className="badge badge-ghost badge-sm">
-                Office Assistant I
-              </span>
-            </td>
-            <td>Crimson</td>
-            <th>
-              <button className="btn btn-ghost btn-xs">details</button>
-            </th>
-          </tr>
+	console.log(data);
+	const selectItem = (id) => {
+		setSelected([...selected, id])
+	}
 
-          <tr>
-            <th>
-              <label>
-                <input type="checkbox" className="checkbox" />
-              </label>
-            </th>
-            <td>
-              <Link href={"/transactions/12345"} legacyBehavior>
-                <div className="flex items-center space-x-3 cursor-pointer">
-                  <div className="avatar">
-                    <div className="mask mask-squircle w-12 h-12">
-                      <img
-                        src="/images/avatar.jpg"
-                        alt="Avatar Tailwind CSS Component"
-                      />
-                    </div>
-                  </div>
-                  <div>
-                    <div className="font-bold">Yancy Tear</div>
-                    <div className="text-sm opacity-50">Brazil</div>
-                  </div>
-                </div>
-              </Link>
-            </td>
-            <td>
-              Wyman-Ledner
-              <br />
-              <span className="badge badge-ghost badge-sm">
-                Community Outreach Specialist
-              </span>
-            </td>
-            <td>Indigo</td>
-            <th>
-              <button className="btn btn-ghost btn-xs">details</button>
-            </th>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  );
+	const unselectItem = (id) => {
+
+		let temp = selected;
+		temp.splice(temp.indexOf(id), 1);
+
+		setSelected(temp)
+		setIsChecked(false)
+	}
+
+	useEffect(() => {
+		if (selected.length === data?.length) {
+			setIsChecked(true);
+		} else {
+			setIsChecked(false);
+		}
+	}, [selected.length, data]);
+
+	return (
+		<div className="border rounded-lg overflow-x-auto w-full">
+			{
+				isLoading ? (<>Loading</>) : (
+					<>
+						<table className=" table w-full">
+							<thead>
+								<tr>
+									<th className="bg-white">
+										<label>
+											<input type="checkbox" className="checkbox" checked={isChecked} onChange={() => setIsChecked(!isChecked)} />
+										</label>
+									</th>
+									<th className="bg-white">Identité Patient</th>
+									<th className="bg-white">Montant</th>
+									<th className="bg-white">Status</th>
+									<th className="bg-white">Hash</th>
+								</tr>
+							</thead>
+							<tbody>
+								{
+									data.length > 0 ? (
+										<>
+											{
+												data.map((transaction, index) => (
+													<tr key={index}>
+														<th>
+															<label>
+																<input type="checkbox" className="checkbox disabled:bg-gray-400" disabled={transaction.status !== "UNCLAIMED"} onChange={e => e.target.checked ? selectItem(transaction.transactionHash) : unselectItem(transaction.transactionHash)} />
+															</label>
+														</th>
+														<td>
+															<div className="flex items-center space-x-3 cursor-pointer">
+																<div className="avatar">
+																	<div className="mask mask-squircle w-12 h-12">
+																		<img
+																			src={`https://ui-avatars.com/api/?uppercase=true&background=CCC&name=${transaction.voucher.patientId}&bold=true&color=FFF`}
+																			alt="Avatar Tailwind CSS Component"
+																		/>
+																	</div>
+																</div>
+																<div>
+																	<div className="font-bold">{transaction.voucher.patientId}</div>
+																	<div className="text-sm opacity-50">United States</div>
+																</div>
+															</div>
+														</td>
+														<td>
+															{new Intl.NumberFormat("en-US", { style: 'currency', currency: transaction.voucher.currency }).format(transaction.voucher.amount)}
+															<br />
+															<span className="badge badge-ghost badge-sm">
+																{new Intl.DateTimeFormat('fr-FR', { timeStyle: "short", dateStyle: "long" }).format(new Date(transaction.createdAt))}
+															</span>
+														</td>
+														<td className="text-sm">
+															{
+																transaction.status == "UNCLAIMED" ? (
+																	<>
+																		<span class="inline-flex items-center gap-1.5 py-1.5 px-3 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+																			<span class="w-1.5 h-1.5 inline-block bg-indigo-400 rounded-full"></span>
+																			Non-reclamé
+																		</span>
+																	</>
+																) : transaction.status == "PENDING" ? (
+																	<>
+																		<span class="inline-flex items-center gap-1.5 py-1.5 px-3 rounded-full text-xs font-medium bg-amber-100 text-amber-800">
+																			<span class="w-1.5 h-1.5 inline-block bg-amber-400 rounded-full"></span>
+																			Traitement en cours
+																		</span>
+																	</>
+																): (
+																	<>
+																		<span class="inline-flex items-center gap-1.5 py-1.5 px-3 rounded-full text-xs font-medium bg-green-100 text-green-800">
+																			<span class="w-1.5 h-1.5 inline-block bg-green-400 rounded-full"></span>
+																			Transmis avec succès
+																		</span>
+																	</>
+																) 
+															}
+														</td>
+														<th>
+															<button className="btn btn-xs !lowercase">{transaction.shortenHash}</button>
+														</th>
+													</tr>
+												))
+											}
+										</>
+									) : (
+										<>
+											Aucune Transaction pour l'instant...
+										</>
+									)
+								}
+
+							</tbody>
+						</table>
+					</>
+				)
+			}
+		</div>
+	);
 }
