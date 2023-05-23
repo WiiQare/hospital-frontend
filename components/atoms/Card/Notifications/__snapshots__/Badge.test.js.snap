@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Badge should render the component 1`] = `
+<div>
+  <li
+    class="flex items-center justify-start py-2 px-4 text-sm text-gray-700 cursor-pointer hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-600 dark:hover:text-white"
+  >
+    <div
+      class="flex items-center gap-3"
+    >
+      <img
+        alt="avatar"
+        class="w-14 h-14 object-cover rounded-2xl"
+        data-nimg="1"
+        decoding="async"
+        height="56"
+        loading="lazy"
+        src="/_next/image?url=%2FAvatar.png&w=128&q=75"
+        srcset="/_next/image?url=%2FAvatar.png&w=64&q=75 1x, /_next/image?url=%2FAvatar.png&w=128&q=75 2x"
+        style="color: transparent;"
+        width="56"
+      />
+      <span>
+        <h3
+          class="font-bold"
+        >
+          Title
+        </h3>
+        <font
+          class="text-xs text-gray-700"
+        >
+          Time
+        </font>
+      </span>
+    </div>
+  </li>
+</div>
+`;
