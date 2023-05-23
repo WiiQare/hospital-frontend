@@ -1,0 +1,96 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RangeSlider should render the component 1`] = `
+<div>
+  <div
+    class="overflow-hidden"
+  >
+    <div
+      class="flex justify-between items-center my-6 "
+    >
+      <div
+        class="rounded-md flex items-center"
+      >
+        <span
+          class="p-2 font-extralight text-xs"
+        >
+           Min
+        </span>
+        <label
+          class="text-sky font-bold text-2xl flex items-start"
+          for=""
+        >
+          10
+           
+          <span
+            class="text-gray-500 font-light text-xs"
+          >
+            $/mo
+          </span>
+        </label>
+      </div>
+      <div
+        class="ml-2 font-semibold text-lg"
+      >
+         - 
+      </div>
+      <div
+        class=" "
+      >
+        <div
+          class="rounded-md flex items-center"
+        >
+          <span
+            class="p-2 font-extralight text-xs"
+          >
+             Max
+          </span>
+          <label
+            class="text-sky font-bold text-2xl flex items-start"
+            for=""
+          >
+            100
+            <span
+              class="text-gray-500 font-light text-xs"
+            >
+              $/mo
+            </span>
+          </label>
+        </div>
+      </div>
+    </div>
+    <div
+      class="mb-4"
+    >
+      <div
+        class="slider relative h-1 rounded-md bg-gray-300"
+      >
+        <div
+          class="progress absolute h-1 bg-green-300 rounded "
+          style="left: 0.01%; right: 0.9%;"
+        />
+      </div>
+      <div
+        class="range-input relative  "
+      >
+        <input
+          class="range-min absolute w-full  -top-1  h-1   bg-transparent  appearance-none pointer-events-none"
+          max="1000"
+          min="0"
+          step="1"
+          type="range"
+          value="10"
+        />
+        <input
+          class="range-max absolute w-full  -top-1 h-1  bg-transparent appearance-none  pointer-events-none"
+          max="1000"
+          min="0"
+          step="1"
+          type="range"
+          value="100"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;

@@ -1,0 +1,127 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Scan should render the component 1`] = `
+<div>
+  <div
+    class="flex justify-center flex-col gap-6 h-full items-center mx-auto py-4 md:py-10"
+  >
+    <div
+      class="md:w-1/2 bg-white rounded-xl px-10 py-8 min-h-fit ease-out duration-300 opacity-0 scale-95"
+    >
+      <div>
+        <div
+          class="MuiBox-root css-1gsv261"
+        >
+          <div
+            class="MuiTabs-root css-1ujnqem-MuiTabs-root"
+          >
+            <div
+              class="MuiTabs-scroller MuiTabs-fixed css-jpln7h-MuiTabs-scroller"
+              style="overflow: hidden; margin-bottom: 0px;"
+            >
+              <div
+                aria-label="basic tabs example"
+                class="MuiTabs-flexContainer css-heg063-MuiTabs-flexContainer"
+                role="tablist"
+              >
+                <button
+                  aria-controls="simple-tabpanel-0"
+                  aria-selected="true"
+                  class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary Mui-selected css-1h9z7r5-MuiButtonBase-root-MuiTab-root"
+                  id="simple-tab-0"
+                  role="tab"
+                  tabindex="0"
+                  type="button"
+                >
+                  Scan QR Code
+                  <span
+                    class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+                  />
+                </button>
+                <button
+                  aria-controls="simple-tabpanel-1"
+                  aria-selected="false"
+                  class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary css-1h9z7r5-MuiButtonBase-root-MuiTab-root"
+                  id="simple-tab-1"
+                  role="tab"
+                  tabindex="-1"
+                  type="button"
+                >
+                  Saisir Pass Santé
+                  <span
+                    class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+                  />
+                </button>
+              </div>
+              <span
+                class="MuiTabs-indicator css-1aquho2-MuiTabs-indicator"
+                style="left: 0px; width: 0px;"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="mt-2"
+      >
+        <div
+          class="text-sm text-gray-500"
+        >
+          <div
+            aria-labelledby="simple-tab-0"
+            id="simple-tabpanel-0"
+            role="tabpanel"
+          >
+            <div
+              class="MuiBox-root css-0"
+            >
+              <p
+                class="MuiTypography-root MuiTypography-body1 css-ahj2mt-MuiTypography-root"
+              >
+                <div
+                  class="mt-4"
+                >
+                  <div
+                    class="text-center"
+                  >
+                    <h3
+                      class="text-xl font-semibold text-gray-700"
+                    >
+                      Scan QR Code
+                    </h3>
+                    <p
+                      class="text-sm font-light text-gray-500"
+                    >
+                      Accorder la demande d'allumer la caméra
+                    </p>
+                  </div>
+                  <div
+                    class=""
+                  >
+                    <section>
+                      <div
+                        style="width: 100%; padding-top: 100%; overflow: hidden; position: relative;"
+                      >
+                        <video
+                          id="video"
+                          style="top: 0px; left: 0px; width: 100%; height: 100%; display: block; overflow: hidden; position: absolute;"
+                        />
+                      </div>
+                    </section>
+                  </div>
+                </div>
+              </p>
+            </div>
+          </div>
+          <div
+            aria-labelledby="simple-tab-1"
+            hidden=""
+            id="simple-tabpanel-1"
+            role="tabpanel"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

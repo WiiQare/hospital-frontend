@@ -1,8 +1,8 @@
-import { Button, TextField } from '@mui/material';
-import { useFormik } from 'formik';
-import { useSession } from 'next-auth/react';
-import React, { useState } from 'react';
-import { useMutation } from 'react-query';
+import { Button, TextField } from "@mui/material";
+import { useFormik } from "formik";
+import { useSession } from "next-auth/react";
+import React, { useState } from "react";
+import { useMutation } from "react-query";
 import * as yup from "yup";
 import { sendSecurityCode } from '../../../lib/helper';
 import LoadingButton from '../Loader/LoadingButton';

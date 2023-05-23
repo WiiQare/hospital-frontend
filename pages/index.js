@@ -5,6 +5,7 @@ import Carousel from "../components/organisms/Dashboard/Carousel";
 import HistoryWallet from "../components/organisms/Wallet/History";
 import Stat from "../components/atoms/Card/Stat";
 import { BsFillCreditCardFill } from "react-icons/bs";
+
 import { FaEthereum, FaUserAlt } from "react-icons/fa";
 import { useSession } from "next-auth/react";
 import Fetcher from "../lib/Fetcher";
