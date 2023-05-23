@@ -1,16 +1,14 @@
 import Link from "next/link";
 import React, { useContext, useEffect, useState } from "react";
 import Fetcher from "../../../lib/Fetcher";
-import { useSession } from "next-auth/react";
 import { TableContext } from "../../organisms/Transaction";
 
 export default function TransactionTable() {
-	const { data: session } = useSession();
-	const { selected, setSelected, isChecked, setIsChecked } = useContext(TableContext);
-	
+	const { selected, setSelected, isChecked, setIsChecked, session } = useContext(TableContext);
 
 	const { data, isLoading, isError } = Fetcher(`/provider/transactions?providerId=${session.user.data.providerId}`, session.accessToken);
 
+	console.log(data);
 	const selectItem = (id) => {
 		setSelected([...selected, id])
 	}
@@ -26,11 +24,11 @@ export default function TransactionTable() {
 
 	useEffect(() => {
 		if (selected.length === data?.length) {
-		  setIsChecked(true);
+			setIsChecked(true);
 		} else {
-		  setIsChecked(false);
+			setIsChecked(false);
 		}
-	  }, [selected.length, data]);
+	}, [selected.length, data]);
 
 	return (
 		<div className="border rounded-lg overflow-x-auto w-full">
@@ -60,7 +58,7 @@ export default function TransactionTable() {
 													<tr key={index}>
 														<th>
 															<label>
-																<input type="checkbox" className="checkbox" onChange={e => e.target.checked ? selectItem(transaction.id) : unselectItem(transaction.id)} />
+																<input type="checkbox" className="checkbox disabled:bg-gray-400" disabled={transaction.status !== "UNCLAIMED"} onChange={e => e.target.checked ? selectItem(transaction.transactionHash) : unselectItem(transaction.transactionHash)} />
 															</label>
 														</th>
 														<td>
@@ -86,7 +84,32 @@ export default function TransactionTable() {
 																{new Intl.DateTimeFormat('fr-FR', { timeStyle: "short", dateStyle: "long" }).format(new Date(transaction.createdAt))}
 															</span>
 														</td>
-														<td className="text-sm">{transaction.status}</td>
+														<td className="text-sm">
+															{
+																transaction.status == "UNCLAIMED" ? (
+																	<>
+																		<span class="inline-flex items-center gap-1.5 py-1.5 px-3 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+																			<span class="w-1.5 h-1.5 inline-block bg-indigo-400 rounded-full"></span>
+																			Non-reclamé
+																		</span>
+																	</>
+																) : transaction.status == "PENDING" ? (
+																	<>
+																		<span class="inline-flex items-center gap-1.5 py-1.5 px-3 rounded-full text-xs font-medium bg-amber-100 text-amber-800">
+																			<span class="w-1.5 h-1.5 inline-block bg-amber-400 rounded-full"></span>
+																			Traitement en cours
+																		</span>
+																	</>
+																): (
+																	<>
+																		<span class="inline-flex items-center gap-1.5 py-1.5 px-3 rounded-full text-xs font-medium bg-green-100 text-green-800">
+																			<span class="w-1.5 h-1.5 inline-block bg-green-400 rounded-full"></span>
+																			Transmis avec succès
+																		</span>
+																	</>
+																) 
+															}
+														</td>
 														<th>
 															<button className="btn btn-xs !lowercase">{transaction.shortenHash}</button>
 														</th>
