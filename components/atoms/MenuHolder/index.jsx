@@ -120,7 +120,7 @@ export default function MenuHolder({ href, label }) {
 				<li>
 					<Box sx={{ mx: 2 }}>
 						<Link className="normal-link" href={href}>
-							Don't have an account?
+							vous n'avez pas de compte ?
 						</Link>
 					</Box>
 				</li>

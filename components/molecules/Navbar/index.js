@@ -189,7 +189,7 @@ const Menu = ({ session, handleSignOut }) => {
 
 							<Dropdown.Item>
 								<p className="text-center w-full flex items-center justify-center text-lg text-gray-500 font-light gap-2">
-									See All Notification
+									Voir tous les notification
 									<AiOutlineArrowRight />
 								</p>
 							</Dropdown.Item>
@@ -203,7 +203,7 @@ const Menu = ({ session, handleSignOut }) => {
 				<div className="flex gap-3 items-center">
 					<div className="text-right hidden md:block">
 						<span>
-							Hello, <span className="font-bold">{session?.user?.data.names ?? session?.user?.data.name ?? "Ngaliema Center"}</span>
+							Bonjour 👋, <span className="font-bold">{session?.user?.data.names ?? session?.user?.data.name ?? "Ngaliema Center"}</span>
 						</span>
 						<h5 className="text-xs font-light">{session?.user?.email ?? `info@ngaliema-center.cd`}</h5>
 					</div>
@@ -245,7 +245,7 @@ const Menu = ({ session, handleSignOut }) => {
 							<button onClick={handleSignOut}>
 								<span className="flex gap-3 text-lg items-center">
 									<MdMailOutline className="text-lg text-red-500" size={23} />
-									<font>Logout</font>
+									<font>Déconnexion</font>
 								</span>
 							</button>
 						</Dropdown.Item>
