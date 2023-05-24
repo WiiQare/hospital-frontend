@@ -101,12 +101,12 @@ const Page = () => {
 
 					<div className="max-w-screen-xl flex flex-col md:grid md:grid-cols-3 gap-6 mb-20 md:mb-10">
 
-						<div className="w-full max-w-md p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-8">
+						<div className="col-span-2 p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-8">
 							{
 								isLoading ? (<>Loading...</>) : (
 									<>
 										<div className="flex items-center justify-between mb-4">
-											<h5 className="text-xl font-semibold leading-none text-gray-600 flex flex-col">Historique <span className="text-xs font-light text-gray-400">{result.length} opérations effectués</span></h5>
+											<h5 className="text-xl font-semibold leading-none text-gray-600 flex flex-col">Historique <span className="text-xs font-light text-gray-400">{result.length} dernières transactions effectués</span></h5>
 											<Link href={"/transactions"} legacyBehavior>
 												<a className="text-sm font-medium text-blue-600 hover:underline">
 													Voir tous
@@ -144,7 +144,7 @@ const Page = () => {
 							}
 						</div>
 
-						<div className="w-full max-w-md p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-8">
+						{/* <div className="w-full max-w-md p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-8">
 							<div className="flex items-center justify-between mb-4">
 								<h5 className="text-xl font-semibold leading-none text-gray-600 flex flex-col">Mes Balances</h5>
 							</div>
@@ -252,7 +252,7 @@ const Page = () => {
 
 								</ul>
 							</div>
-						</div>
+						</div> */}
 
 						<div className="flex flex-col w-full min-h-max gap-6">
 							<div className="md:grid flex gap-6 w-full md:grid-cols-2 md:gap-4">
