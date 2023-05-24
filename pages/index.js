@@ -66,7 +66,9 @@ const Page = () => {
 											</div>
 											<h3 className="font-semibold text-gray-500 mb-5">Montant Non Reclamé</h3>
 
+
 											<span className="font-semibold text-md text-gray-700 ">{new Intl.NumberFormat("en-US", { style: 'currency', currency: "CDF" }).format(resultStat.totalUnclaimedAmount)}</span>
+
 											<div className="flex gap-2 text-green-400 items-center mt-3 text-sm">
 												<BsFillCreditCardFill />
 												<span>Balance</span>
