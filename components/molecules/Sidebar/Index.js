@@ -9,14 +9,14 @@ const Items = [
     link: "/",
     active: ["/"],
   },
-  {
-    title: "My Wallet",
-    icon: ({ size, className }) => (
-      <SlWallet size={size} className={className} />
-    ),
-    link: "/wallet",
-    active: ["/wallet"],
-  },
+  // {
+  //   title: "My Wallet",
+  //   icon: ({ size, className }) => (
+  //     <SlWallet size={size} className={className} />
+  //   ),
+  //   link: "/wallet",
+  //   active: ["/wallet"],
+  // },
   {
     title: "Services",
     icon: ({ size, className }) => (

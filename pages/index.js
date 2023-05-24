@@ -5,6 +5,7 @@ import Carousel from "../components/organisms/Dashboard/Carousel";
 import HistoryWallet from "../components/organisms/Wallet/History";
 import Stat from "../components/atoms/Card/Stat";
 import { BsFillCreditCardFill } from "react-icons/bs";
+import { RiSendToBack } from "react-icons/ri";
 
 import { FaEthereum, FaUserAlt } from "react-icons/fa";
 import { useSession } from "next-auth/react";
@@ -276,7 +277,7 @@ const Page = () => {
 										loadingStat ? (<>Loading...</>) : (
 										<div className="">
 											<div className="bg-primary bg-opacity-20 rounded-lg p-2 w-fit mb-2 text-primary">
-												<FaEthereum />
+												<RiSendToBack />
 											</div>
 											<h3 className="font-semibold text-gray-500 mb-5">En attente de reboursement</h3>
 
