@@ -104,7 +104,7 @@ const Page = () => {
 								isLoading ? (<>Loading...</>) : (
 									<>
 										<div className="flex items-center justify-between mb-4">
-											<h5 className="text-xl font-semibold leading-none text-gray-600 flex flex-col">Statistique <span className="text-xs font-light text-gray-400">{result.length} opérations effectués</span></h5>
+											<h5 className="text-xl font-semibold leading-none text-gray-600 flex flex-col">Historique <span className="text-xs font-light text-gray-400">{result.length} opérations effectués</span></h5>
 											<Link href={"/transactions"} legacyBehavior>
 												<a className="text-sm font-medium text-blue-600 hover:underline">
 													Voir tous
