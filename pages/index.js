@@ -66,7 +66,7 @@ const Page = () => {
 											</div>
 											<h3 className="font-semibold text-gray-500 mb-5">Montant Non Reclamé</h3>
 
-											<span className="font-semibold text-xl text-gray-700 ">{new Intl.NumberFormat("en-US", { style: 'currency', currency: "USD" }).format(resultStat.totalUnclaimedAmount)}</span>
+											<span className="font-semibold text-md text-gray-700 ">{new Intl.NumberFormat("en-US", { style: 'currency', currency: "CDF" }).format(resultStat.totalUnclaimedAmount)}</span>
 											<div className="flex gap-2 text-green-400 items-center mt-3 text-sm">
 												<BsFillCreditCardFill />
 												<span>Balance</span>
@@ -85,7 +85,7 @@ const Page = () => {
 									</div>
 									<h3 className="font-semibold text-gray-500 mb-5">Total Patients Soignés</h3>
 
-									<span className="font-semibold text-xl text-gray-700 ">{resultStat.totalUniquePatients}</span>
+									<span className="font-semibold text-md text-gray-700 ">{resultStat.totalUniquePatients}</span>
 									<div className="flex gap-2 text-green-400 items-center mt-3 text-sm">
 										<BsFillCreditCardFill />
 										<span>Patient soigné</span>
@@ -263,7 +263,7 @@ const Page = () => {
 										</div>
 										<h3 className="font-semibold text-gray-500 mb-5">Montant remboursé</h3>
 
-										<span className="font-semibold text-xl text-gray-700 ">{new Intl.NumberFormat("en-US", { style: 'currency', currency: "USD" }).format(resultStat.totalRedeemedAmount)}</span>
+										<span className="font-semibold text-md text-gray-700 ">{new Intl.NumberFormat("en-US", { style: 'currency', currency: "CDF" }).format(resultStat.totalRedeemedAmount)}</span>
 										<div className="flex gap-2 text-green-400 items-center mt-3 text-sm">
 											<BsFillCreditCardFill />
 											<span>Balance</span>
@@ -281,7 +281,7 @@ const Page = () => {
 											</div>
 											<h3 className="font-semibold text-gray-500 mb-5">En attente de reboursement</h3>
 
-											<span className="font-semibold text-xl text-gray-700 ">{new Intl.NumberFormat("en-US", { style: 'currency', currency: "USD" }).format(resultStat.totalPendingAmount)}</span>
+											<span className="font-semibold text-md text-gray-700 ">{new Intl.NumberFormat("en-US", { style: 'currency', currency: "CDF" }).format(resultStat.totalPendingAmount)}</span>
 											<div className="flex gap-2 text-green-400 items-center mt-3 text-sm">
 												<BsFillCreditCardFill />
 												<span>Balance</span>
