@@ -47,8 +47,6 @@ function PersonnalInformation() {
     const onSubmit = async (values) => {
         if (Object.keys(values).length == 0) return console.log("Pas de données");
 
-        console.log(client);
-        console.log(values);
         newAccountMutation.mutate({ ...client.register, ...values })
     };
 
