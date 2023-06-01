@@ -11,13 +11,20 @@ import { addService } from "../../../lib/helper";
 import { useSession } from "next-auth/react";
 import Toast from "../../atoms/Toast";
 
+import Fetcher from "../../../lib/Fetcher";
+
+
 const Service = () => {
 
     const {data} = useSession();
     let [isOpen, setIsOpen] = useState(false)
     const [state, setState] = useState({ type: 0, message: '' });
 
+	const { data:result, isLoading, isError } = Fetcher(`/provider/${data.user.data.providerId}/service`, data.accessToken);
+
+
     console.log(data);
+
 
     const closeModal = () => {
         setIsOpen(false)
