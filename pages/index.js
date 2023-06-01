@@ -11,14 +11,21 @@ import { FaEthereum, FaUserAlt } from "react-icons/fa";
 import { useSession } from "next-auth/react";
 import Fetcher from "../lib/Fetcher";
 import Link from "next/link";
+import { useEffect } from "react";
+import { useRouter } from 'next/router';
 
 const Page = () => {
+	const router = useRouter();
 	const { data } = useSession();
 
 	const { data:result, isLoading, isError } = Fetcher(`/provider/transactions?providerId=${data.user.data.providerId}`, data.accessToken);
 	const { data:resultStat, isLoading:loadingStat, isError: errorStat } = Fetcher(`/provider/statistics?providerId=${data.user.data.providerId}`, data.accessToken);
 
-	console.log(resultStat);
+	console.log(result);
+	useEffect(() => {
+		if (resultStat && /AUTH_TOKEN_EXPIRED/i.test(resultStat.code)) router.push('/login')
+	}, [result, resultStat]);
+
 	return (
 		<>
 			<Head>
@@ -103,7 +110,7 @@ const Page = () => {
 
 						<div className="col-span-2 p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-8">
 							{
-								isLoading ? (<>Loading...</>) : (
+								isLoading || result.code || !result ? (<>Loading...</>) : (
 									<>
 										<div className="flex items-center justify-between mb-4">
 											<h5 className="text-xl font-semibold leading-none text-gray-600 flex flex-col">Historique <span className="text-xs font-light text-gray-400">{result.length} dernières transactions effectués</span></h5>

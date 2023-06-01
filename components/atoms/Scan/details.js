@@ -6,11 +6,13 @@ import CopyToClipboard from 'react-copy-to-clipboard';
 import { AiOutlineExclamationCircle } from 'react-icons/ai';
 import { MdPayments } from 'react-icons/md';
 import { StepContext } from ".";
+import { useRouter } from "next/router";
 
 
 const ScanDetails = ({shorten}) => {
 
 	const { step, setStep } = useContext(StepContext);
+	const router = useRouter();
 
     console.log(shorten);
 
@@ -29,7 +31,9 @@ const ScanDetails = ({shorten}) => {
 	useEffect(() => {
 		fetch(`https://api.wiiqare-app.com/api/v1/provider/provider-voucher-details?shortenHash=${shorten}`, Options).then(async res =>{
 			let json = await res.json();	 
-			
+		
+			if (/AUTH_TOKEN_EXPIRED/i.test(json.code)) router.push('/login')
+
 			setData(json)
 		});
 	}, []);
