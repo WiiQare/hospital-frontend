@@ -12,6 +12,7 @@ import { SWRConfig } from "swr";
 import Fetcher from "../../../lib/Fetcher";
 import { useSession } from "next-auth/react";
 
+
 import MuiPhoneNumber from "material-ui-phone-number";
 
 
@@ -357,6 +358,10 @@ function PersonContact() {
 
 					label="Adresse email"
 					placeholder="Adresse email"
+
+
+					label="Adresse email"
+					placeholder="Adresse email"
 					name="email"
 					variant="outlined"
 				/>
@@ -369,6 +374,7 @@ function PersonContact() {
 
 					label="Adress"
 					placeholder="123 Main Street"
+
 					name="email"
 
 					variant="outlined"
@@ -377,59 +383,14 @@ function PersonContact() {
 				/>
 			</div>
 
-			<div className="flex md:grid md:grid-cols-2 gap-8">
-
-				<div className="">
-					<TextField
-						fullWidth
-						type={"text"}
-						className="placeholder:text-gray-400 hover:outline-none focus:ring-0 border border-gray-300 rounded-lg focus:ring-sky"
-						label="Ville"
-						placeholder="Ville"
-						name="city"
-						variant="outlined"
-					/>
-				</div>
-
-				<div className="">
-					<TextField
-						fullWidth
-						type={"text"}
-						className="placeholder:text-gray-400 hover:outline-none focus:ring-0 border border-gray-300 rounded-lg focus:ring-sky"
-						label="Code Postal"
-						placeholder="Code Postal"
-						name="postalCode"
-						variant="outlined"
-					/>
-				</div>
-			</div>
-
-
-			<div className="flex md:grid md:grid-cols-2 gap-8">
-
-				<div className="">
-					<TextField
-						fullWidth
-						type={"text"}
-						className="placeholder:text-gray-400 hover:outline-none focus:ring-0 border border-gray-300 rounded-lg focus:ring-sky"
-						label="ID. Nat"
-						placeholder="ID. Nat"
-						name="idNat"
-						variant="outlined"
-					/>
-				</div>
-
-				<div className="">
-					<TextField
-						fullWidth
-						type={"text"}
-						className="placeholder:text-gray-400 hover:outline-none focus:ring-0 border border-gray-300 rounded-lg focus:ring-sky"
-						label="RCCM"
-						placeholder="RCCM"
-						name="rccm"
-						variant="outlined"
-					/>
-				</div>
+			<div className="flex flex-col gap-1">
+				<MuiPhoneNumber
+					fullWidth
+					label="N° Téléphone personnel"
+					variant="outlined"
+					defaultCountry={"cd"}
+					name="contactPersonPhone"
+				/>
 			</div>
 
 			<div className="flex flex-row-reverse">
