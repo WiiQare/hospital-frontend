@@ -11,6 +11,7 @@ import { FormControl, InputLabel, MenuItem, Select, TextField } from "@mui/mater
 import { SWRConfig } from "swr";
 import Fetcher from "../../../lib/Fetcher";
 import { useSession } from "next-auth/react";
+import MuiPhoneNumber from "material-ui-phone-number";
 
 
 
@@ -154,7 +155,7 @@ function TabPanelContent({ value, index, data }) {
 function About({ data }) {
 	return (
 		<section className="space-y-8">
-			<h2 className="text-sky font-semibold">Personal Information</h2>
+			<h2 className="text-sky font-semibold">Informations de l'entreprise</h2>
 
 			<div className="md:w-3/6 space-y-4">
 				<div className="grid grid-cols-2">
@@ -339,68 +340,23 @@ function PersonContact() {
 			<div className="">
 				<TextField
 					fullWidth
-					type={"text"}
+					type={"email"}
 					className="placeholder:text-gray-400 hover:outline-none focus:ring-0 border border-gray-300 rounded-lg focus:ring-sky"
-					label="Adress"
-					placeholder="123 Main Street"
+					label="Adresse email"
+					placeholder="Adresse email"
 					name="email"
 					variant="outlined"
 				/>
 			</div>
 
-			<div className="flex md:grid md:grid-cols-2 gap-8">
-
-				<div className="">
-					<TextField
-						fullWidth
-						type={"text"}
-						className="placeholder:text-gray-400 hover:outline-none focus:ring-0 border border-gray-300 rounded-lg focus:ring-sky"
-						label="Ville"
-						placeholder="Ville"
-						name="city"
-						variant="outlined"
-					/>
-				</div>
-
-				<div className="">
-					<TextField
-						fullWidth
-						type={"text"}
-						className="placeholder:text-gray-400 hover:outline-none focus:ring-0 border border-gray-300 rounded-lg focus:ring-sky"
-						label="Code Postal"
-						placeholder="Code Postal"
-						name="postalCode"
-						variant="outlined"
-					/>
-				</div>
-			</div>
-
-
-			<div className="flex md:grid md:grid-cols-2 gap-8">
-
-				<div className="">
-					<TextField
-						fullWidth
-						type={"text"}
-						className="placeholder:text-gray-400 hover:outline-none focus:ring-0 border border-gray-300 rounded-lg focus:ring-sky"
-						label="ID. Nat"
-						placeholder="ID. Nat"
-						name="idNat"
-						variant="outlined"
-					/>
-				</div>
-
-				<div className="">
-					<TextField
-						fullWidth
-						type={"text"}
-						className="placeholder:text-gray-400 hover:outline-none focus:ring-0 border border-gray-300 rounded-lg focus:ring-sky"
-						label="RCCM"
-						placeholder="RCCM"
-						name="rccm"
-						variant="outlined"
-					/>
-				</div>
+			<div className="flex flex-col gap-1">
+				<MuiPhoneNumber
+					fullWidth
+					label="N° Téléphone personnel"
+					variant="outlined"
+					defaultCountry={"cd"}
+					name="contactPersonPhone"
+				/>
 			</div>
 
 			<div className="flex flex-row-reverse">
