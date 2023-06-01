@@ -11,12 +11,17 @@ import { FormControl, InputLabel, MenuItem, Select, TextField } from "@mui/mater
 import { SWRConfig } from "swr";
 import Fetcher from "../../../lib/Fetcher";
 import { useSession } from "next-auth/react";
+
+
 import MuiPhoneNumber from "material-ui-phone-number";
+
+
 
 
 const TabHistories = [
 	{
 		name: "À propos"
+
 	},
 
 	{
@@ -24,6 +29,15 @@ const TabHistories = [
 	},
 
 	{
+
+	},
+
+	{
+		name: "Établissement",
+	},
+
+	{
+
 		name: "Personne à contacter",
 	}
 ]
@@ -341,10 +355,31 @@ function PersonContact() {
 					fullWidth
 					type={"email"}
 					className="placeholder:text-gray-400 hover:outline-none focus:ring-0 border border-gray-300 rounded-lg focus:ring-sky"
+
+					label="Adresse email"
+					placeholder="Adresse email"
+
+
 					label="Adresse email"
 					placeholder="Adresse email"
 					name="email"
 					variant="outlined"
+				/>
+			</div>
+
+			<div className="flex flex-col gap-1">
+				<MuiPhoneNumber
+					fullWidth
+					label="N° Téléphone personnel"
+
+					label="Adress"
+					placeholder="123 Main Street"
+
+					name="email"
+
+					variant="outlined"
+					defaultCountry={"cd"}
+					name="contactPersonPhone"
 				/>
 			</div>
 
