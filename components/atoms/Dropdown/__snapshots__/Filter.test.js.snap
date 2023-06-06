@@ -35,7 +35,7 @@ exports[`Filter should render the component 1`] = `
       </svg>
     </label>
     <ul
-      class="undefined w-full mt-14 dropdown-content menu p-2 bg-white border rounded-box text-gray-700 font-light"
+      class="undefined w-48 mt-14 dropdown-content menu p-2 bg-white border rounded-box text-gray-700 font-light"
       tabindex="0"
     >
       <div
