@@ -107,7 +107,7 @@ function LoginForm() {
 					<div className="flex flex-col md:w-3/4 w-full border-opacity-50 gap-4">
 
 						<div className="form-items !w-full !max-w-full flex flex-col items-center mx-auto">
-							<div className="md:w-3/4 mx-auto">
+							<div className="w-2/3 md:w-3/4 mx-auto">
 								<div className="form-title">Connectez-vous à votre compte</div>
 								<Box sx={{ mb: 3, mt: 2 }}></Box>
 								<form id="signinform" onSubmit={formik.handleSubmit}>
