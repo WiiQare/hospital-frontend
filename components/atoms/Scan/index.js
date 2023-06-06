@@ -45,7 +45,7 @@ const Scan = () => {
           leave="ease-in duration-200"
           leaveFrom="opacity-100 scale-100"
           leaveTo="opacity-0 scale-95"
-          className={"md:w-1/2 bg-white rounded-xl px-10 py-8 min-h-fit"}
+          className={"md:w-1/2 w-3/4 bg-white rounded-xl px-10 py-8 min-h-fit"}
         >
           <TabsModal value={value} handleChange={handleChange} />
 
@@ -123,7 +123,7 @@ function TabItems({ value, handleStep }) {
         <TabPanel value={value} index={0}>
           <div className="mt-4">
             <div className="text-center">
-              <h3 className="text-xl font-semibold text-gray-700">
+              <h3 className="text-xl font-semibold md:text-gray-700">
                 Scan QR Code
               </h3>
               <p className="text-sm font-light text-gray-500">
