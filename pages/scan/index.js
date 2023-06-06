@@ -6,7 +6,7 @@ const Page = () => {
   return (
     <>
       <Head>
-        <title>Transactions</title>
+        <title>Scanner le pass santé</title>
       </Head>
       <Scan />
     </>
