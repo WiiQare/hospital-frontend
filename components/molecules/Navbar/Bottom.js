@@ -26,6 +26,7 @@ const Items = [
       ),
       link: "/scan",
       active: ["/scan"],
+      rounded: true
     },
     {
       title: "Transactions",
