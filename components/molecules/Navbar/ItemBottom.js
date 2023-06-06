@@ -14,7 +14,7 @@ const ItemBottom = ({ title, icon, link, activePath, rounded = false }) => {
                         </h6>
                     </span>
                 ) : (
-                    <span className={`bg-white shadow-sm rounded-full py-8 px-8 -top-8 absolute flex flex-col gap-2 items-center justify-center text-gray-500 hover:text-sky ${activePath ? 'text-sky font-bold' : ''} transition-all duration-300 cursor-pointer`}>
+                    <span className={`bg-white shadow-2xl rounded-full py-8 px-8 -top-8 absolute flex flex-col gap-2 items-center justify-center text-gray-500 hover:text-sky ${activePath ? 'text-sky font-bold' : ''} transition-all duration-300 cursor-pointer`}>
                         <span>
                             {icon({ size: 30 })}
                         </span>
