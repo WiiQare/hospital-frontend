@@ -8,9 +8,22 @@ export default function TransactionTable() {
 
 	const { data, isLoading, isError } = Fetcher(`/provider/transactions?providerId=${session.user.data.providerId}`, session.accessToken);
 
-	console.log(data);
 	const selectItem = (id) => {
 		setSelected([...selected, id])
+
+	}
+
+	const selectAllItem = () => {
+		let temp = []
+		setIsChecked(true)
+		setSelected(temp)
+		data.map(item => item.status !== "UNCLAIMED" && setSelected([...selected, item.transactionHash]))
+	}
+
+	const unselectAllItem = () => {
+		let temp = [];
+		setSelected(temp)
+		setIsChecked(false)
 	}
 
 	const unselectItem = (id) => {
@@ -40,7 +53,7 @@ export default function TransactionTable() {
 								<tr>
 									<th className="bg-white">
 										<label>
-											<input type="checkbox" className="checkbox" checked={isChecked} onChange={() => setIsChecked(!isChecked)} />
+											<input type="checkbox" className="checkbox" checked={isChecked} onChange={e => e.target.checked ? selectAllItem() : unselectAllItem()} />
 										</label>
 									</th>
 									<th className="bg-white">Identité Patient</th>
