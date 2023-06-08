@@ -12,9 +12,8 @@ const Transaction = () => {
 	const [isChecked, setIsChecked] = useState(false);
 	const { data: session } = useSession();
 
-	console.log(session);
-
 	const handleClick = () => {
+		console.log(selected);
 		const swalWithBootstrapButtons = Swal.mixin({
 			customClass: {
 				confirmButton: 'bg-orange ml-6 py-3 px-4 rounded-lg uppercase font-semibold text-white',
