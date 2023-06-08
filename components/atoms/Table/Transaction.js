@@ -14,13 +14,15 @@ export default function TransactionTable() {
 	}
 
 	const selectAllItem = () => {
+		let temp = []
 		setIsChecked(true)
-		setSelected([])
+		setSelected(temp)
 		data.map(item => item.status !== "UNCLAIMED" && setSelected([...selected, item.transactionHash]))
 	}
 
 	const unselectAllItem = () => {
-		setSelected([])
+		let temp = [];
+		setSelected(temp)
 		setIsChecked(false)
 	}
 
