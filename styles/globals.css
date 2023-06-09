@@ -150,3 +150,11 @@ input[type="range"]::-webkit-slider-thumb {
 .abc {
   @apply bg-[red]
 }
+
+.rdt_TableCell input[type="checkbox"]:disabled {
+  @apply bg-gray-300 border-none
+}
+
+.rdt_TableCol input[type="checkbox"], .rdt_TableCell input[type="checkbox"] {
+  @apply checkbox
+}

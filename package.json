@@ -45,6 +45,7 @@
     "react-copy-to-clipboard": "^5.1.0",
     "react-countdown": "^2.3.5",
     "react-country-region-selector": "^3.6.1",
+    "react-data-table-component": "^7.5.3",
     "react-dom": "18.2.0",
     "react-drag-drop-files": "^2.3.10",
     "react-i18next": "^12.2.0",
