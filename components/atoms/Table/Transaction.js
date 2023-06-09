@@ -1,4 +1,3 @@
-import Link from "next/link";
 import React, { useContext, useEffect, useState } from "react";
 import Fetcher from "../../../lib/Fetcher";
 import { TableContext } from "../../organisms/Transaction";

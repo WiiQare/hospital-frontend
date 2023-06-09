@@ -12,7 +12,9 @@ const Transaction = () => {
 	const [isChecked, setIsChecked] = useState(false);
 	const { data: session } = useSession();
 
+
 	console.log("selecte", selected);
+
 
 	const handleClick = () => {
 		console.log(selected);
