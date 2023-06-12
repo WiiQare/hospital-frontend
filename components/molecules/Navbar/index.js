@@ -89,12 +89,12 @@ const Menu = ({ session, handleSignOut }) => {
 							inline={true}
 							className="shadow-sm rounded-2xl w-fit"
 							label={
-								<IconBadge total={2}>
+								<IconBadge total={0}>
 									<AiOutlineBell size={25} />
 								</IconBadge>
 							}
 						>
-							<NotificationBadge
+							{/* <NotificationBadge
 								avatar={avatar}
 								time={"29 July 2020 - 02:26 PM"}
 								title={"Dr sultads Send you Photo"}
@@ -110,16 +110,21 @@ const Menu = ({ session, handleSignOut }) => {
 								avatar={avatar}
 								time={"29 July 2020 - 02:26 PM"}
 								title={"Dr sultads Send you Photo"}
-							/>
+							/> */}
 
-							<Dropdown.Divider />
+<div className="p-4 px-7 flex flex-col gap-2 items-center">
+                        		<img src={"https://i.goopics.net/nf1fwc.png"} width={80} height={80} className="w-14 opacity-70" />
+								<p className="text-xs text-gray-400">Aucune notification pour le moment...</p> 
+							</div>
+
+							{/* <Dropdown.Divider />
 
 							<Dropdown.Item>
 								<p className="text-center w-full flex items-center justify-center text-lg text-gray-500 font-light gap-2">
 									Voir tous les notification
 									<AiOutlineArrowRight />
 								</p>
-							</Dropdown.Item>
+							</Dropdown.Item> */}
 						</Dropdown>
 					</div>
 
