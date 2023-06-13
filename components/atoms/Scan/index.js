@@ -14,10 +14,10 @@ import SecurityCode from "./security";
 export const StepContext = createContext();
 
 const health = [
-	{ label: 'Soin Dentaire', price: 15 },
-	{ label: 'Ophtamologie', price: 30 },
-	{ label: 'Pédiatrie', price: 40 },
-	{ label: 'Urgence', price: 55 },
+	{ label: 'Soin Dentaire', price: 15000 },
+	{ label: 'Ophtamologie', price: 32800 },
+	{ label: 'Pédiatrie', price: 45000 },
+	{ label: 'Urgence', price: 58000 },
 ]
 
 const Scan = () => {
@@ -70,7 +70,7 @@ const Scan = () => {
 	if (step === -1)
 		return (
 			<div className='flex justify-center flex-col gap-6 h-full items-center mx-auto py-4 md:py-10 mb-20'>
-				<div className='md:w-1/3 w-full bg-white rounded-xl p-8 min-h-fit shadow-sm'>
+				<div className='md:w-1/3 sm:w-2/3 w-full bg-white rounded-xl p-8 min-h-fit shadow-sm'>
 					<form className="flex flex-col gap-4" id="form-service" onSubmit={formik.handleSubmit}>
 						<div className="w-full flex flex-col gap-2">
 
@@ -106,13 +106,13 @@ const Scan = () => {
 												services.map(service => (
 													<div className="flex items-center justify-between">
 														<p className="text-sm font-medium text-gray-900">{service.label}</p>
-														<p className="font-normal text-sm text-gray-600">${service.price}</p>
+														<p className="font-normal text-sm text-gray-600">{new Intl.NumberFormat("en-US", {style: 'currency', currency: "CDF"}).format(service.price)}</p>
 													</div>
 												))
 											}
 										</div>
 										<div className="flex items-center gap-10 flex-row-reverse">
-													<p className="text-2xl font-semibold text-gray-900">${total}</p>
+													<p className="text-2xl font-semibold text-gray-900">{new Intl.NumberFormat("en-US", {style: 'currency', currency: "CDF"}).format(total)}</p>
 													<p className="text-lg font-medium text-gray-600">Total</p>
 												</div>
 									</>
