@@ -11,6 +11,7 @@ import { useFormik } from "formik";
 import * as yup from "yup";
 import ScanDetails from "./details";
 import SecurityCode from "./security";
+import { BiTrash, BiTrashAlt } from "react-icons/bi";
 export const StepContext = createContext();
 
 const health = [
@@ -106,13 +107,16 @@ const Scan = () => {
 												services.map(service => (
 													<div className="flex items-center justify-between">
 														<p className="text-sm font-medium text-gray-900">{service.label}</p>
-														<p className="font-normal text-sm text-gray-600">{new Intl.NumberFormat("en-US", {style: 'currency', currency: "CDF"}).format(service.price)}</p>
+														<p className="font-normal text-sm text-gray-600 flex gap-2 items-center">
+															{new Intl.NumberFormat("en-US", {style: 'currency', currency: "CDF"}).format(service.price)}
+															<BiTrashAlt size={17} className="text-red-500 cursor-pointer" title={`Supprimer ${service.label}`} />
+														</p>
 													</div>
 												))
 											}
 										</div>
 										<div className="flex items-center gap-10 flex-row-reverse">
-													<p className="text-2xl font-semibold text-gray-900">{new Intl.NumberFormat("en-US", {style: 'currency', currency: "CDF"}).format(total)}</p>
+													<p className="text-xl font-semibold text-gray-900">{new Intl.NumberFormat("en-US", {style: 'currency', currency: "CDF"}).format(total)}</p>
 													<p className="text-lg font-medium text-gray-600">Total</p>
 												</div>
 									</>
@@ -129,7 +133,7 @@ const Scan = () => {
 
 						
 						<div className="flex w-full gap-4">
-							<button className="bg-orange shadow-md text-md py-3 w-full px-4 rounded-lg effect-up text-white" form='form-all-service' onClick={() => setStep(0)}>
+							<button className="bg-orange shadow-md text-md py-3 w-full px-4 rounded-lg effect-up text-white disabled:bg-gray-400 disabled:cursor-not-allowed" form='form-all-service' onClick={() => setStep(0)} disabled={services.length > 0 ? false : true}>
 								Définir comme traitement
 							</button>
 						</div>
