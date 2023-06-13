@@ -6,12 +6,19 @@ import Tab from "@mui/material/Tab";
 import Box from "@mui/material/Box";
 import PropTypes from "prop-types";
 import Typography from "@mui/material/Typography";
-import { Button, FormControl, InputLabel, MenuItem, Select, Stack, TextField } from "@mui/material";
+import { Autocomplete, Button, FormControl, InputLabel, MenuItem, Select, Stack, TextField } from "@mui/material";
 import { useFormik } from "formik";
 import * as yup from "yup";
 import ScanDetails from "./details";
 import SecurityCode from "./security";
 export const StepContext = createContext();
+
+const health = [
+	{ label: 'Soin Dentaire', price: 15 },
+	{ label: 'Ophtamologie', price: 30 },
+	{ label: 'Pédiatrie', price: 40 },
+	{ label: 'Urgence', price: 55 },
+]
 
 const Scan = () => {
 	const [data, setData] = useState(null);
@@ -39,19 +46,14 @@ const Scan = () => {
 
 						<p>Ajoutez un nouveau soin</p>
 						<FormControl fullWidth>
-							<InputLabel id="demo-simple-select-label">Package</InputLabel>
-							<Select
+							<Autocomplete
 								labelId="demo-simple-select-label"
 								id="demo-simple-select"
 								label="Type Business"
+								options={health}
+								renderInput={(params) => <TextField {...params} label="Choisissez un service" />}
 								onChange={(e) => null}
-							>
-								<MenuItem value={"CLINIC"}>Soin Dentaire - (10$)</MenuItem>
-								<MenuItem value={"PHARMACY"}>Soin Dentaire - (10$)</MenuItem>
-								<MenuItem value={"HOSPITAL"}>Soin Dentaire - (10$)</MenuItem>
-								<MenuItem value={"DENTIST"}>Soin Dentaire - (10$)</MenuItem>
-								<MenuItem value={"MEDICAL_CABINET"}>Soin Dentaire - (10$)</MenuItem>
-							</Select>
+							/>
 
 						</FormControl>
 					</div>
