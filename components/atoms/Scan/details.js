@@ -60,7 +60,7 @@ const ScanDetails = ({shorten}) => {
 
     return (
         <div className='flex justify-center flex-col gap-6 h-full items-center mx-auto py-4 md:py-10 mb-20'>
-			<div className='md:w-1/3 w-full bg-white rounded-xl py-8 min-h-fit flex '>
+			<div className='md:w-1/3 sm:w-2/3 w-full bg-white rounded-xl py-8 min-h-fit flex '>
 				<div className="flex flex-col gap-6 justify-center w-full">
 					<div className="flex flex-col items-center text-center space-y-2">
 						<div className="flex flex-col items-center select-none">
@@ -93,8 +93,8 @@ const ScanDetails = ({shorten}) => {
 
 					<ItemsDetails title={"Nom du Patient"} value={data.patientNames} exclamation={true} />
 					<ItemsDetails title={"Hôpital"} value={session?.user?.data.names ?? session?.user?.data.name} exclamation={false} />
-					<ItemsDetails title={"Montant Pass Santé"} value={new Intl.NumberFormat("en-US", {style: 'currency', currency: data.currency}).format(data.amount)} otherValue={"Reste : " + new Intl.NumberFormat("en-US", {style: 'currency', currency: "USD"}).format(data.amount - total)} />
-					<ItemsDetails title={"Montant Hopital"} value={new Intl.NumberFormat("en-US", {style: 'currency', currency: "USD"}).format(total)} otherValue={new Intl.DateTimeFormat('fr-FR', { dateStyle: 'medium' }).format(new Date())}/>
+					<ItemsDetails title={"Montant Pass Santé"} value={new Intl.NumberFormat("en-US", {style: 'currency', currency: data.currency}).format(data.amount)} otherValue={"Reste : " + new Intl.NumberFormat("en-US", {style: 'currency', currency: "CDF"}).format(data.amount - total)} />
+					<ItemsDetails title={"Montant Hopital"} value={new Intl.NumberFormat("en-US", {style: 'currency', currency: "CDF"}).format(total)} otherValue={new Intl.DateTimeFormat('fr-FR', { dateStyle: 'medium' }).format(new Date())}/>
 					
 					{
 						total > data.amount ? (
