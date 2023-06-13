@@ -68,7 +68,7 @@ const Scan = () => {
 							<p className="font-normal text-sm text-gray-600">$25.00</p>
 						</div>
 						<div className="flex w-full gap-4">
-							<button className="bg-orange shadow-md text-md py-3 w-full px-4 rounded-lg effect-up text-white" type='submit' form='form-security'>
+							<button className="bg-orange shadow-md text-md py-3 w-full px-4 rounded-lg effect-up text-white" form='form-security' onClick={() => setStep(0)}>
 								Définir comme traitement
 							</button>
 						</div>
