@@ -24,6 +24,8 @@ const Scan = () => {
 	const [data, setData] = useState(null);
 	const [step, setStep] = useState(-1);
 	const [value, setValue] = useState(0);
+	const [services, setServices] = useState([]);
+	const [total, setTotal] = useState(0);
 
 	const handleChange = (event, newValue) => {
 		setValue(newValue);
@@ -37,40 +39,97 @@ const Scan = () => {
 		}
 	};
 
+	const onSubmit = async (values) => {
+        if (Object.keys(values).length == 0) return console.log("Pas de données");
+
+		setServices([...services, values.service]);
+
+		console.log(services);
+
+		setTotal(total + values.service.price);
+		formik.handleReset()
+
+    };
+
+	const ValidationSchema = new yup.object().shape({
+        service: new yup.ObjectSchema().required("Sélectionnez un service...")
+    });
+
+	const formik = useFormik({
+        initialValues: {
+            service: '',
+        },
+        validationSchema: ValidationSchema,
+        onSubmit
+    })
+
+	const renderError = (message) => (
+        <p className="text-xs text-red-600 font-light flex items-center gap-1 px-1">{message}</p>
+    );
 
 	if (step === -1)
 		return (
 			<div className='flex justify-center flex-col gap-6 h-full items-center mx-auto py-4 md:py-10 mb-20'>
-				<div className='md:w-1/3 w-full bg-white rounded-xl p-8 min-h-fit flex flex-col gap-4 shadow-sm'>
-					<div className="w-full flex flex-col gap-2">
+				<div className='md:w-1/3 w-full bg-white rounded-xl p-8 min-h-fit shadow-sm'>
+					<form className="flex flex-col gap-4" id="form-service" onSubmit={formik.handleSubmit}>
+						<div className="w-full flex flex-col gap-2">
 
-						<p>Ajoutez un nouveau soin</p>
-						<FormControl fullWidth>
-							<Autocomplete
-								labelId="demo-simple-select-label"
-								id="demo-simple-select"
-								label="Type Business"
-								options={health}
-								renderInput={(params) => <TextField {...params} label="Choisissez un service" />}
-								onChange={(e) => null}
-							/>
+							<p>Ajoutez un nouveau soin</p>
+							<FormControl fullWidth>
+								<Autocomplete
+									labelId="demo-simple-select-label"
+									id="demo-simple-select"
+									label="Service"
+									options={health}
+									renderInput={(params) => <TextField {...params} label="Choisissez un service" name="service" />}
+									onChange={(e, value) => formik.setFieldValue("service", value)}
+								/>
 
-						</FormControl>
-					</div>
+							</FormControl>
+							{formik.errors.service && formik.touched.service ? renderError(formik.errors.service) : <></>}
 
-					<div className="flex flex-row-reverse gap-4">
-						<button className="border text-orange border-orange text-sm py-2 px-4 rounded-lg" type='submit' form='form-security'>
-							+ Ajouter
-						</button>
-					</div>
-
-					<div className="mt-3 border-t py-2 space-y-4">
-						<div className="flex items-center justify-between">
-							<p className="text-sm font-medium text-gray-900">Soins de dents</p>
-							<p className="font-normal text-sm text-gray-600">$25.00</p>
 						</div>
+
+						<div className="flex flex-row-reverse gap-4">
+							<button className="border text-orange border-orange text-sm py-2 px-4 rounded-lg" type='submit' form='form-service'>
+								+ Ajouter
+							</button>
+						</div>
+					</form>
+
+					<div className={`mt-3 border-t py-2 space-y-4`}>
+							{
+								services.length > 0 ? (
+									<>
+										<div className={`${services.length > 0 ? 'border-b py-2 space-y-6' : ''}`}>
+											{
+												services.map(service => (
+													<div className="flex items-center justify-between">
+														<p className="text-sm font-medium text-gray-900">{service.label}</p>
+														<p className="font-normal text-sm text-gray-600">${service.price}</p>
+													</div>
+												))
+											}
+										</div>
+										<div className="flex items-center gap-10 flex-row-reverse">
+													<p className="text-2xl font-semibold text-gray-900">${total}</p>
+													<p className="text-lg font-medium text-gray-600">Total</p>
+												</div>
+									</>
+
+									
+								) : (
+									<div className="flex flex-col gap-4 my-4 items-center justify-center">
+										<img src="https://i.goopics.net/vwmjvq.png" alt="empty list" className="opacity-60 w-16" />
+										<span className="text-sm text-gray-500">Pas de service choisi...</span>
+									</div>
+								)
+							}
+
+
+						
 						<div className="flex w-full gap-4">
-							<button className="bg-orange shadow-md text-md py-3 w-full px-4 rounded-lg effect-up text-white" form='form-security' onClick={() => setStep(0)}>
+							<button className="bg-orange shadow-md text-md py-3 w-full px-4 rounded-lg effect-up text-white" form='form-all-service' onClick={() => setStep(0)}>
 								Définir comme traitement
 							</button>
 						</div>
@@ -105,14 +164,14 @@ const Scan = () => {
 
 	if (step === 1)
 		return (
-			<StepContext.Provider value={{ step, setStep }}>
+			<StepContext.Provider value={{ step, setStep, total, services }}>
 				<ScanDetails shorten={data} />
 			</StepContext.Provider>
 		);
 
 	if (step === 2)
 		return (
-			<StepContext.Provider value={{ step, setStep }}>
+			<StepContext.Provider value={{ step, setStep, total, services }}>
 				<SecurityCode shorten={data} />
 			</StepContext.Provider>
 		);

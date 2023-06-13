@@ -11,10 +11,8 @@ import { useRouter } from "next/router";
 
 const ScanDetails = ({shorten}) => {
 
-	const { step, setStep } = useContext(StepContext);
+	const { step, setStep, total } = useContext(StepContext);
 	const router = useRouter();
-
-    console.log(shorten);
 
 	const { data:session } = useSession();
 	const [copy, setCopy] = useState(false);
@@ -95,10 +93,17 @@ const ScanDetails = ({shorten}) => {
 
 					<ItemsDetails title={"Nom du Patient"} value={data.patientNames} exclamation={true} />
 					<ItemsDetails title={"Hôpital"} value={session?.user?.data.names ?? session?.user?.data.name} exclamation={false} />
-					<ItemsDetails title={"Montant envoyé"} value={new Intl.NumberFormat("en-US", {style: 'currency', currency: data.currency}).format(data.amount)} otherValue={new Intl.DateTimeFormat('fr-FR', { dateStyle: 'medium' }).format(new Date())} />
+					<ItemsDetails title={"Montant Pass Santé"} value={new Intl.NumberFormat("en-US", {style: 'currency', currency: data.currency}).format(data.amount)} otherValue={"Reste : " + new Intl.NumberFormat("en-US", {style: 'currency', currency: "USD"}).format(data.amount - total)} />
+					<ItemsDetails title={"Montant Hopital"} value={new Intl.NumberFormat("en-US", {style: 'currency', currency: "USD"}).format(total)} otherValue={new Intl.DateTimeFormat('fr-FR', { dateStyle: 'medium' }).format(new Date())}/>
+					
+					{
+						total > data.amount ? (
+							<span className="text-xs text-red-400 font-normal px-4">* Ce traitement coûte plus cher que le montant dans ce Pass Santé</span>
+						) : <></>
+					}
 
 					<div className='flex justify-center'>
-						<button className='capitalize bg-orange w-fit  px-6 py-4 rounded-xl text-white flex gap-2 items-center effect-up shadow-md' onClick={() => setStep(step+1)}><MdPayments size={20}/> Procéder au paiment</button>
+						<button className='capitalize bg-orange w-fit  px-6 py-4 rounded-xl text-white flex gap-2 items-center effect-up shadow-md' onClick={() => setStep(step+1)}><MdPayments size={20}/> {total > data.amount ? 'Payer une partie avec ce Pass' : 'Procéder au paiement'}</button>
 					</div>
 
 				</div>
