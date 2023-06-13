@@ -18,8 +18,8 @@ const Page = () => {
 	const router = useRouter();
 	const { data } = useSession();
 
-	const { data:result, isLoading, isError } = Fetcher(`/provider/transactions?providerId=${data.user.data.providerId}`, data.accessToken);
-	const { data:resultStat, isLoading:loadingStat, isError: errorStat } = Fetcher(`/provider/statistics?providerId=${data.user.data.providerId}`, data.accessToken);
+	const { data: result, isLoading, isError } = Fetcher(`/provider/transactions?providerId=${data.user.data.providerId}`, data.accessToken);
+	const { data: resultStat, isLoading: loadingStat, isError: errorStat } = Fetcher(`/provider/statistics?providerId=${data.user.data.providerId}`, data.accessToken);
 
 	console.log(result);
 	useEffect(() => {
@@ -86,22 +86,22 @@ const Page = () => {
 							</div>
 							<div className="bg-gray-50 w-full border border-gray-200 rounded-lg py-8 px-4 shadow-sm h-fit">
 
-							{
+								{
 									loadingStat ? (<>Loading...</>) : (
-								<div className="">
-									<div className="bg-primary bg-opacity-20 rounded-lg p-2 w-fit mb-2 text-primary">
-										<FaUserAlt />
-									</div>
-									<h3 className="font-semibold text-gray-500 mb-5">Total Patients Soignés</h3>
+										<div className="">
+											<div className="bg-primary bg-opacity-20 rounded-lg p-2 w-fit mb-2 text-primary">
+												<FaUserAlt />
+											</div>
+											<h3 className="font-semibold text-gray-500 mb-5">Total Patients Soignés</h3>
 
-									<span className="font-semibold text-md text-gray-700 ">{resultStat.totalUniquePatients}</span>
-									<div className="flex gap-2 text-green-400 items-center mt-3 text-sm">
-										<BsFillCreditCardFill />
-										<span>Patient soigné</span>
-									</div>
-								</div>
-								)
-									}
+											<span className="font-semibold text-md text-gray-700 ">{resultStat.totalUniquePatients}</span>
+											<div className="flex gap-2 text-green-400 items-center mt-3 text-sm">
+												<BsFillCreditCardFill />
+												<span>Patient soigné</span>
+											</div>
+										</div>
+									)
+								}
 							</div>
 						</div>
 					</div>
@@ -124,24 +124,31 @@ const Page = () => {
 											<ul role="list" className="divide-y divide-gray-200">
 												{
 													result.map((transaction, index) => (
-														<li className="py-3 sm:py-4">
-															<div className="flex items-center space-x-4">
-																<div className="flex-shrink-0">
-																	<img className="w-10 h-10 rounded-lg" src={`https://ui-avatars.com/api/?uppercase=true&background=888&name=${transaction.voucher.patientId}&bold=true&color=FFF`} alt="Neil image" />
-																</div>
-																<div className="flex-1 min-w-0">
-																	<p className="text-sm font-medium text-gray-900 truncate">
-																	{transaction.voucher.patientId}
-																	</p>
-																	<p className="text-xs text-gray-500 truncate ">
-																		+243 814 978 651
-																	</p>
-																</div>
-																<div className="inline-flex items-center text-base font-semibold text-gray-900">
-																	{new Intl.NumberFormat("en-US", { style: 'currency', currency: transaction.voucher.currency }).format(transaction.voucher.amount)}
-																</div>
-															</div>
-														</li>
+														<>
+															{
+																index < 5 ? (
+																	<li className="py-3 sm:py-4">
+																		<div className="flex items-center space-x-4">
+																			<div className="flex-shrink-0">
+																				<img className="w-10 h-10 rounded-lg" src={`https://ui-avatars.com/api/?uppercase=true&background=888&name=${transaction.voucher.patientId}&bold=true&color=FFF`} alt="Neil image" />
+																			</div>
+																			<div className="flex-1 min-w-0">
+																				<p className="text-sm font-medium text-gray-900 truncate">
+																					{transaction.voucher.patientId}
+																				</p>
+																				<p className="text-xs text-gray-500 truncate ">
+																					+243 814 978 651
+																				</p>
+																			</div>
+																			<div className="inline-flex items-center text-base font-semibold text-gray-900">
+																				{new Intl.NumberFormat("en-US", { style: 'currency', currency: transaction.voucher.currency }).format(transaction.voucher.amount)}
+																			</div>
+																		</div>
+																	</li>
+																) : <></>
+															}
+														</>
+
 													))
 												}
 											</ul>
@@ -264,39 +271,39 @@ const Page = () => {
 						<div className="flex flex-col w-full min-h-max gap-6">
 							<div className="md:grid flex gap-6 w-full md:grid-cols-2 md:gap-4">
 								<div className="bg-gray-50 w-full border border-gray-200 rounded-lg py-8 px-4 shadow-sm h-fit">
-								{
-									loadingStat ? (<>Loading...</>) : (
-									<div className="">
-										<div className="bg-orange bg-opacity-20 rounded-lg p-2 w-fit mb-2 text-orange">
-											<BsFillCreditCardFill />
-										</div>
-										<h3 className="font-semibold text-gray-500 mb-5">Montant remboursé</h3>
+									{
+										loadingStat ? (<>Loading...</>) : (
+											<div className="">
+												<div className="bg-orange bg-opacity-20 rounded-lg p-2 w-fit mb-2 text-orange">
+													<BsFillCreditCardFill />
+												</div>
+												<h3 className="font-semibold text-gray-500 mb-5">Montant remboursé</h3>
 
-										<span className="font-semibold text-md text-gray-700 ">{new Intl.NumberFormat("en-US", { style: 'currency', currency: "CDF" }).format(resultStat.totalRedeemedAmount)}</span>
-										<div className="flex gap-2 text-green-400 items-center mt-3 text-sm">
-											<BsFillCreditCardFill />
-											<span>Balance</span>
-										</div>
-									</div>
-									)}
+												<span className="font-semibold text-md text-gray-700 ">{new Intl.NumberFormat("en-US", { style: 'currency', currency: "CDF" }).format(resultStat.totalRedeemedAmount)}</span>
+												<div className="flex gap-2 text-green-400 items-center mt-3 text-sm">
+													<BsFillCreditCardFill />
+													<span>Balance</span>
+												</div>
+											</div>
+										)}
 								</div>
 								<div className="bg-gray-50 w-full border border-gray-200 rounded-lg py-8 px-4 shadow-sm h-fit">
 
 									{
 										loadingStat ? (<>Loading...</>) : (
-										<div className="">
-											<div className="bg-primary bg-opacity-20 rounded-lg p-2 w-fit mb-2 text-primary">
-												<RiSendToBack />
-											</div>
-											<h3 className="font-semibold text-gray-500 mb-5">En attente de reboursement</h3>
+											<div className="">
+												<div className="bg-primary bg-opacity-20 rounded-lg p-2 w-fit mb-2 text-primary">
+													<RiSendToBack />
+												</div>
+												<h3 className="font-semibold text-gray-500 mb-5">En attente de reboursement</h3>
 
-											<span className="font-semibold text-md text-gray-700 ">{new Intl.NumberFormat("en-US", { style: 'currency', currency: "CDF" }).format(resultStat.totalPendingAmount)}</span>
-											<div className="flex gap-2 text-green-400 items-center mt-3 text-sm">
-												<BsFillCreditCardFill />
-												<span>Balance</span>
+												<span className="font-semibold text-md text-gray-700 ">{new Intl.NumberFormat("en-US", { style: 'currency', currency: "CDF" }).format(resultStat.totalPendingAmount)}</span>
+												<div className="flex gap-2 text-green-400 items-center mt-3 text-sm">
+													<BsFillCreditCardFill />
+													<span>Balance</span>
+												</div>
 											</div>
-										</div>
-									)}
+										)}
 								</div>
 							</div>
 
