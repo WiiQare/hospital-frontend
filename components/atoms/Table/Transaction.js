@@ -4,9 +4,9 @@ import { TableContext } from "../../organisms/Transaction";
 import DataTable from 'react-data-table-component';
 
 const columns = [
-    {
-        name: 'IDENTITÉ PATIENT',
-        selector: row => (
+	{
+		name: 'IDENTITÉ PATIENT',
+		selector: row => (
 			<>
 				<div className="flex items-center space-x-3 cursor-pointer">
 					<div className="avatar w-12 h-12">
@@ -25,22 +25,24 @@ const columns = [
 				</div>
 			</>
 		),
-    },
-    {
-        name: 'MONTANT',
-        selector: row => (
-			<>
+		sortable: true,
+	},
+	{
+		name: 'MONTANT',
+		selector: row => (
+			<div className="py-8">
 				{new Intl.NumberFormat("en-US", { style: 'currency', currency: row.voucher.currency }).format(row.amount)}
 				<br />
 				<span className="badge badge-ghost badge-sm">
 					{new Intl.DateTimeFormat('fr-FR', { timeStyle: "short", dateStyle: "long" }).format(new Date(row.createdAt))}
 				</span>
-			</>
-		)
-    },
+			</div>
+		),
+		sortable: true,
+	},
 	{
-        name: 'STATUS',
-        selector: row => (
+		name: 'STATUS',
+		selector: row => (
 			<>
 				{
 					row.status == "UNCLAIMED" ? (
@@ -57,22 +59,24 @@ const columns = [
 								Traitement en cours
 							</span>
 						</>
-					): (
+					) : (
 						<>
 							<span class="inline-flex items-center gap-1.5 py-1.5 px-3 rounded-full text-xs font-medium bg-green-100 text-green-800">
 								<span class="w-1.5 h-1.5 inline-block bg-green-400 rounded-full"></span>
 								Transmis avec succès
 							</span>
 						</>
-					) 
+					)
 				}
 			</>
 		),
-    },
+		sortable: true,
+	},
 	{
-        name: 'HASH',
-        selector: row => (<button className="btn btn-xs !lowercase">{row.shortenHash}</button>),
-    },
+		name: 'HASH',
+		selector: row => (<button className="btn btn-xs !lowercase">{row.shortenHash}</button>),
+		sortable: true,
+	},
 ];
 
 export default function TransactionTable() {
@@ -93,12 +97,22 @@ export default function TransactionTable() {
 						<DataTable
 							columns={columns}
 							data={data}
+							fixedHeader
+							className="px-8 bg-white"
+							paginationPerPage={20}
+							paginationTotalRows={false}
 							pagination
 							title="Historique des transactions"
 							selectableRows
 							onSelectedRowsChange={handleChange}
 							persistTableHead
 							selectableRowDisabled={row => row.status !== "UNCLAIMED"}
+							paginationComponentOptions={{
+								rowsPerPageText: "Ligne par page",
+								rangeSeparatorText: 'de',
+								selectAllRowsItem: true,
+								selectAllRowsItemText: 'Voir tous',
+							}}
 						/>
 					</>
 				)
