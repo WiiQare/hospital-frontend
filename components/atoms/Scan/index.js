@@ -43,18 +43,28 @@ const Scan = () => {
 	const onSubmit = async (values) => {
         if (Object.keys(values).length == 0) return console.log("Pas de données");
 
-		setServices([...services, values.service]);
+		let exist = services.indexOf(values.service)
 
-		console.log(services);
 
-		setTotal(total + values.service.price);
-		formik.handleReset()
-
+		if(exist == -1 ) {
+			setServices([...services, values.service]);
+	
+			setTotal(total + values.service.price);
+			formik.handleReset()
+		}
+		
     };
 
 	const ValidationSchema = new yup.object().shape({
         service: new yup.ObjectSchema().required("Sélectionnez un service...")
     });
+
+	const removeFromList = (delValue, amount) => {
+		let newList =  services.filter(arr => arr.label !== delValue);
+
+		setServices(newList)
+		setTotal(total - amount)
+	}
 
 	const formik = useFormik({
         initialValues: {
@@ -109,7 +119,7 @@ const Scan = () => {
 														<p className="text-sm font-medium text-gray-900">{service.label}</p>
 														<p className="font-normal text-sm text-gray-600 flex gap-2 items-center">
 															{new Intl.NumberFormat("en-US", {style: 'currency', currency: "CDF"}).format(service.price)}
-															<BiTrashAlt size={17} className="text-red-500 cursor-pointer" title={`Supprimer ${service.label}`} />
+															<BiTrashAlt size={17} className="text-red-500 cursor-pointer" title={`Supprimer ${service.label}`} onClick={() => removeFromList(service.label, service.price)} />
 														</p>
 													</div>
 												))
