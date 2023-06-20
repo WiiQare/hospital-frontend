@@ -15,10 +15,10 @@ import { BiTrash, BiTrashAlt } from "react-icons/bi";
 export const StepContext = createContext();
 
 const health = [
-	{ label: 'Soin Dentaire', price: 15000 },
-	{ label: 'Ophtamologie', price: 32800 },
-	{ label: 'Pédiatrie', price: 45000 },
-	{ label: 'Urgence', price: 58000 },
+	{ label: 'Soin Dentaire', price: 2000 },
+	{ label: 'Ophtamologie', price: 1000 },
+	{ label: 'Pédiatrie', price: 500 },
+	{ label: 'Urgence', price: 500 },
 ]
 
 const Scan = () => {
