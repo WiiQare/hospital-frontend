@@ -2,7 +2,7 @@ import { CiSquarePlus } from "react-icons/ci";
 import CardHeader from "../../atoms/Card/Header";
 import { Fragment, useState } from "react";
 import { Dialog, Transition } from '@headlessui/react';
-import { TextField, TextareaAutosize } from "@mui/material";
+import { FormControl, InputAdornment, InputLabel, OutlinedInput, TextField, TextareaAutosize } from "@mui/material";
 import { useFormik } from "formik";
 import * as yup from "yup";
 import { useMutation } from "react-query";
@@ -16,11 +16,11 @@ import Fetcher from "../../../lib/Fetcher";
 
 const Service = () => {
 
-    const {data} = useSession();
+    const { data } = useSession();
     let [isOpen, setIsOpen] = useState(false)
     const [state, setState] = useState({ type: 0, message: '' });
 
-	const { data:result, isLoading, isError } = Fetcher(`/provider/${data.user.data.providerId}/service`, data.accessToken);
+    const { data: result, isLoading, isError } = Fetcher(`/provider/${data.user.data.providerId}/service`, data.accessToken);
 
 
     console.log(data);
@@ -59,19 +59,31 @@ const Service = () => {
     const onSubmit = async (values) => {
         if (Object.keys(values).length == 0) return console.log("Pas de données");
 
-        newServiceMutation.mutate({ ...values, price: 0, providerId: data.user.data.providerId, accessToken: data.accessToken })
+        if(parseInt(values.price) == NaN) {
+            setState({ type: 2, message: "Le prix doit être numérique" })
+                setTimeout(() => {
+                    setState({ type: 0, message: "" })
+                }, 3000);
+
+            return null
+        }
+
+        values.price = parseInt(values.price)
+        newServiceMutation.mutate({ ...values, providerId: data.user.data.providerId, accessToken: data.accessToken })
 
     };
 
     const ValidationSchema = yup.object().shape({
         name: yup.string().required("Nom du service est requis"),
         description: yup.string(),
+        price: yup.number("Le prix doit être numérique").required("Le prix est requis"),
     });
 
     const formik = useFormik({
         initialValues: {
             name: '',
-            description: ''
+            description: '',
+            price: ''
         },
         validationSchema: ValidationSchema,
         onSubmit
@@ -122,7 +134,7 @@ const Service = () => {
                     </Transition.Child>
                     <div className="flex items-center justify-center min-h-full p-4 text-center">
                         <div className="fixed inset-0 overflow-y-auto">
-                        {state.type > 0 ? state.type == 2 ? <Toast type={"danger"} message={state.message} close={closeToast} /> : (state.type == 1 ? <Toast type={"success"} message={state.message} close={closeToast} /> : <></>) : <></>}
+                            {state.type > 0 ? state.type == 2 ? <Toast type={"danger"} message={state.message} close={closeToast} /> : (state.type == 1 ? <Toast type={"success"} message={state.message} close={closeToast} /> : <></>) : <></>}
 
                             <div className="flex items-center justify-center min-h-full p-4 text-center">
                                 <Transition.Child
@@ -134,7 +146,7 @@ const Service = () => {
                                     leaveFrom="opacity-100 scale-100"
                                     leaveTo="opacity-0 scale-95"
                                 >
-                        
+
                                     <Dialog.Panel className="w-full max-w-md p-6 overflow-hidden text-left align-middle transition-all transform bg-white shadow-xl rounded-xl space-y-10">
                                         <Dialog.Title as="div" className="flex justify-between items-center mb-4">
                                             <h3 className="text-md font-semibold leading-6 text-gray-900">
@@ -143,7 +155,7 @@ const Service = () => {
 
                                         </Dialog.Title>
 
-                                        <form className="flex w-full  gap-3 flex-col" onSubmit={formik.handleSubmit}>
+                                        <form className="flex w-full  gap-4 flex-col" onSubmit={formik.handleSubmit}>
                                             <div className="flex flex-col gap-1">
                                                 <TextField
                                                     fullWidth
@@ -161,6 +173,23 @@ const Service = () => {
                                             </div>
 
                                             <div className="flex flex-col gap-1">
+                                                <FormControl fullWidth>
+                                                    <InputLabel htmlFor="outlined-adornment-amount">Prix (en $)</InputLabel>
+                                                    <OutlinedInput
+                                                        id="outlined-adornment-amount"
+                                                        type="number"
+                                                        name="price"
+                                                        onChange={(e) => formik.setFieldValue("price", e.target.value)}
+                                                        startAdornment={<InputAdornment position="start">$</InputAdornment>}
+                                                        label="Prix (en $)"
+                                                    />
+                                                </FormControl>
+
+                                                {formik.errors.price && formik.touched.price ? renderError(formik.errors.price) : <></>}
+
+                                            </div>
+
+                                            <div className="flex flex-col gap-1">
 
                                                 <TextField
                                                     fullWidth
@@ -171,7 +200,7 @@ const Service = () => {
                                                     placeholder="Description"
                                                     name="description"
                                                     variant="outlined"
-                                                    rows={5}
+                                                    rows={4}
                                                     {...formik.getFieldProps('description')}
                                                 />
                                                 {formik.errors.description && formik.touched.description ? renderError(formik.errors.description) : <></>}
