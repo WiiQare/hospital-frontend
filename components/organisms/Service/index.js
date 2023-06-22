@@ -10,20 +10,51 @@ import LoadingButton from "../../atoms/Loader/LoadingButton";
 import { addService } from "../../../lib/helper";
 import { useSession } from "next-auth/react";
 import Toast from "../../atoms/Toast";
-
+import DataTable from 'react-data-table-component';
 import Fetcher from "../../../lib/Fetcher";
 
+const columns = [
+    {
+        name: 'NOM DU SERVICE',
+        selector: row => (
+            <>
+                {row.name}
+            </>
+        ),
+        sortable: true,
+    },
+    {
+        name: 'MONTANT',
+        selector: row => (
+            <div className="py-8">
+                {new Intl.NumberFormat("en-US", { style: 'currency', currency: "USD" }).format(row.price)}
+                <br />
+                <span className="badge badge-ghost badge-sm">
+                    {new Intl.DateTimeFormat('fr-FR', { timeStyle: "short", dateStyle: "long" }).format(new Date(row.createdAt))}
+                </span>
+            </div>
+        ),
+        sortable: true,
+    },
+    {
+        name: 'DESCRIPTION',
+        selector: row => (
+            <>
+                {row.description}
+            </>
+        ),
+        sortable: true,
+    }
+];
 
 const Service = () => {
 
     const { data } = useSession();
     let [isOpen, setIsOpen] = useState(false)
     const [state, setState] = useState({ type: 0, message: '' });
+    const [selected, setSelected] = useState([]);
 
     const { data: result, isLoading, isError } = Fetcher(`/provider/${data.user.data.providerId}/service`, data.accessToken);
-
-
-    console.log(data);
 
 
     const closeModal = () => {
@@ -59,11 +90,11 @@ const Service = () => {
     const onSubmit = async (values) => {
         if (Object.keys(values).length == 0) return console.log("Pas de données");
 
-        if(parseInt(values.price) == NaN) {
+        if (parseInt(values.price) == NaN) {
             setState({ type: 2, message: "Le prix doit être numérique" })
-                setTimeout(() => {
-                    setState({ type: 0, message: "" })
-                }, 3000);
+            setTimeout(() => {
+                setState({ type: 0, message: "" })
+            }, 3000);
 
             return null
         }
@@ -97,6 +128,11 @@ const Service = () => {
         <p className="text-xs text-red-600 font-light flex items-center gap-1 px-1">{message}</p>
     );
 
+    const handleChange = async ({ selectedRows }) => {
+        setSelected([])
+        selectedRows.map(item => setSelected([...selected, item.transactionHash]))
+    };
+
     return (
         <div className="p-2 space-y-6 md:py-8 md:px-6 mb-20">
             <CardHeader
@@ -107,17 +143,64 @@ const Service = () => {
                 addClick={() => openModal()}
             />
 
-            <div className="py-10 mx-auto w-1/2 flex flex-col justify-center items-center gap-4">
-                <div className="flex justify-center items-center">
-                    <img src="/images/service.png" alt="" className="w-40 opacity-80 object-cover" />
-                </div>
+            <div className="border rounded-lg overflow-x-auto w-full relative">
+                {
+                    isLoading ? (<>Loading...</>) : (
+                        <>
 
-                <p className="text-gray-500 text-sm">Aucun service actuellement ajouté...</p>
-                <button onClick={() => openModal()} className='bg-orange text-white text-sm px-3 py-2.5 rounded-lg effect-up shadow-sm font-medium flex'>
-                    <CiSquarePlus className="mr-2 h-5 w-5" />
-                    Ajouter
-                </button>
+                            {result.length > 0 ? (
+                                <>
+                                    <DataTable
+                                        columns={columns}
+                                        data={result}
+                                        fixedHeader
+                                        className="px-8 bg-white"
+                                        paginationPerPage={20}
+                                        paginationTotalRows={false}
+                                        pagination
+                                        title="Liste des services"
+                                        selectableRows
+                                        onSelectedRowsChange={handleChange}
+                                        persistTableHead
+                                        paginationComponentOptions={{
+                                            rowsPerPageText: "Ligne par page",
+                                            rangeSeparatorText: 'de',
+                                            selectAllRowsItem: true,
+                                            selectAllRowsItemText: 'Voir tous',
+                                        }}
+                                    />
+
+
+                                    {selected.length > 0 ? (
+                                        <div className="absolute bottom-2 px-10">
+                                            <button className=" bg-orange text-xs md:text-sm py-2 px-4 rounded-lg effect-up text-white shadow" onClick={() => alert(`Création d'un package avec ${selected.length} services`)}>+ Créer un package</button>
+                                        </div>
+                                    ) : <></>}
+
+
+                                </>
+                            ) : (
+
+                                <div className="py-10 mx-auto w-1/2 flex flex-col justify-center items-center gap-4">
+                                    <div className="flex justify-center items-center">
+                                        <img src="/images/service.png" alt="" className="w-40 opacity-80 object-cover" />
+                                    </div>
+
+                                    <p className="text-gray-500 text-sm">Aucun service actuellement ajouté...</p>
+                                    <button onClick={() => openModal()} className='bg-orange text-white text-sm px-3 py-2.5 rounded-lg effect-up shadow-sm font-medium flex'>
+                                        <CiSquarePlus className="mr-2 h-5 w-5" />
+                                        Ajouter
+                                    </button>
+                                </div>
+                            )}
+
+                        </>
+                    )
+                }
             </div>
+
+
+
 
             <Transition appear show={isOpen} as={Fragment}>
                 <Dialog as="div" className="relative z-50" onClose={closeModal}>
