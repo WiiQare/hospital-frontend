@@ -26,8 +26,8 @@ const columns = [
     {
         name: 'MONTANT',
         selector: row => (
-            <div className="py-8">
-                {new Intl.NumberFormat("en-US", { style: 'currency', currency: "USD" }).format(row.price)}
+            <div className="py-8 space-y-2">
+                {new Intl.NumberFormat("en-US", { style: 'currency', currency: "CDF" }).format(row.price)}
                 <br />
                 <span className="badge badge-ghost badge-sm">
                     {new Intl.DateTimeFormat('fr-FR', { timeStyle: "short", dateStyle: "long" }).format(new Date(row.createdAt))}
@@ -68,7 +68,6 @@ const Service = () => {
     const newServiceMutation = useMutation(addService, {
         onSuccess: (res) => {
 
-            console.log(res);
             if (res.code) {
                 setState({ type: 2, message: res.message ?? res.description })
                 setTimeout(() => {
@@ -263,7 +262,7 @@ const Service = () => {
                                                         type="number"
                                                         name="price"
                                                         onChange={(e) => formik.setFieldValue("price", e.target.value)}
-                                                        startAdornment={<InputAdornment position="start">$</InputAdornment>}
+                                                        startAdornment={<InputAdornment position="start">CDF</InputAdornment>}
                                                         label="Prix (en $)"
                                                     />
                                                 </FormControl>
