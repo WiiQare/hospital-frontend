@@ -3,14 +3,14 @@
 exports[`Badge should render the component 1`] = `
 <div>
   <li
-    class="flex items-center justify-start py-2 px-4 text-sm text-gray-700 cursor-pointer hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-600 dark:hover:text-white"
+    className="flex items-center justify-start py-2 px-4 text-sm text-gray-700 cursor-pointer hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-600 dark:hover:text-white"
   >
     <div
-      class="flex items-center gap-3"
+      className="flex items-center gap-3"
     >
       <img
         alt="avatar"
-        class="w-14 h-14 object-cover rounded-2xl"
+        className="w-14 h-14 object-cover rounded-2xl"
         data-nimg="1"
         decoding="async"
         height="56"
@@ -22,12 +22,12 @@ exports[`Badge should render the component 1`] = `
       />
       <span>
         <h3
-          class="font-bold"
+          className="font-bold"
         >
           Title
         </h3>
         <font
-          class="text-xs text-gray-700"
+          className="text-xs text-gray-700"
         >
           Time
         </font>

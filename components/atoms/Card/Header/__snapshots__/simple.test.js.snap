@@ -3,16 +3,16 @@
 exports[`SimpleHeader should render the component 1`] = `
 <div>
   <div
-    class="flex flex-col md:flex-row gap-6 md:gap-0 md:items-center justify-between"
+    className="flex flex-col md:flex-row gap-6 md:gap-0 md:items-center justify-between"
   >
     <div
-      class="space-y-2"
+      className="space-y-2"
     >
       <h2
-        class="font-bold text-xl text-gray-700"
+        className="font-bold text-xl text-gray-700"
       />
       <span
-        class="text-xs text-gray-500"
+        className="text-xs text-gray-500"
       />
     </div>
   </div>

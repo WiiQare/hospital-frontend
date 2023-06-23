@@ -3,55 +3,55 @@
 exports[`RangeSlider should render the component 1`] = `
 <div>
   <div
-    class="overflow-hidden"
+    className="overflow-hidden"
   >
     <div
-      class="flex justify-between items-center my-6 "
+      className="flex justify-between items-center my-6 "
     >
       <div
-        class="rounded-md flex items-center"
+        className="rounded-md flex items-center"
       >
         <span
-          class="p-2 font-extralight text-xs"
+          className="p-2 font-extralight text-xs"
         >
            Min
         </span>
         <label
-          class="text-sky font-bold text-2xl flex items-start"
+          className="text-sky font-bold text-2xl flex items-start"
           for=""
         >
           10
            
           <span
-            class="text-gray-500 font-light text-xs"
+            className="text-gray-500 font-light text-xs"
           >
             $/mo
           </span>
         </label>
       </div>
       <div
-        class="ml-2 font-semibold text-lg"
+        className="ml-2 font-semibold text-lg"
       >
          - 
       </div>
       <div
-        class=" "
+        className=" "
       >
         <div
-          class="rounded-md flex items-center"
+          className="rounded-md flex items-center"
         >
           <span
-            class="p-2 font-extralight text-xs"
+            className="p-2 font-extralight text-xs"
           >
              Max
           </span>
           <label
-            class="text-sky font-bold text-2xl flex items-start"
+            className="text-sky font-bold text-2xl flex items-start"
             for=""
           >
             100
             <span
-              class="text-gray-500 font-light text-xs"
+              className="text-gray-500 font-light text-xs"
             >
               $/mo
             </span>
@@ -60,21 +60,21 @@ exports[`RangeSlider should render the component 1`] = `
       </div>
     </div>
     <div
-      class="mb-4"
+      className="mb-4"
     >
       <div
-        class="slider relative h-1 rounded-md bg-gray-300"
+        className="slider relative h-1 rounded-md bg-gray-300"
       >
         <div
-          class="progress absolute h-1 bg-green-300 rounded "
+          className="progress absolute h-1 bg-green-300 rounded "
           style="left: 0.01%; right: 0.9%;"
         />
       </div>
       <div
-        class="range-input relative  "
+        className="range-input relative  "
       >
         <input
-          class="range-min absolute w-full  -top-1  h-1   bg-transparent  appearance-none pointer-events-none"
+          className="range-min absolute w-full  -top-1  h-1   bg-transparent  appearance-none pointer-events-none"
           max="1000"
           min="0"
           step="1"
@@ -82,7 +82,7 @@ exports[`RangeSlider should render the component 1`] = `
           value="10"
         />
         <input
-          class="range-max absolute w-full  -top-1 h-1  bg-transparent appearance-none  pointer-events-none"
+          className="range-max absolute w-full  -top-1 h-1  bg-transparent appearance-none  pointer-events-none"
           max="1000"
           min="0"
           step="1"
