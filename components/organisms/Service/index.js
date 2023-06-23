@@ -7,7 +7,7 @@ import { useFormik } from "formik";
 import * as yup from "yup";
 import { useMutation } from "react-query";
 import LoadingButton from "../../atoms/Loader/LoadingButton";
-import { addService } from "../../../lib/helper";
+import { addPackage, addService } from "../../../lib/helper";
 import { useSession } from "next-auth/react";
 import Toast from "../../atoms/Toast";
 import DataTable from 'react-data-table-component';
@@ -95,6 +95,27 @@ const Service = () => {
         }
     });
 
+    const newPackageMutation = useMutation(addPackage, {
+        onSuccess: (res) => {
+
+            if (res.code) {
+                setState({ type: 2, message: res.message ?? res.description })
+                setTimeout(() => {
+                    setState({ type: 0, message: "" })
+                }, 3000);
+
+            } else {
+                setState({ type: 1, message: "Package ajouté avec succès..." });
+                formik.handleReset()
+                setTimeout(() => {
+                    closeModalForPackage();
+                    setState({ type: 0, message: "" })
+                }, 3000);
+
+            };
+        }
+    });
+
     const onSubmit = async (values) => {
         if (Object.keys(values).length == 0) return console.log("Pas de données");
 
@@ -124,7 +145,11 @@ const Service = () => {
             return null
         }
 
-        console.log(values);
+        values.services = selected;
+        values.price = parseInt(values.price)
+
+        newPackageMutation.mutate({ ...values, providerId: data.user.data.providerId, accessToken: data.accessToken })
+
 
     };
 
@@ -421,7 +446,7 @@ const Service = () => {
                                                     placeholder="Description"
                                                     name="description"
                                                     variant="outlined"
-                                                    rows={4}
+                                                    rows={3}
                                                     {...formikPackage.getFieldProps('description')}
                                                 />
                                                 {formikPackage.errors.description && formikPackage.touched.description ? renderError(formikPackage.errors.description) : <></>}
@@ -470,7 +495,7 @@ const Service = () => {
 
                                             <div className="flex flex-row-reverse gap-4">
                                                 <button className=" bg-orange text-sm py-2 px-4 rounded-lg effect-up text-white" type="submit">
-                                                    {newServiceMutation.isLoading ? <LoadingButton /> : 'Créer le package'}
+                                                    {newPackageMutation.isLoading ? <LoadingButton /> : 'Créer le package'}
                                                 </button>
 
                                             </div>
