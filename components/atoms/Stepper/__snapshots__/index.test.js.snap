@@ -3,22 +3,22 @@
 exports[`Stepper should render the component 1`] = `
 <div>
   <div
-    class="w-full md:w-2/3 flex flex-row items-center justify-center py-4 mb-14 md:mb-16"
+    className="w-full md:w-2/3 flex flex-row items-center justify-center py-4 mb-14 md:mb-16"
   >
     <div
-      class="flex flex-col relative"
+      className="flex flex-col relative"
     >
       <div
-        class="stepper-item flex items-center justify-center w-12 h-12 text-center font-medium border-2 rounded-full bg-primary text-white"
+        className="stepper-item flex items-center justify-center w-12 h-12 text-center font-medium border-2 rounded-full bg-primary text-white"
       >
         1
       </div>
       <span
-        class="absolute -bottom-6 text-xs w-max md:-left-8"
+        className="absolute -bottom-6 text-xs w-max md:-left-8"
       >
         Identity 
         <span
-          class="hidden md:inline"
+          className="hidden md:inline"
         >
           For Receiver
         </span>
@@ -26,22 +26,22 @@ exports[`Stepper should render the component 1`] = `
       </span>
     </div>
     <div
-      class="flex-auto border-t-2"
+      className="flex-auto border-t-2"
     />
     <div
-      class="flex flex-col relative"
+      className="flex flex-col relative"
     >
       <div
-        class="stepper-item flex items-center justify-center w-12 h-12 text-center font-medium border-2 rounded-full"
+        className="stepper-item flex items-center justify-center w-12 h-12 text-center font-medium border-2 rounded-full"
       >
         2
       </div>
       <span
-        class="absolute -bottom-6 text-xs w-max md:-left-8"
+        className="absolute -bottom-6 text-xs w-max md:-left-8"
       >
         Amount 
         <span
-          class="hidden md:inline"
+          className="hidden md:inline"
         >
           to be send
         </span>
@@ -49,22 +49,22 @@ exports[`Stepper should render the component 1`] = `
       </span>
     </div>
     <div
-      class="flex-auto border-t-2"
+      className="flex-auto border-t-2"
     />
     <div
-      class="flex flex-col relative"
+      className="flex flex-col relative"
     >
       <div
-        class="stepper-item flex items-center justify-center w-12 h-12 text-center font-medium border-2 rounded-full"
+        className="stepper-item flex items-center justify-center w-12 h-12 text-center font-medium border-2 rounded-full"
       >
         3
       </div>
       <span
-        class="absolute -bottom-6 text-xs w-max md:-left-8"
+        className="absolute -bottom-6 text-xs w-max md:-left-8"
       >
         Share
         <span
-          class="hidden md:inline"
+          className="hidden md:inline"
         >
            QR Code Voucher
         </span>

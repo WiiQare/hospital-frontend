@@ -47,22 +47,22 @@ const columns = [
 				{
 					row.status == "UNCLAIMED" ? (
 						<>
-							<span class="inline-flex items-center gap-1.5 py-1.5 px-3 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
-								<span class="w-1.5 h-1.5 inline-block bg-indigo-400 rounded-full"></span>
+							<span className="inline-flex items-center gap-1.5 py-1.5 px-3 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+								<span className="w-1.5 h-1.5 inline-block bg-indigo-400 rounded-full"></span>
 								Non-reclamé
 							</span>
 						</>
 					) : row.status == "PENDING" ? (
 						<>
-							<span class="inline-flex items-center gap-1.5 py-1.5 px-3 rounded-full text-xs font-medium bg-amber-100 text-amber-800">
-								<span class="w-1.5 h-1.5 inline-block bg-amber-400 rounded-full"></span>
+							<span className="inline-flex items-center gap-1.5 py-1.5 px-3 rounded-full text-xs font-medium bg-amber-100 text-amber-800">
+								<span className="w-1.5 h-1.5 inline-block bg-amber-400 rounded-full"></span>
 								Traitement en cours
 							</span>
 						</>
 					) : (
 						<>
-							<span class="inline-flex items-center gap-1.5 py-1.5 px-3 rounded-full text-xs font-medium bg-green-100 text-green-800">
-								<span class="w-1.5 h-1.5 inline-block bg-green-400 rounded-full"></span>
+							<span className="inline-flex items-center gap-1.5 py-1.5 px-3 rounded-full text-xs font-medium bg-green-100 text-green-800">
+								<span className="w-1.5 h-1.5 inline-block bg-green-400 rounded-full"></span>
 								Transmis avec succès
 							</span>
 						</>

@@ -6,13 +6,13 @@ Object {
   "baseElement": <body>
     <div>
       <ul
-        class="flex gap-2"
+        className="flex gap-2"
       />
     </div>
   </body>,
   "container": <div>
     <ul
-      class="flex gap-2"
+      className="flex gap-2"
     />
   </div>,
   "debug": [Function],

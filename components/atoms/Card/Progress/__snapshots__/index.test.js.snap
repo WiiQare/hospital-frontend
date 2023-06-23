@@ -3,10 +3,10 @@
 exports[`Progress should render the component 1`] = `
 <div>
   <div
-    class="undefined py-4 px-4 rounded-lg flex items-center gap-4"
+    className="undefined py-4 px-4 rounded-lg flex items-center gap-4"
   >
     <div
-      class="radial-progress undefined"
+      className="radial-progress undefined"
       style="--value: 50; --size: 4rem;"
     >
       50
@@ -14,10 +14,10 @@ exports[`Progress should render the component 1`] = `
     </div>
     <div>
       <h3
-        class="text-gray-700 font-bold text-sm"
+        className="text-gray-700 font-bold text-sm"
       />
       <span
-        class="text-sm"
+        className="text-sm"
       >
         $
       </span>

@@ -152,11 +152,11 @@ function Identity() {
               {requestComplete && (
                 <div className="absolute right-4 top-1/2">
                   <div
-                    class="animate-spin inline-block w-4 h-4 border-[1px] border-current border-t-transparent text-blue-400 rounded-full"
+                    className="animate-spin inline-block w-4 h-4 border-[1px] border-current border-t-transparent text-blue-400 rounded-full"
                     role="status"
                     aria-label="loading"
                   >
-                    <span class="sr-only">Loading...</span>
+                    <span className="sr-only">Loading...</span>
                   </div>
                 </div>
               )}

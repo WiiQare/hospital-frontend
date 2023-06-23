@@ -3,17 +3,17 @@
 exports[`CardProvider should render the component 1`] = `
 <div>
   <div
-    class="border hover:shadow rounded-lg py-4 px-5 flex flex-col md:flex-row justify-between gap-6 bg-white cursor-pointer"
+    className="border hover:shadow rounded-lg py-4 px-5 flex flex-col md:flex-row justify-between gap-6 bg-white cursor-pointer"
   >
     <div
-      class="flex gap-3"
+      className="flex gap-3"
     >
       <div
-        class="w-32 h-24 md:w-40 md:h-32 border rounded-lg overflow-hidden"
+        className="w-32 h-24 md:w-40 md:h-32 border rounded-lg overflow-hidden"
       >
         <img
           alt="bima"
-          class="objectif-cover w-full h-full"
+          className="objectif-cover w-full h-full"
           data-nimg="1"
           decoding="async"
           height="24"
@@ -25,27 +25,27 @@ exports[`CardProvider should render the component 1`] = `
         />
       </div>
       <div
-        class="flex flex-col gap-3"
+        className="flex flex-col gap-3"
       >
         <div
-          class="text-gray-700 space-y-2"
+          className="text-gray-700 space-y-2"
         >
           <h3
-            class="text-lg md:text-2xl font-bold"
+            className="text-lg md:text-2xl font-bold"
           >
             B-Stack Family
           </h3>
           <span
-            class="text-sm font-light"
+            className="text-sm font-light"
           >
             Provided by BIMA
           </span>
         </div>
         <span
-          class="flex gap-3 items-center text-sm text-gray-700 font-light"
+          className="flex gap-3 items-center text-sm text-gray-700 font-light"
         >
           <span
-            class="bg-orange px-2 py-1 text-white text-sm rounded-md w-fit flex gap-3 items-center"
+            className="bg-orange px-2 py-1 text-white text-sm rounded-md w-fit flex gap-3 items-center"
           >
             3.69 
             <svg
@@ -67,10 +67,10 @@ exports[`CardProvider should render the component 1`] = `
       </div>
     </div>
     <div
-      class="space-y-2"
+      className="space-y-2"
     >
       <span
-        class="py-1 px-2 rounded-full bg-[rgba(254,128,35,.3)] text-xs text-gray-700 font-light flex items-center gap-2 w-fit"
+        className="py-1 px-2 rounded-full bg-[rgba(254,128,35,.3)] text-xs text-gray-700 font-light flex items-center gap-2 w-fit"
       >
         TeleHealth 
         <svg
@@ -105,10 +105,10 @@ exports[`CardProvider should render the component 1`] = `
         </svg>
       </span>
       <ul
-        class="space-y-2 w-64"
+        className="space-y-2 w-64"
       >
         <li
-          class="flex items-center gap-2 text-xs text-gray-700 font-light"
+          className="flex items-center gap-2 text-xs text-gray-700 font-light"
         >
           <svg
             enable-background="new 0 0 48 48"
@@ -129,7 +129,7 @@ exports[`CardProvider should render the component 1`] = `
            Consultation Service 24/7 - Generalists and Specialists
         </li>
         <li
-          class="flex items-center gap-2 text-xs text-gray-700 font-light"
+          className="flex items-center gap-2 text-xs text-gray-700 font-light"
         >
           <svg
             enable-background="new 0 0 48 48"
@@ -150,7 +150,7 @@ exports[`CardProvider should render the component 1`] = `
            Insurance Benefits GHC 76,000
         </li>
         <li
-          class="flex items-center gap-2 text-xs text-gray-700 font-light"
+          className="flex items-center gap-2 text-xs text-gray-700 font-light"
         >
           <svg
             enable-background="new 0 0 48 48"
@@ -173,25 +173,25 @@ exports[`CardProvider should render the component 1`] = `
       </ul>
     </div>
     <div
-      class="text-gray-700 flex md:block items-center gap-4 space-y-2"
+      className="text-gray-700 flex md:block items-center gap-4 space-y-2"
     >
       <h5
-        class="font-light"
+        className="font-light"
       >
         Starts at
       </h5>
       <h3
-        class="text-2xl font-semibold"
+        className="text-2xl font-semibold"
       >
         $12.15
         <span
-          class="font-extralight text-lg"
+          className="font-extralight text-lg"
         >
           /mo
         </span>
       </h3>
       <svg
-        class="hidden md:block"
+        className="hidden md:block"
         fill="currentColor"
         height="24"
         stroke="currentColor"
@@ -206,15 +206,15 @@ exports[`CardProvider should render the component 1`] = `
       </svg>
     </div>
     <div
-      class="self-center flex md:flex-col gap-3"
+      className="self-center flex md:flex-col gap-3"
     >
       <button
-        class="bg-blue-600 text-white font-extralight py-3 md:px-9 px-5 rounded-lg text-sm"
+        className="bg-blue-600 text-white font-extralight py-3 md:px-9 px-5 rounded-lg text-sm"
       >
         Learn more
       </button>
       <button
-        class="border border-blue-600 hover:bg-[rgba(28,100,242,.3)] text-blue-600 font-extralight py-3 md:px-9 px-5 rounded-lg text-sm transition duration-300"
+        className="border border-blue-600 hover:bg-[rgba(28,100,242,.3)] text-blue-600 font-extralight py-3 md:px-9 px-5 rounded-lg text-sm transition duration-300"
       >
         Enroll now
       </button>
