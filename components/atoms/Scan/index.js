@@ -11,24 +11,19 @@ import { useFormik } from "formik";
 import * as yup from "yup";
 import ScanDetails from "./details";
 import SecurityCode from "./security";
-import { BiTrash, BiTrashAlt } from "react-icons/bi";
+import { BiTrashAlt } from "react-icons/bi";
 import { useSession } from "next-auth/react";
 import Fetcher from "../../../lib/Fetcher";
 export const StepContext = createContext();
 
 const Scan = () => {
 	const [data, setData] = useState(null);
-	const [health, setHealth] = useState([]);
 	const [step, setStep] = useState(-1);
 	const [value, setValue] = useState(0);
 	const [services, setServices] = useState([]);
 	const [total, setTotal] = useState(0);
     const { data: session } = useSession();
     const { data: result, isLoading, isError } = Fetcher(`/provider/${session.user.data.providerId}/service`, session.accessToken);
-
-	useEffect(() => {
-		!isLoading && result.map(res => setHealth([...health, {label: res.name, price: res.price}]))
-	}, [result, isLoading]);
 
 	const handleChange = (event, newValue) => {
 		setValue(newValue);
@@ -95,7 +90,8 @@ const Scan = () => {
 											labelId="demo-simple-select-label"
 											id="demo-simple-select"
 											label="Service"
-											options={health}
+											options={result}
+											getOptionLabel={(result) => result.name}
 											renderInput={(params) => <TextField {...params} label="Choisissez un service" name="service" />}
 											onChange={(e, value) => formik.setFieldValue("service", value)}
 										/>

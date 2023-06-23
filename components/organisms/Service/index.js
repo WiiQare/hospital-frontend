@@ -17,9 +17,9 @@ const columns = [
     {
         name: 'NOM DU SERVICE',
         selector: row => (
-            <>
+            <span className="font-semibold text-md">
                 {row.name}
-            </>
+            </span>
         ),
         sortable: true,
     },
