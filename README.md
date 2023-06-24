@@ -1,7 +1,7 @@
 # Documentation of the WiiQare Project
 
 [![codecov](https://codecov.io/gh/WiiQare/hospital-frontend/branch/main/graph/badge.svg?token=H68512TR55)](https://codecov.io/gh/WiiQare/hospital-frontend)
-
+[![Tests](https://github.com/WiiQare/hospital-frontend/actions/workflows/test.js.yml/badge.svg)](https://github.com/WiiQare/hospital-frontend/actions/workflows/test.js.yml)
 
 This Next.js project is a web application developed for a healthcare company called WiiQare. Its aim is to provide a robust and user-friendly technological platform to meet the specific needs of the medical industry. Through this platform, expatriates can send money to their family members living in African countries for medical purposes.
 
