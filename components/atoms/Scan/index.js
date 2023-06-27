@@ -116,10 +116,10 @@ const Scan = () => {
 													{
 														services.map(service => (
 															<div className="flex items-center justify-between">
-																<p className="text-sm font-medium text-gray-900">{service.label}</p>
+																<p className="text-sm font-medium text-gray-900">{service.name}</p>
 																<p className="font-normal text-sm text-gray-600 flex gap-2 items-center">
 																	{new Intl.NumberFormat("en-US", {style: 'currency', currency: "CDF"}).format(service.price)}
-																	<BiTrashAlt size={17} className="text-red-500 cursor-pointer" title={`Supprimer ${service.label}`} onClick={() => removeFromList(service.label, service.price)} />
+																	<BiTrashAlt size={17} className="text-red-500 cursor-pointer" title={`Supprimer ${service.name}`} onClick={() => removeFromList(service.name, service.price)} />
 																</p>
 															</div>
 														))
