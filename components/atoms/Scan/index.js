@@ -57,7 +57,7 @@ const Scan = () => {
     });
 
 	const removeFromList = (delValue, amount) => {
-		let newList =  services.filter(arr => arr.label !== delValue);
+		let newList =  services.filter(arr => arr.name !== delValue);
 
 		setServices(newList)
 		setTotal(total - amount)
