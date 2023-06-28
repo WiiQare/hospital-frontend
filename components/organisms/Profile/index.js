@@ -27,15 +27,6 @@ const TabHistories = [
 	{
 		name: "Établissement",
 	},
-
-	{
-
-	},
-
-	{
-		name: "Établissement",
-	},
-
 	{
 
 		name: "Personne à contacter",
@@ -355,11 +346,6 @@ function PersonContact() {
 					fullWidth
 					type={"email"}
 					className="placeholder:text-gray-400 hover:outline-none focus:ring-0 border border-gray-300 rounded-lg focus:ring-sky"
-
-					label="Adresse email"
-					placeholder="Adresse email"
-
-
 					label="Adresse email"
 					placeholder="Adresse email"
 					name="email"
@@ -367,19 +353,15 @@ function PersonContact() {
 				/>
 			</div>
 
-			<div className="flex flex-col gap-1">
-				<MuiPhoneNumber
+			<div className="">
+				<TextField
 					fullWidth
-					label="N° Téléphone personnel"
-
-					label="Adress"
-					placeholder="123 Main Street"
-
-					name="email"
-
+					type={"text"}
+					className="placeholder:text-gray-400 hover:outline-none focus:ring-0 border border-gray-300 rounded-lg focus:ring-sky"
+					label="Adresse physique"
+					placeholder="Adresse physique"
+					name="address"
 					variant="outlined"
-					defaultCountry={"cd"}
-					name="contactPersonPhone"
 				/>
 			</div>
 
