@@ -39,15 +39,18 @@ const Scan = () => {
 
 	const onSubmit = async (values) => {
         if (Object.keys(values).length == 0) return console.log("Pas de données");
+		
+		formik.errors = {}
 
 		let exist = services.indexOf(values.service)
-
 
 		if(exist == -1 ) {
 			setServices([...services, values.service]);
 	
-			setTotal(total + values.service.price);
-			formik.handleReset()
+			setTotal(total + parseFloat(values.service.price));
+
+		} else {
+			formik.errors.service = "Déjà ajouté !"
 		}
 		
     };
