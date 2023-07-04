@@ -46,8 +46,10 @@ const Scan = () => {
 		if(exist == -1 ) {
 			setServices([...services, values.service]);
 	
-			setTotal(total + values.service.price);
-			formik.handleReset()
+			setTotal(total + parseFloat(values.service.price));
+
+		} else {
+			formik.errors.service = "Déjà ajouté !"
 		}
 		
     };
