@@ -39,9 +39,10 @@ const Scan = () => {
 
 	const onSubmit = async (values) => {
         if (Object.keys(values).length == 0) return console.log("Pas de données");
+		
+		formik.errors = {}
 
 		let exist = services.indexOf(values.service)
-
 
 		if(exist == -1 ) {
 			setServices([...services, values.service]);
