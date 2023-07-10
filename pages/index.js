@@ -13,6 +13,7 @@ import Fetcher from "../lib/Fetcher";
 import Link from "next/link";
 import { useEffect } from "react";
 import { useRouter } from 'next/router';
+import { MdQrCodeScanner } from "react-icons/md";
 
 const Page = () => {
 	const router = useRouter();
@@ -62,6 +63,7 @@ const Page = () => {
 								<img src="/images/sketch.png" alt="Sketch" className="h-full object-cover w-full" />
 							</div>
 						</div>
+
 						<div className="grid gap-6 w-full grid-cols-2 md:gap-4">
 							<div className="bg-gray-50 w-full border border-gray-200 rounded-lg py-8 px-4 shadow-sm h-fit">
 
@@ -102,6 +104,21 @@ const Page = () => {
 										</div>
 									)
 								}
+							</div>
+						</div>
+
+						<div className="flex justify-between items-end bg-gray-50 shadow-sm col-span-2 border border-gray-200 rounded-lg h-fit">
+							<div className="px-8 md:px-12 md:py-6 flex justify-between items-center w-full h-full">
+								
+								<p className="text-xl font-extrabold text-gray-500">
+									Scannez le Pass Santé du Patient
+								</p>
+								<Link href="/scan">
+									<button className="inline-flex justify-center items-center py-2.5 px-5 text-base font-medium text-center text-white rounded-lg bg-orange effect-up gap-2">
+										<MdQrCodeScanner />
+										Scannez
+									</button>
+								</Link>
 							</div>
 						</div>
 					</div>
