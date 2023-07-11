@@ -161,7 +161,7 @@ const ScanDetails = ({ shorten }) => {
 					<ItemsDetails title={"Montant Hopital"} value={new Intl.NumberFormat("en-US", { style: 'currency', currency: dataAmountHospital.currency }).format(dataAmountHospital.amount)} otherValue={new Intl.DateTimeFormat('fr-FR', { dateStyle: 'medium' }).format(new Date())} />
 
 					{
-						total > data.amount ? (
+						(dataAmount.amount - dataAmountHospital.amount) < 0 ? (
 							<span className="text-xs text-red-400 font-normal px-4">* Ce traitement coûte plus cher que le montant dans ce Pass Santé</span>
 						) : <></>
 					}
