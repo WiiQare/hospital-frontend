@@ -8,6 +8,8 @@ import { MdPayments } from 'react-icons/md';
 import { StepContext } from ".";
 import { useRouter } from "next/router";
 import { convertCurrency } from "../../../lib/helper";
+import CurrencyFlag from "react-currency-flags";
+
 
 
 const ScanDetails = ({ shorten }) => {
@@ -19,7 +21,7 @@ const ScanDetails = ({ shorten }) => {
 	const [copy, setCopy] = useState(false);
 	const [data, setData] = useState(null);
 	const [dataAmount, setDataAmount] = useState(null);
-	const [dataAmountHospital, setDataAmountHospital] = useState({ amount: total, currency: "CDF" });
+	const [dataAmountHospital, setDataAmountHospital] = useState({ amount: total, currency: "CDF", rate: 1.00 });
 	const [currencyProvider, setCurrencyProvider] = useState('CDF');
 	const [convertRequest, setConvertRequest] = useState(false);
 
@@ -37,6 +39,7 @@ const ScanDetails = ({ shorten }) => {
 
 			if (/AUTH_TOKEN_EXPIRED/i.test(json.code)) router.push('/login')
 
+			console.log(json);
 			setData(json)
 			setDataAmount({ amount: json.amount, currency: json.currency })
 
@@ -49,31 +52,32 @@ const ScanDetails = ({ shorten }) => {
 			);
 
 			setConvertRequest(false);
-			setDataAmount({ amount: response.result, currency: response.query.to })
+			setDataAmount({ amount: response.result, currency: response.query.to, rate: response.info.rate })
 		});
 	}, []);
 
 	const handleCurrency = async (e) => {
-		setCurrencyProvider(e.target.checked == true ? 'USD' : 'CDF');
+
+		setCurrencyProvider(currencyProvider == 'CDF' ? 'USD' : 'CDF');
 
 		setConvertRequest(true);
 		const res = await convertCurrency(
-			dataAmount.currency,
-			dataAmount.amount,
-			e.target.checked == true ? 'USD' : 'CDF',
+			data.currency,
+			data.amount,
+			currencyProvider == 'CDF' ? 'USD' : 'CDF',
 		);
 
 		const resHospital = await convertCurrency(
 			"CDF",
 			total,
-			e.target.checked == true ? 'USD' : 'CDF',
+			currencyProvider == 'CDF' ? 'USD' : 'CDF',
 		);
 
 		setConvertRequest(false);
 
-		setDataAmount({ amount: res.result, currency: res.query.to })
-		setDataAmountHospital({ amount: resHospital.result, currency: resHospital.query.to })
-		console.log(resHospital);
+		setDataAmount({ amount: res.result, currency: res.query.to, rate: res.info.rate })
+		setDataAmountHospital({ amount: resHospital.result, currency: resHospital.query.to, rate: resHospital.info.rate })
+		console.log(res);
 	}
 
 
@@ -147,8 +151,8 @@ const ScanDetails = ({ shorten }) => {
 						) : (
 							<label for="Toggle4" className="inline-flex items-center rounded-full overflow-hidden cursor-pointer bg-white border-2 border-primary text-primary">
 								<input id="Toggle4" type="checkbox" className="hidden peer" onChange={(e) => handleCurrency(e)} />
-								<span className="px-4 py-2 bg-transparent peer-checked:bg-primary text-primary peer-checked:text-white font-semibold select-none text-sm">CDF</span>
-								<span className="px-4 py-2 bg-primary text-white font-semibold peer-checked:bg-white peer-checked:text-primary select-none text-sm">USD</span>
+								<span className={`px-4 py-2  ${currencyProvider == 'CDF' ? 'bg-primary text-white' : 'bg-transparent text-primary'} font-semibold select-none text-sm`}>CDF</span>
+								<span className={`px-4 py-2  font-semibold ${currencyProvider == 'USD' ? 'bg-primary text-white' : 'bg-transparent text-primary'} select-none text-sm`}>USD</span>
 							</label>
 						)}
 
@@ -157,8 +161,62 @@ const ScanDetails = ({ shorten }) => {
 
 					<ItemsDetails title={"Nom du Patient"} value={data.patientNames} exclamation={true} />
 					<ItemsDetails title={"Hôpital"} value={session?.user?.data.names ?? session?.user?.data.name} exclamation={false} />
-					<ItemsDetails title={"Montant Pass Santé"} value={new Intl.NumberFormat("en-US", { style: 'currency', currency: dataAmount.currency }).format(dataAmount.amount)} otherValue={`${(dataAmount.amount - dataAmountHospital.amount) > 0 ? 'Reste: ' : 'Manquant: '}` + new Intl.NumberFormat("en-US", { style: 'currency', currency: currencyProvider }).format(dataAmount.amount - dataAmountHospital.amount)} />
-					<ItemsDetails title={"Montant Hopital"} value={new Intl.NumberFormat("en-US", { style: 'currency', currency: dataAmountHospital.currency }).format(dataAmountHospital.amount)} otherValue={new Intl.DateTimeFormat('fr-FR', { dateStyle: 'medium' }).format(new Date())} />
+
+					<div className="flex flex-col hover:shadow-sm w-full">
+						<div className='flex justify-between px-6 py-2 items-center'>
+							<div className='flex flex-col  mb-2 gap-1'>
+								<h1 className='font-normal text-gray-400 text-sm'>Montant Pass Santé</h1>
+								<div className='flex gap-3 items-start'>
+									<h3 className='font-bold text-sm text-gray-700 flex items-center gap-1'>
+										<CurrencyFlag
+											currency={data.currency}
+											className="rounded-full !h-4 !w-4 object-cover"
+										/>
+										{new Intl.NumberFormat("fr-FR", { style: 'currency', currency: data.currency }).format(data.amount)}
+									</h3>
+
+									{convertRequest ? (<div className="pl-8">
+										<div
+											className="animate-spin inline-block w-4 h-4 border-[2px] border-current border-t-transparent text-gray-400 rounded-full"
+											role="status"
+											ariaLabel="loading"
+										>
+											<span className="sr-only">Loading...</span>
+										</div>
+									</div>
+									) : (
+										<div className="flex flex-col gap-1">
+
+											<div className="flex flex-col gap-1">
+
+												<p className="font-normal text-xs text-gray-600">
+													{data.currency} 1.00 ={" "}
+													<span className="text-orange">
+														{new Intl.NumberFormat("fr-FR", { style: 'currency', currency: currencyProvider, maximumFractionDigits: 6 }).format(dataAmount.rate)}
+													</span>
+												</p>
+
+												<p className="font-normal text-xs text-gray-600">
+													Equivaux à {" "}
+													<span className="text-orange">
+														{new Intl.NumberFormat("fr-FR", { style: 'currency', currency: currencyProvider }).format(dataAmount.amount)}
+													</span>
+												</p>
+
+												<span className='text-xs text-gray-400'>{`${(dataAmount.amount - dataAmountHospital.amount) > 0 ? 'Reste: ' : 'Manquant: '}`} <span className="text-gray-800 font-bold">{new Intl.NumberFormat("fr-FR", { style: 'currency', currency: currencyProvider }).format(dataAmount.amount - dataAmountHospital.amount)}</span></span>
+											</div>
+										</div>
+									)}
+								</div>
+							</div>
+
+
+						</div>
+
+						<hr />
+					</div>
+
+					<ItemsDetails title={"Montant Hopital"} value={new Intl.NumberFormat("fr-FR", { style: 'currency', currency: dataAmountHospital.currency }).format(dataAmountHospital.amount)} otherValue={new Intl.DateTimeFormat('fr-FR', { dateStyle: 'medium' }).format(new Date())} />
 
 					{
 						(dataAmount.amount - dataAmountHospital.amount) < 0 ? (
