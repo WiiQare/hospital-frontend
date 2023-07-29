@@ -6,32 +6,32 @@ Object {
   "baseElement": <body>
     <div>
       <div
-        className="absolute top-28 right-2"
+        class="absolute top-28 right-2"
         id="dismiss-toast"
       >
         <div
-          className="min-w-xs bg-green-100 text-sm text-green-500 rounded-xl drop-shadow-sm"
+          class="min-w-xs bg-green-100 text-sm text-green-500 rounded-xl drop-shadow-sm"
           role="alert"
         >
           <div
-            className="flex p-4 gap-2 items-center"
+            class="flex p-4 gap-2 items-center"
           >
             Sample text
             <div
-              className="ml-auto"
+              class="ml-auto"
             >
               <button
-                className="inline-flex flex-shrink-0 justify-center items-center h-4 w-4 rounded-md text-green-400 hover:text-green-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-green-100 focus:ring-green-400 transition-all text-sm"
+                class="inline-flex flex-shrink-0 justify-center items-center h-4 w-4 rounded-md text-green-400 hover:text-green-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-green-100 focus:ring-green-400 transition-all text-sm"
                 data-hs-remove-element="#dismiss-toast"
                 type="button"
               >
                 <span
-                  className="sr-only"
+                  class="sr-only"
                 >
                   Close
                 </span>
                 <svg
-                  className="w-2.5 h-2.5"
+                  class="w-2.5 h-2.5"
                   fill="none"
                   height="16"
                   viewBox="0 0 16 16"
@@ -52,32 +52,32 @@ Object {
   </body>,
   "container": <div>
     <div
-      className="absolute top-28 right-2"
+      class="absolute top-28 right-2"
       id="dismiss-toast"
     >
       <div
-        className="min-w-xs bg-green-100 text-sm text-green-500 rounded-xl drop-shadow-sm"
+        class="min-w-xs bg-green-100 text-sm text-green-500 rounded-xl drop-shadow-sm"
         role="alert"
       >
         <div
-          className="flex p-4 gap-2 items-center"
+          class="flex p-4 gap-2 items-center"
         >
           Sample text
           <div
-            className="ml-auto"
+            class="ml-auto"
           >
             <button
-              className="inline-flex flex-shrink-0 justify-center items-center h-4 w-4 rounded-md text-green-400 hover:text-green-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-green-100 focus:ring-green-400 transition-all text-sm"
+              class="inline-flex flex-shrink-0 justify-center items-center h-4 w-4 rounded-md text-green-400 hover:text-green-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-green-100 focus:ring-green-400 transition-all text-sm"
               data-hs-remove-element="#dismiss-toast"
               type="button"
             >
               <span
-                className="sr-only"
+                class="sr-only"
               >
                 Close
               </span>
               <svg
-                className="w-2.5 h-2.5"
+                class="w-2.5 h-2.5"
                 fill="none"
                 height="16"
                 viewBox="0 0 16 16"

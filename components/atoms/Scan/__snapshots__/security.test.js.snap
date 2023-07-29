@@ -3,31 +3,31 @@
 exports[`Security should render the component 1`] = `
 <div>
   <div
-    className="h-full flex justify-center items-center pb-40"
+    class="h-full flex justify-center items-center pb-40"
   >
     <div
-      className="w-full  mx-auto max-w-md p-6 overflow-hidden text-left align-middle transition-all transform bg-white shadow-sm rounded-xl space-y-8 mt-2"
+      class="w-full  mx-auto max-w-md p-6 overflow-hidden text-left align-middle transition-all transform bg-white shadow-sm rounded-xl space-y-8 mt-2"
     >
       <h1
-        className="text-center font-semibold text-xl text-gray-700"
+        class="text-center font-semibold text-xl text-gray-700"
       >
         Entrez le code de sécurité
       </h1>
       <div
-        className="space-y-3"
+        class="space-y-3"
       >
         <div
-          className="flex flex-col gap-2 w-full"
+          class="flex flex-col gap-2 w-full"
         >
           <form
-            className="flex flex-col w-full justify-between items-center gap-3"
+            class="flex flex-col w-full justify-between items-center gap-3"
             id="form-security"
           >
             <div
-              className="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root w-full placeholder:text-gray-400 hover:outline-none focus:ring-0 border border-gray-300 rounded-lg focus:ring-sky css-wb57ya-MuiFormControl-root-MuiTextField-root"
+              class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root w-full placeholder:text-gray-400 hover:outline-none focus:ring-0 border border-gray-300 rounded-lg focus:ring-sky css-wb57ya-MuiFormControl-root-MuiTextField-root"
             >
               <label
-                className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root"
+                class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root"
                 data-shrink="false"
                 for=":r0:"
                 id=":r0:-label"
@@ -35,11 +35,11 @@ exports[`Security should render the component 1`] = `
                 Entrez le code de sécurité
               </label>
               <div
-                className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl css-md26zr-MuiInputBase-root-MuiOutlinedInput-root"
+                class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl css-md26zr-MuiInputBase-root-MuiOutlinedInput-root"
               >
                 <input
                   aria-invalid="false"
-                  className="MuiInputBase-input MuiOutlinedInput-input css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input"
+                  class="MuiInputBase-input MuiOutlinedInput-input css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input"
                   id=":r0:"
                   name="securityCode"
                   placeholder="Entrez le code de sécurité"
@@ -48,10 +48,10 @@ exports[`Security should render the component 1`] = `
                 />
                 <fieldset
                   aria-hidden="true"
-                  className="MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline"
+                  class="MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline"
                 >
                   <legend
-                    className="css-yjsfm1"
+                    class="css-yjsfm1"
                   >
                     <span>
                       Entrez le code de sécurité
@@ -63,10 +63,10 @@ exports[`Security should render the component 1`] = `
           </form>
         </div>
         <div
-          className="flex flex-row-reverse gap-4"
+          class="flex flex-row-reverse gap-4"
         >
           <button
-            className="bg-orange text-md py-2 px-4 rounded-lg effect-up text-white"
+            class="bg-orange text-md py-2 px-4 rounded-lg effect-up text-white"
             form="form-security"
             type="submit"
           >

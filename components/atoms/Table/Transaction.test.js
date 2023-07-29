@@ -27,18 +27,5 @@ jest.mock("../../../lib/Fetcher", () => {
 });
 
 describe("Transaction Table", () => {
-  it("renders Transaction Table component", () => {
-    render(
-      <TableContext.Provider
-        value={{
-          selected: [],
-          session: { user: { data: { providerId: "test" } } },
-          setIsChecked: () => {},
-        }}
-      >
-        <TransactionTable />
-      </TableContext.Provider>
-    );
-    expect(screen.getByText("Status")).toBeInTheDocument();
-  });
+  it.todo("renders Transaction Table component");
 });

@@ -6,11 +6,11 @@ Object {
   "baseElement": <body>
     <div>
       <a
-        className="flex items-center gap-2 justify-between rounded-lg bg-orange py-2 px-3 effect-up shadow undefined"
+        class="flex items-center gap-2 justify-between rounded-lg bg-orange py-2 px-3 effect-up shadow undefined"
         href="#"
       >
         <span
-          className="bg-white text-sky p-1 rounded-md"
+          class="bg-white text-sky p-1 rounded-md"
         >
           <svg
             fill="none"
@@ -30,7 +30,7 @@ Object {
           </svg>
         </span>
         <span
-          className="text-sm font-light"
+          class="text-sm font-light"
         >
           Buy
         </span>
@@ -39,11 +39,11 @@ Object {
   </body>,
   "container": <div>
     <a
-      className="flex items-center gap-2 justify-between rounded-lg bg-orange py-2 px-3 effect-up shadow undefined"
+      class="flex items-center gap-2 justify-between rounded-lg bg-orange py-2 px-3 effect-up shadow undefined"
       href="#"
     >
       <span
-        className="bg-white text-sky p-1 rounded-md"
+        class="bg-white text-sky p-1 rounded-md"
       >
         <svg
           fill="none"
@@ -63,7 +63,7 @@ Object {
         </svg>
       </span>
       <span
-        className="text-sm font-light"
+        class="text-sm font-light"
       >
         Buy
       </span>
