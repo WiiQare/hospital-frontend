@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Wallet Page renders 1`] = `
+exports[`Voucher Buy Page renders 1`] = `
 <div>
   <div
     class="p-2 space-y-6 md:py-8 md:px-6"

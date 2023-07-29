@@ -1,20 +1,12 @@
 import "@testing-library/jest-dom";
 import { render } from "@testing-library/react";
-import Page from "../../../pages/voucher/buy";
+import Page from "../../../../pages/voucher/pass/[pass]";
 import { SessionProvider } from "next-auth/react";
 import { Provider } from "react-redux";
-import { store } from "../../../redux/store";
+import { store } from "../../../../redux/store";
 import { QueryClientProvider, QueryClient } from "react-query";
 
-jest.mock("next/router", () => ({
-  useRouter: jest.fn().mockReturnValue({
-    query: {
-      "payment-intent": "pi_1J4JrjGswQjYFZwX0Z1Z1Z1Z",
-    },
-  }),
-}));
-
-describe("Voucher Buy Page", () => {
+describe("Voucher pass Page", () => {
   it("renders", () => {
     const queryClient = new QueryClient();
     const { container } = render(
