@@ -1,0 +1,269 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Transactions Page renders 1`] = `
+<div>
+  <div
+    class="p-2 space-y-6 md:py-8 md:px-6 mb-20"
+  >
+    <div
+      class="border w-full rounded-lg py-8 px-6 flex flex-col flex-wrap md:flex-row justify-between gap-4 bg-white cursor-pointer"
+    >
+      <div
+        class="flex flex-col"
+      >
+        <h1
+          class="md:text-2xl text-gray-700 font-bold flex-wrap flex items-center gap-2 text-lg"
+        >
+          Historique de Transactions
+        </h1>
+      </div>
+      <div
+        class="flex flex-row flex-wrap  gap-2 center justify-end space-x-2"
+      >
+        <div
+          class="w-[auto] dropdown dropdown-end flex"
+        >
+          <label
+            class=" bg-white border rounded-xl w-full py-2 px-4 flex justify-between items-center py-1 w-[auto]"
+            tabindex="0"
+          >
+            <span
+              class="flex mr-2 gap-4 items-center"
+            >
+              <svg
+                fill="currentColor"
+                height="1em"
+                stroke="currentColor"
+                stroke-width="0"
+                viewBox="0 0 24 24"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g
+                  dataName="Circle List"
+                  id="Circle_List"
+                >
+                  <g>
+                    <path
+                      d="M20.438,6.062h-9a.5.5,0,0,1,0-1h9a.5.5,0,0,1,0,1Z"
+                    />
+                    <path
+                      d="M20.438,12.5h-9a.5.5,0,0,1,0-1h9a.5.5,0,0,1,0,1Z"
+                    />
+                    <path
+                      d="M20.438,18.935h-9a.5.5,0,1,1,0-1h9a.5.5,0,0,1,0,1Z"
+                    />
+                    <path
+                      d="M5.562,8.062a2.5,2.5,0,1,1,2.5-2.5A2.5,2.5,0,0,1,5.562,8.062Zm0-4a1.5,1.5,0,1,0,1.5,1.5A1.5,1.5,0,0,0,5.562,4.062Z"
+                    />
+                    <path
+                      d="M5.562,14.5a2.5,2.5,0,1,1,2.5-2.5A2.5,2.5,0,0,1,5.562,14.5Zm0-4a1.5,1.5,0,1,0,1.5,1.5A1.5,1.5,0,0,0,5.562,10.5Z"
+                    />
+                    <path
+                      d="M5.562,20.938a2.5,2.5,0,1,1,2.5-2.5A2.5,2.5,0,0,1,5.562,20.938Zm0-4a1.5,1.5,0,1,0,1.5,1.5A1.5,1.5,0,0,0,5.562,16.938Z"
+                    />
+                  </g>
+                </g>
+              </svg>
+              <span
+                class="font-light"
+              >
+                Trier par
+              </span>
+            </span>
+            <svg
+              fill="currentColor"
+              height="20"
+              stroke="currentColor"
+              stroke-width="0"
+              viewBox="0 0 20 20"
+              width="20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                clip-rule="evenodd"
+                d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                fill-rule="evenodd"
+              />
+            </svg>
+          </label>
+          <ul
+            class="undefined w-48 mt-14 dropdown-content menu p-2 bg-white border rounded-box text-gray-700 font-light"
+            tabindex="0"
+          >
+            <li>
+              <a
+                class="text-sm"
+              >
+                Tous
+              </a>
+            </li>
+            <li>
+              <a
+                class="text-sm"
+              >
+                Pass non-réclamé
+              </a>
+            </li>
+            <li>
+              <a
+                class="text-sm"
+              >
+                Montant remboursé
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div
+      class="border rounded-lg overflow-x-auto w-full"
+    >
+      <div
+        aria-level="1"
+        class="sc-fEXmlR kNUuTe rdt_TableHeader"
+        role="heading"
+      >
+        <div
+          class="sc-bjfHbI kNxEtY"
+        >
+          Historique des transactions
+        </div>
+        <div
+          class="sc-fnGiBr cvQOBp"
+        >
+          <div
+            class="sc-ksBlkl bhQwst"
+          />
+          <div
+            class="sc-hBxehG caCTXR"
+          />
+        </div>
+      </div>
+      <div
+        class="sc-dmctIk dSZDRP px-8 bg-white"
+      >
+        <div
+          class="sc-fLcnxK dApqnJ"
+        >
+          <div
+            class="sc-bcXHqe kVrXuC rdt_Table"
+            role="table"
+          >
+            <div
+              class="sc-gswNZR hIWEKa rdt_TableHead"
+              role="rowgroup"
+            >
+              <div
+                class="sc-dkrFOg iSAVrt rdt_TableHeadRow"
+                role="row"
+              >
+                <div
+                  class="sc-hLBbgP sc-bqWxrE gMnBPf MHRqX rdt_TableCol"
+                >
+                  <input
+                    aria-label="select-all-rows"
+                    disabled=""
+                    name="select-all-rows"
+                    style="font-size: 18px; padding: 0px; margin-top: 1px; vertical-align: middle; position: relative;"
+                    type="checkbox"
+                  />
+                </div>
+                <div
+                  class="sc-hLBbgP sc-eDvSVe sc-ipEyDJ glyQNg bQdYbR dlSNBX rdt_TableCol"
+                  data-column-id="1"
+                >
+                  <div
+                    class="sc-csuSiG FeitL rdt_TableCol_Sortable"
+                    data-column-id="1"
+                    data-sort-id="1"
+                    disabled=""
+                    role="columnheader"
+                    tabindex="0"
+                  >
+                    <div
+                      class="sc-eDWCr hbotQl"
+                      data-column-id="1"
+                    >
+                      IDENTITÉ PATIENT
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="sc-hLBbgP sc-eDvSVe sc-ipEyDJ glyQNg bQdYbR dlSNBX rdt_TableCol"
+                  data-column-id="2"
+                >
+                  <div
+                    class="sc-csuSiG FeitL rdt_TableCol_Sortable"
+                    data-column-id="2"
+                    data-sort-id="2"
+                    disabled=""
+                    role="columnheader"
+                    tabindex="0"
+                  >
+                    <div
+                      class="sc-eDWCr hbotQl"
+                      data-column-id="2"
+                    >
+                      MONTANT
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="sc-hLBbgP sc-eDvSVe sc-ipEyDJ glyQNg bQdYbR dlSNBX rdt_TableCol"
+                  data-column-id="3"
+                >
+                  <div
+                    class="sc-csuSiG FeitL rdt_TableCol_Sortable"
+                    data-column-id="3"
+                    data-sort-id="3"
+                    disabled=""
+                    role="columnheader"
+                    tabindex="0"
+                  >
+                    <div
+                      class="sc-eDWCr hbotQl"
+                      data-column-id="3"
+                    >
+                      STATUS
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="sc-hLBbgP sc-eDvSVe sc-ipEyDJ glyQNg bQdYbR dlSNBX rdt_TableCol"
+                  data-column-id="4"
+                >
+                  <div
+                    class="sc-csuSiG FeitL rdt_TableCol_Sortable"
+                    data-column-id="4"
+                    data-sort-id="4"
+                    disabled=""
+                    role="columnheader"
+                    tabindex="0"
+                  >
+                    <div
+                      class="sc-eDWCr hbotQl"
+                      data-column-id="4"
+                    >
+                      HASH
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="sc-iveFHk bzRnkJ"
+            >
+              <div
+                style="padding: 24px;"
+              >
+                There are no records to display
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
