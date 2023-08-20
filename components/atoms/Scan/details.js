@@ -34,7 +34,7 @@ const ScanDetails = ({ shorten }) => {
 	}
 
 	useEffect(() => {
-		fetch(`https://api.wiiqare-app.com/api/v1/provider/provider-voucher-details?shortenHash=${shorten}`, Options).then(async res => {
+		fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/provider/provider-voucher-details?shortenHash=${shorten}`, Options).then(async res => {
 			let json = await res.json();
 
 			if (/AUTH_TOKEN_EXPIRED/i.test(json.code)) router.push('/login')

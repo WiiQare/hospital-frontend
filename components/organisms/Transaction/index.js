@@ -50,7 +50,7 @@ const Transaction = () => {
 
 				if (selected.length == 0) return Swal.showValidationMessage(`Aucun élément sélectionner...`)
 
-				return fetch(`https://api.wiiqare-app.com/api/v1/provider/redeem-voucher`, Options)
+				return fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/provider/redeem-voucher`, Options)
 				  .then(response => {
 					if (!response.ok) {
 					  throw new Error(response.statusText)
