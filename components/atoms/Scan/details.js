@@ -52,7 +52,7 @@ const ScanDetails = ({ shorten }) => {
 			);
 
 			setConvertRequest(false);
-			setDataAmount({ amount: response.result, currency: response.query.to, rate: response.info.rate })
+			setDataAmount({ amount: response?.result, currency: response?.query?.to, rate: response?.info?.rate })
 		});
 	}, []);
 
