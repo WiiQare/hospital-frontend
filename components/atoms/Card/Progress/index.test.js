@@ -1,8 +1,8 @@
-import "@testing-library/jest-dom";
-import { render, screen } from "@testing-library/react";
-import Progress from ".";
+import '@testing-library/jest-dom';
+import { render, screen } from '@testing-library/react';
+import Progress from '.';
 
-describe("Progress", () => {
+describe('Progress', () => {
   const value = 50;
   let component;
   beforeEach(() => {
@@ -10,11 +10,11 @@ describe("Progress", () => {
     component = res.container;
   });
 
-  it("should render the component", () => {
+  it('should render the component', () => {
     expect(component).toMatchSnapshot();
   });
 
-  it("should render the value", () => {
+  it('should render the value', () => {
     expect(screen.getByText(`${value}%`)).toBeInTheDocument();
   });
 });

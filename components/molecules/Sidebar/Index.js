@@ -1,13 +1,19 @@
-import React from "react";
-import { SlHome, SlWallet, SlEqualizer, SlGlobe, SlEvent } from "react-icons/sl";
-import ItemSidebar from "./ItemSidebar";
+import React from 'react';
+import {
+  SlHome,
+  SlWallet,
+  SlEqualizer,
+  SlGlobe,
+  SlEvent,
+} from 'react-icons/sl';
+import ItemSidebar from './ItemSidebar';
 
 const Items = [
   {
-    title: "Home",
+    title: 'Home',
     icon: ({ size, className }) => <SlHome size={size} className={className} />,
-    link: "/",
-    active: ["/"],
+    link: '/',
+    active: ['/'],
   },
   // {
   //   title: "My Wallet",
@@ -18,20 +24,20 @@ const Items = [
   //   active: ["/wallet"],
   // },
   {
-    title: "Services",
+    title: 'Services',
     icon: ({ size, className }) => (
       <SlEvent size={size} className={className} />
     ),
-    link: "/services",
-    active: ["/services"],
+    link: '/services',
+    active: ['/services'],
   },
   {
-    title: "Transactions",
+    title: 'Transactions',
     icon: ({ size, className }) => (
       <SlGlobe size={size} className={className} />
     ),
-    link: "/transactions",
-    active: ["/transactions", "/transactions/[id]"],
+    link: '/transactions',
+    active: ['/transactions', '/transactions/[id]'],
   },
 ];
 

@@ -1,11 +1,11 @@
-import Link from "next/link";
-import Image from "next/image";
-import { FaStar } from "react-icons/fa";
-import { FcCheckmark } from "react-icons/fc";
-import { CiCircleInfo } from "react-icons/ci";
+import Link from 'next/link';
+import Image from 'next/image';
+import { FaStar } from 'react-icons/fa';
+import { FcCheckmark } from 'react-icons/fc';
+import { CiCircleInfo } from 'react-icons/ci';
 
-import bima from "../../../../public/images/bima.jpeg";
-import { HiUserGroup } from "react-icons/hi";
+import bima from '../../../../public/images/bima.jpeg';
+import { HiUserGroup } from 'react-icons/hi';
 
 const CardProvider = () => {
   return (
@@ -65,13 +65,13 @@ const CardProvider = () => {
 
       {/* Buttons */}
       <div className="self-center flex md:flex-col gap-3">
-        <Link href={"/learn"} legacyBehavior>
+        <Link href={'/learn'} legacyBehavior>
           <button className="bg-blue-600 text-white font-extralight py-3 md:px-9 px-5 rounded-lg text-sm">
             Learn more
           </button>
         </Link>
 
-        <Link href={"/learn"} legacyBehavior>
+        <Link href={'/learn'} legacyBehavior>
           <button className="border border-blue-600 hover:bg-[rgba(28,100,242,.3)] text-blue-600 font-extralight py-3 md:px-9 px-5 rounded-lg text-sm transition duration-300">
             Enroll now
           </button>

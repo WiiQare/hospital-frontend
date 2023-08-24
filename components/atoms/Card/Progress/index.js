@@ -5,7 +5,7 @@ const CardProgress = ({ color, value, title, amount, className }) => {
     >
       <div
         className={`radial-progress ${color}`}
-        style={{ "--value": value, "--size": "4rem" }}
+        style={{ '--value': value, '--size': '4rem' }}
       >
         {value}%
       </div>

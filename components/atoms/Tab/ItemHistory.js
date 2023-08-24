@@ -1,8 +1,8 @@
-import Image from "next/image";
-import { CiCircleInfo } from "react-icons/ci";
+import Image from 'next/image';
+import { CiCircleInfo } from 'react-icons/ci';
 
-import ButtonNoAction from "../Button/NoAction";
-import Link from "next/link";
+import ButtonNoAction from '../Button/NoAction';
+import Link from 'next/link';
 
 const ItemHistory = ({
   fullname,
@@ -18,14 +18,14 @@ const ItemHistory = ({
     <div
       tabIndex={index}
       className={`${
-        total > index + 1 ? "border-b py-3" : ""
+        total > index + 1 ? 'border-b py-3' : ''
       } collapse collapse-arrow text-gray-700 overflow-scroll md:overflow-hidden`}
     >
       <div className="collapse-title flex gap-7 justify-between items-center ">
         <div className="flex gap-3 items-center">
           <div className="w-16 h-16">
             <Image
-              src={"https://xsgames.co/randomusers/avatar.php?g=male"}
+              src={'https://xsgames.co/randomusers/avatar.php?g=male'}
               width={50}
               height={50}
               className="object-cover rounded-full w-full h-full"
@@ -46,11 +46,11 @@ const ItemHistory = ({
         <h1 className="font-bold text-lg">{paymentMethod}</h1>
 
         <ButtonNoAction
-          color={state == 0 ? "orange" : state == 1 ? "[#2BC155]" : "gray-300"}
-          text={state == 0 ? "Pending" : state == 1 ? "Completed" : "Cancel"}
+          color={state == 0 ? 'orange' : state == 1 ? '[#2BC155]' : 'gray-300'}
+          text={state == 0 ? 'Pending' : state == 1 ? 'Completed' : 'Cancel'}
         />
 
-        <Link href={"/transactions/12345"} legacyBehavior>
+        <Link href={'/transactions/12345'} legacyBehavior>
           <a className="font-semibold uppercase text-sm p-2 rounded-lg hover:bg-gray-300 transition-all duration-200">
             View Details
           </a>

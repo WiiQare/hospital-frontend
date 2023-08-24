@@ -1,12 +1,12 @@
-import React, { useContext, useState } from "react";
-import { useQRCode } from "next-qrcode";
-import { CopyToClipboard } from "react-copy-to-clipboard";
-import { FormContext } from "../../../../pages/voucher/buy";
-import Image from "next/image";
-import logoDark from "../../../../public/images/logo_dark_2.png";
-import Link from "next/link";
-import Fetcher from "../../../../lib/Fetcher";
-import { HiExclamation } from "react-icons/hi";
+import React, { useContext, useState } from 'react';
+import { useQRCode } from 'next-qrcode';
+import { CopyToClipboard } from 'react-copy-to-clipboard';
+import { FormContext } from '../../../../pages/voucher/buy';
+import Image from 'next/image';
+import logoDark from '../../../../public/images/logo_dark_2.png';
+import Link from 'next/link';
+import Fetcher from '../../../../lib/Fetcher';
+import { HiExclamation } from 'react-icons/hi';
 
 function Send() {
   const { Canvas } = useQRCode();
@@ -15,7 +15,7 @@ function Send() {
   const [copy, setCopy] = useState(false);
   const [copyLink, setCopyLink] = useState(false);
   const { data, isLoading, isError } = Fetcher(
-    `/payment/voucher?paymentId=pi_3MslKtJKtQIM0rWe1s6eJLxh`
+    `/payment/voucher?paymentId=pi_3MslKtJKtQIM0rWe1s6eJLxh`,
   );
 
   if (isLoading)
@@ -87,7 +87,7 @@ function Send() {
               [
               <div
                 className="tooltip"
-                data-tip={!copy ? "Copy to clipboard" : "✓ Copy"}
+                data-tip={!copy ? 'Copy to clipboard' : '✓ Copy'}
               >
                 <span className="text-orange cursor-pointer">
                   <SliceText text={data.transactionHash} />
@@ -105,13 +105,13 @@ function Send() {
             className="w-full"
             text={`https://wiiqare-unicef.herokuapp.com/voucher/pass/${data.transactionHash}`}
             options={{
-              level: "M",
+              level: 'M',
               margin: 1,
               scale: 6,
               quality: 100,
               color: {
-                dark: "#000",
-                light: "#FFF",
+                dark: '#000',
+                light: '#FFF',
               },
             }}
           />
@@ -139,14 +139,14 @@ function Send() {
 
           <h4 className="text-sm text-center">
             <span className="font-semibold">
-              {data.currency == "usd" ? "$" : data.currency}
+              {data.currency == 'usd' ? '$' : data.currency}
               {data.amount}
-            </span>{" "}
-            Health Pass WiiQare <br /> From{" "}
+            </span>{' '}
+            Health Pass WiiQare <br /> From{' '}
             <span className="text-orange font-semibold">
               <SliceText text={data.senderId} />
-            </span>{" "}
-            To{" "}
+            </span>{' '}
+            To{' '}
             <span className="text-orange font-semibold">
               <SliceText text={data.voucher.patientId} />
             </span>
@@ -162,7 +162,7 @@ function Send() {
           <Link
             href={`whatsapp://send?text=https://wiiqare-unicef.herokuapp.com/voucher/pass/${data.transactionHash}`}
             legacyBehavior
-            target={"_blank"}
+            target={'_blank'}
           >
             <a className="text-gray-900 bg-white hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center gap-2 mr-2 mb-2">
               <img src="/images/whatsapp.png" alt="" className="w-6" />
@@ -173,7 +173,7 @@ function Send() {
           <Link
             href={`https://www.facebook.com/share.php?u=https://wiiqare-unicef.herokuapp.com/voucher/pass/${data.transactionHash}`}
             legacyBehavior
-            target={"_blank"}
+            target={'_blank'}
           >
             <a className="text-gray-900 bg-white hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center gap-2 mr-2 mb-2">
               <img src="/images/facebook-share.png" alt="" className="w-6" />
@@ -184,7 +184,7 @@ function Send() {
           <Link
             href={`sms://+243814978651&?body=https://wiiqare-unicef.herokuapp.com/voucher/pass/${data.transactionHash}`}
             legacyBehavior
-            target={"_blank"}
+            target={'_blank'}
           >
             <a className="text-gray-900 bg-white hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center gap-2 mr-2 mb-2">
               <img src="/images/sms.png" alt="" className="w-6" />
@@ -207,7 +207,7 @@ function Send() {
             >
               <img src="/images/text.png" alt="" className="w-6" />
               <span className="hidden md:flex">
-                {!copyLink ? "Copy Link" : "Successfully Copied"}
+                {!copyLink ? 'Copy Link' : 'Successfully Copied'}
               </span>
             </button>
           </CopyToClipboard>

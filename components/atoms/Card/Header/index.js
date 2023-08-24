@@ -1,9 +1,9 @@
-import { CiSaveDown2, CiSquarePlus } from "react-icons/ci";
+import { CiSaveDown2, CiSquarePlus } from 'react-icons/ci';
 
-import DropdownFilter from "../../Dropdown/Filter";
-import { Button } from "flowbite-react";
-import Breadcrumb from "../../Breadcrumbs";
-import { HiOutlinePrinter } from "react-icons/hi";
+import DropdownFilter from '../../Dropdown/Filter';
+import { Button } from 'flowbite-react';
+import Breadcrumb from '../../Breadcrumbs';
+import { HiOutlinePrinter } from 'react-icons/hi';
 
 const CardHeader = ({
   title,
@@ -11,10 +11,10 @@ const CardHeader = ({
   filter,
   breadcrumbs,
   download = true,
-  added =  false,
+  added = false,
   print = false,
   titleAdd = null,
-  addClick = null
+  addClick = null,
 }) => {
   return (
     <div className="border w-full rounded-lg py-8 px-6 flex flex-col flex-wrap md:flex-row justify-between gap-4 bg-white cursor-pointer">
@@ -70,7 +70,7 @@ const CardHeader = ({
         {added ? (
           <Button className="bg-primary" onClick={() => addClick()}>
             <CiSquarePlus className="mr-2 h-5 w-5" />
-            {titleAdd ?? "Ajout"}
+            {titleAdd ?? 'Ajout'}
           </Button>
         ) : (
           <></>

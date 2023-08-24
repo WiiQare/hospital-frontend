@@ -1,18 +1,18 @@
-import React, { useContext, useState } from "react";
-import { Field, FormikProvider, useFormik } from "formik";
-import { FormContext } from "../../../../pages/voucher/buy";
-import * as yup from "yup";
-import { HiArrowSmRight, HiOutlineInformationCircle } from "react-icons/hi";
-import { useSession } from "next-auth/react";
+import React, { useContext, useState } from 'react';
+import { Field, FormikProvider, useFormik } from 'formik';
+import { FormContext } from '../../../../pages/voucher/buy';
+import * as yup from 'yup';
+import { HiArrowSmRight, HiOutlineInformationCircle } from 'react-icons/hi';
+import { useSession } from 'next-auth/react';
 
-import "react-phone-number-input/style.css";
-import PhoneInput from "react-phone-number-input";
-import { autocomplete, savePatient } from "../../../../lib/helper";
-import { useMutation } from "react-query";
-import LoadingButton from "../../Loader/LoadingButton";
-import { useDispatch, useSelector } from "react-redux";
-import { setPatientDispatch } from "../../../../redux/reducer";
-import Toast from "../../Toast";
+import 'react-phone-number-input/style.css';
+import PhoneInput from 'react-phone-number-input';
+import { autocomplete, savePatient } from '../../../../lib/helper';
+import { useMutation } from 'react-query';
+import LoadingButton from '../../Loader/LoadingButton';
+import { useDispatch, useSelector } from 'react-redux';
+import { setPatientDispatch } from '../../../../redux/reducer';
+import Toast from '../../Toast';
 
 function Identity() {
   const { activeStepIndex, setActiveStepIndex, formData, setFormData } =
@@ -23,7 +23,7 @@ function Identity() {
   const [requestComplete, setRequestComplete] = useState(false);
   const { data: session } = useSession();
   const dispatch = useDispatch();
-  const [state, setState] = useState({ type: 0, message: "" });
+  const [state, setState] = useState({ type: 0, message: '' });
   const client = useSelector((state) => state.app.client);
 
   const renderError = (message) => (
@@ -34,9 +34,9 @@ function Identity() {
   );
 
   const ValidationSchema = yup.object().shape({
-    firstName: yup.string().required("Fistname is a required field"),
-    lastName: yup.string().required("Lastname is a required field"),
-    email: yup.string().email().required("Address email is a required field"),
+    firstName: yup.string().required('Fistname is a required field'),
+    lastName: yup.string().required('Lastname is a required field'),
+    email: yup.string().email().required('Address email is a required field'),
     homeAddress: yup.string().required(),
     city: yup.string().required(),
     phoneNumber: yup.string(),
@@ -47,10 +47,10 @@ function Identity() {
       if (res.code) {
         setState({ type: 2, message: res.message ?? res.description });
         setTimeout(() => {
-          setState({ type: 0, message: "" });
+          setState({ type: 0, message: '' });
         }, 3000);
       } else {
-        setState({ type: 1, message: "Successfully registered" });
+        setState({ type: 1, message: 'Successfully registered' });
         dispatch(setPatientDispatch({ ...res }));
 
         setActiveStepIndex(activeStepIndex + 1);
@@ -59,11 +59,11 @@ function Identity() {
   });
 
   const onSubmit = (values) => {
-    console.log("ok");
-    if (Object.keys(values).length == 0) return console.log("Pas de données");
+    console.log('ok');
+    if (Object.keys(values).length == 0) return console.log('Pas de données');
 
     values.phoneNumber = phone;
-    values.country = "CD";
+    values.country = 'CD';
     const data = { ...formData, ...values };
 
     if (patientExist) {
@@ -76,18 +76,18 @@ function Identity() {
   };
 
   const closeToast = () => {
-    setState({ type: 0, message: "" });
+    setState({ type: 0, message: '' });
   };
 
   const formik = useFormik({
     initialValues: {
-      firstName: "",
-      lastName: "",
-      email: "",
-      homeAddress: "",
-      city: "",
-      phoneNumber: "",
-      country: "",
+      firstName: '',
+      lastName: '',
+      email: '',
+      homeAddress: '',
+      city: '',
+      phoneNumber: '',
+      country: '',
     },
     validationSchema: ValidationSchema,
     onSubmit,
@@ -106,10 +106,10 @@ function Identity() {
       setPatientExist(true);
 
       //Set Value
-      formik.setFieldValue("phoneNumber", res.phoneNumber);
-      formik.setFieldValue("firstName", res.firstName);
-      formik.setFieldValue("lastName", res.lastName);
-      formik.setFieldValue("email", res.email);
+      formik.setFieldValue('phoneNumber', res.phoneNumber);
+      formik.setFieldValue('firstName', res.firstName);
+      formik.setFieldValue('lastName', res.lastName);
+      formik.setFieldValue('email', res.email);
 
       dispatch(setPatientDispatch({ ...res }));
     } else {
@@ -121,9 +121,9 @@ function Identity() {
     <>
       {state.type > 0 ? (
         state.type == 2 ? (
-          <Toast type={"danger"} message={state.message} close={closeToast} />
+          <Toast type={'danger'} message={state.message} close={closeToast} />
         ) : state.type == 1 ? (
-          <Toast type={"success"} message={state.message} close={closeToast} />
+          <Toast type={'success'} message={state.message} close={closeToast} />
         ) : (
           <></>
         )
@@ -183,7 +183,7 @@ function Identity() {
                   className="rounded-lg border px-4 py-3 w-full placeholder:text-gray-400 text-gray-700 text-md"
                   placeholder="John"
                   disabled={patientExist && patient.firstName}
-                  {...formik.getFieldProps("firstName")}
+                  {...formik.getFieldProps('firstName')}
                 />
               </div>
               {formik.errors.firstName ? (
@@ -207,7 +207,7 @@ function Identity() {
                   className="rounded-lg border px-4 py-3 w-full placeholder:text-gray-400 text-gray-700 text-md"
                   placeholder="Doe"
                   disabled={patientExist && patient.lastName}
-                  {...formik.getFieldProps("lastName")}
+                  {...formik.getFieldProps('lastName')}
                 />
               </div>
               {formik.errors.lastName ? (
@@ -230,7 +230,7 @@ function Identity() {
                 className="rounded-lg border px-4 py-3 w-full placeholder:text-gray-400 text-gray-700 text-md"
                 placeholder="john.doe@wiiqare.com"
                 disabled={patientExist && patient.email}
-                {...formik.getFieldProps("email")}
+                {...formik.getFieldProps('email')}
               />
             </div>
             {formik.errors.email ? renderError(formik.errors.email) : <></>}
@@ -246,7 +246,7 @@ function Identity() {
                   name="homeAddress"
                   className="rounded-lg border px-4 py-3 w-full placeholder:text-gray-400 text-gray-700 text-md"
                   placeholder="23, Mimosas C/Ngaliema"
-                  {...formik.getFieldProps("homeAddress")}
+                  {...formik.getFieldProps('homeAddress')}
                 />
               </div>
               {formik.errors.homeAddress ? (
@@ -263,7 +263,7 @@ function Identity() {
                   name="city"
                   className="rounded-lg border px-4 py-3 w-full placeholder:text-gray-400 text-gray-700 text-md"
                   placeholder="Eg. Kinshasa"
-                  {...formik.getFieldProps("city")}
+                  {...formik.getFieldProps('city')}
                 />
               </div>
               {formik.errors.city ? renderError(formik.errors.city) : <></>}
@@ -279,7 +279,7 @@ function Identity() {
                 <LoadingButton />
               ) : (
                 <>
-                  {patientExist ? "Continuer avec ce patient" : "Next"}{" "}
+                  {patientExist ? 'Continuer avec ce patient' : 'Next'}{' '}
                   <HiArrowSmRight />
                 </>
               )}

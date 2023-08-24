@@ -1,19 +1,18 @@
-import Head from "next/head";
-import NextNProgress from "nextjs-progressbar";
-import { SessionProvider } from "next-auth/react";
-import { ThemeProvider } from "@mui/material/styles";
-import { store } from "../redux/store";
-import { Provider } from "react-redux";
-import { QueryClientProvider, QueryClient } from 'react-query'
-import { theme } from "../theme";
+import Head from 'next/head';
+import NextNProgress from 'nextjs-progressbar';
+import { SessionProvider } from 'next-auth/react';
+import { ThemeProvider } from '@mui/material/styles';
+import { store } from '../redux/store';
+import { Provider } from 'react-redux';
+import { QueryClientProvider, QueryClient } from 'react-query';
+import { theme } from '../theme';
 import '../i18n';
 
-import "../styles/globals.css";
-import "../styles/main.css";
-import "formik-stepper/dist/style.css";
+import '../styles/globals.css';
+import '../styles/main.css';
+import 'formik-stepper/dist/style.css';
 
-const queryClient = new QueryClient()
-
+const queryClient = new QueryClient();
 
 export default function App({ Component, pageProps }) {
   const getLayout = Component.getLayout ?? ((page) => page);

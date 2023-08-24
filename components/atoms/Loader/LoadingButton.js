@@ -1,5 +1,5 @@
-import React from "react";
-import { useTranslation, Trans } from "react-i18next";
+import React from 'react';
+import { useTranslation, Trans } from 'react-i18next';
 
 const LoadingButton = () => {
   const { t } = useTranslation();
@@ -13,7 +13,7 @@ const LoadingButton = () => {
       >
         <span className="sr-only">Loading...</span>
       </div>
-      <span>{t("signIn.buttons.waiting")}</span>
+      <span>{t('signIn.buttons.waiting')}</span>
     </div>
   );
 };

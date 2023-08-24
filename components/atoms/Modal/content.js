@@ -1,20 +1,20 @@
-import React, { Fragment, useState } from "react";
-import { Dialog, Transition } from "@headlessui/react";
-import Tabs from "@mui/material/Tabs";
-import Tab from "@mui/material/Tab";
-import Box from "@mui/material/Box";
-import PropTypes from "prop-types";
-import Typography from "@mui/material/Typography";
-import { HiXMark } from "react-icons/hi2";
-import MuiPhoneNumber from "material-ui-phone-number";
-import { TextField } from "@mui/material";
+import React, { Fragment, useState } from 'react';
+import { Dialog, Transition } from '@headlessui/react';
+import Tabs from '@mui/material/Tabs';
+import Tab from '@mui/material/Tab';
+import Box from '@mui/material/Box';
+import PropTypes from 'prop-types';
+import Typography from '@mui/material/Typography';
+import { HiXMark } from 'react-icons/hi2';
+import MuiPhoneNumber from 'material-ui-phone-number';
+import { TextField } from '@mui/material';
 
 const TabHistories = [
   {
-    name: "email",
+    name: 'email',
   },
   {
-    name: "Phone",
+    name: 'Phone',
   },
 ];
 
@@ -65,21 +65,21 @@ export default ContentModal;
 
 function TabItems({ value }) {
   // For Email
-  const [allFriends, setAllFriends] = useState([{ email: "" }]);
+  const [allFriends, setAllFriends] = useState([{ email: '' }]);
 
-  const [allFriendsPhone, setAllFriendsPhone] = useState([{ phone: "" }]);
+  const [allFriendsPhone, setAllFriendsPhone] = useState([{ phone: '' }]);
 
   const handleAddFriend = (phone = false) => {
     if (phone) {
       const values = [...allFriendsPhone];
       values.push({
-        email: "",
+        email: '',
       });
       setAllFriendsPhone(values);
     } else {
       const values = [...allFriends];
       values.push({
-        email: "",
+        email: '',
       });
       setAllFriends(values);
     }
@@ -103,7 +103,7 @@ function TabItems({ value }) {
 
   const handleInputChangePhone = (index, event) => {
     const values = [...allFriendsPhone];
-    values[index]["phone"] = event;
+    values[index]['phone'] = event;
 
     setAllFriendsPhone(values);
   };
@@ -138,7 +138,7 @@ function TabItems({ value }) {
                 >
                   <TextField
                     fullWidth
-                    type={"email"}
+                    type={'email'}
                     className="w-9/12 placeholder:text-gray-400 hover:outline-none focus:ring-0 border border-gray-300 rounded-lg focus:ring-sky"
                     label="Email Address"
                     name="email"
@@ -189,9 +189,9 @@ function TabItems({ value }) {
                     label="Phone number"
                     onChange={(event) => handleInputChangePhone(index, event)}
                     variant="outlined"
-                    defaultCountry={"fr"}
+                    defaultCountry={'fr'}
                     value={field.phone}
-                    placeholder={"Enter your phone number"}
+                    placeholder={'Enter your phone number'}
                     className="w-9/12 py-3 placeholder:text-gray-400 hover:outline-none focus:ring-0 border border-gray-300 rounded-lg focus:ring-sky"
                   />
                   {index > 0 ? (
@@ -230,7 +230,7 @@ function TabItems({ value }) {
 function TabsModal({ value, handleChange }) {
   return (
     <div>
-      <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
+      <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <Tabs
           value={value}
           onChange={handleChange}
@@ -274,6 +274,6 @@ TabPanel.propTypes = {
 function a11yProps(index) {
   return {
     id: `simple-tab-${index}`,
-    "aria-controls": `simple-tabpanel-${index}`,
+    'aria-controls': `simple-tabpanel-${index}`,
   };
 }
