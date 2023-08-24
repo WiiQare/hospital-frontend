@@ -17,7 +17,8 @@ exports[`OTP should render successfully 1`] = `
     <span
       class="MuiTypography-root MuiTypography-caption css-ol7wxs-MuiTypography-root"
     >
-      Expire in 
+      Expire in
+       
       <span>
         02
         :
@@ -114,7 +115,8 @@ exports[`OTP should render successfully 1`] = `
       <span
         class="text-only"
       >
-        Pas réçu de code ? 
+        Pas réçu de code ?
+         
         <button
           class="text-primary"
           type="button"

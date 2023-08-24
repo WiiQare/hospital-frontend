@@ -340,7 +340,8 @@ exports[`Page Information should render successfully 1`] = `
           class="h-4 ml-2 text-sm font-normal text-gray-600 dark:text-gray-300"
           for="link-checkbox"
         >
-          I agree with the 
+          I agree with the
+           
           <a
             class="text-primary hover:underline"
             href="#"
