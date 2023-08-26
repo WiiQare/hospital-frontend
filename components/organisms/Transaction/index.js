@@ -76,7 +76,6 @@ const Transaction = () => {
             );
         }
       });
-  };
 
 		swalWithBootstrapButtons.fire({
 			title: 'Etes-vous sûr ?',
