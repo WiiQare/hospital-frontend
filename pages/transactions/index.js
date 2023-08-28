@@ -1,7 +1,7 @@
-import Head from "next/head";
-import DashboardLayout from "../../layouts/Dashboard";
+import Head from 'next/head';
+import DashboardLayout from '../../layouts/Dashboard';
 
-import Transaction from "../../components/organisms/Transaction";
+import Transaction from '../../components/organisms/Transaction';
 
 const Page = () => {
   return (

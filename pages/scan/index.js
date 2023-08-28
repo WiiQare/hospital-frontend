@@ -1,6 +1,6 @@
-import Head from "next/head";
-import DashboardLayout from "../../layouts/Dashboard";
-import Scan from "../../components/atoms/Scan";
+import Head from 'next/head';
+import DashboardLayout from '../../layouts/Dashboard';
+import Scan from '../../components/atoms/Scan';
 
 const Page = () => {
   return (

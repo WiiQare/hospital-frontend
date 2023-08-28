@@ -1,11 +1,11 @@
-import "@testing-library/jest-dom";
-import { render, screen } from "@testing-library/react";
-import Security from "./security";
-import { StepContext } from ".";
-import { SessionProvider } from "next-auth/react";
-import { QueryClientProvider, QueryClient } from "react-query";
+import '@testing-library/jest-dom';
+import { render, screen } from '@testing-library/react';
+import Security from './security';
+import { StepContext } from '.';
+import { SessionProvider } from 'next-auth/react';
+import { QueryClientProvider, QueryClient } from 'react-query';
 
-describe("Security", () => {
+describe('Security', () => {
   let component;
   beforeEach(() => {
     const queryClient = new QueryClient();
@@ -14,8 +14,8 @@ describe("Security", () => {
         session={{
           user: {
             data: {
-              access_token: "token123",
-              providerId: "id123",
+              access_token: 'token123',
+              providerId: 'id123',
             },
           },
         }}
@@ -25,12 +25,12 @@ describe("Security", () => {
             <Security shorten={true} />
           </StepContext.Provider>
         </QueryClientProvider>
-      </SessionProvider>
+      </SessionProvider>,
     );
     component = res.container;
   });
 
-  it("should render the component", () => {
+  it('should render the component', () => {
     expect(component).toMatchSnapshot();
   });
 });

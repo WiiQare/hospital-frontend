@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LoadingButton renders 1`] = `
+<div>
+  <div
+    class="flex gap-2 items-center justify-center"
+  >
+    <div
+      arialabel="loading"
+      class="animate-spin inline-block w-4 h-4 border-[2px] border-current border-t-transparent text-white rounded-full"
+      role="status"
+    >
+      <span
+        class="sr-only"
+      >
+        Loading...
+      </span>
+    </div>
+    <span>
+      signIn.buttons.waiting
+    </span>
+  </div>
+</div>
+`;

@@ -1,11 +1,10 @@
-import React from "react";
-import Slider from "react-slick";
+import React from 'react';
+import Slider from 'react-slick';
 
-import Button from "@mui/material/Button";
+import Button from '@mui/material/Button';
 
-
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 
 const defaultSettings = {
   dots: true,

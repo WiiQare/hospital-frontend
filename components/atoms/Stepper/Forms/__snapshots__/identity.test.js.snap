@@ -3,28 +3,28 @@
 exports[`Identity should render the component 1`] = `
 <div>
   <form
-    className="flex flex-col justify-start md:w-2/3 gap-4"
+    class="flex flex-col justify-start md:w-2/3 gap-4"
   >
     <div
-      className="space-y-1"
+      class="space-y-1"
     >
       <div
-        className="flex flex-col items-start space-y-1 relative"
+        class="flex flex-col items-start space-y-1 relative"
       >
         <label
-          className="text-gray-500 font-light text-sm"
+          class="text-gray-500 font-light text-sm"
         >
           Phone Number
         </label>
         <div
-          className="rounded-lg border px-4 py-1.5 w-full placeholder:text-gray-400 text-gray-700 text-md PhoneInput"
+          class="rounded-lg border px-4 py-1.5 w-full placeholder:text-gray-400 text-gray-700 text-md PhoneInput"
         >
           <div
-            className="PhoneInputCountry"
+            class="PhoneInputCountry"
           >
             <select
               aria-label="Phone number country"
-              className="PhoneInputCountrySelect"
+              class="PhoneInputCountrySelect"
               name="phoneNumberCountry"
             >
               <option
@@ -1260,21 +1260,21 @@ exports[`Identity should render the component 1`] = `
             </select>
             <div
               aria-hidden="true"
-              className="PhoneInputCountryIcon PhoneInputCountryIcon--border"
+              class="PhoneInputCountryIcon PhoneInputCountryIcon--border"
             >
               <img
                 alt="Congo, Democratic Republic of the"
-                className="PhoneInputCountryIconImg"
+                class="PhoneInputCountryIconImg"
                 src="https://purecatamphetamine.github.io/country-flag-icons/3x2/CD.svg"
               />
             </div>
             <div
-              className="PhoneInputCountrySelectArrow"
+              class="PhoneInputCountrySelectArrow"
             />
           </div>
           <input
             autocomplete="tel"
-            className="PhoneInputInput"
+            class="PhoneInputInput"
             name="phoneNumber"
             placeholder="Enter phone number"
             type="tel"
@@ -1284,21 +1284,21 @@ exports[`Identity should render the component 1`] = `
       </div>
     </div>
     <div
-      className="grid md:grid-cols-2 gap-4"
+      class="grid md:grid-cols-2 gap-4"
     >
       <div
-        className="space-y-1"
+        class="space-y-1"
       >
         <div
-          className="flex flex-col items-start gap-1"
+          class="flex flex-col items-start gap-1"
         >
           <label
-            className="text-gray-500 font-light text-sm"
+            class="text-gray-500 font-light text-sm"
           >
             Firstname
           </label>
           <input
-            className="rounded-lg border px-4 py-3 w-full placeholder:text-gray-400 text-gray-700 text-md"
+            class="rounded-lg border px-4 py-3 w-full placeholder:text-gray-400 text-gray-700 text-md"
             name="firstName"
             placeholder="John"
             value=""
@@ -1306,18 +1306,18 @@ exports[`Identity should render the component 1`] = `
         </div>
       </div>
       <div
-        className="space-y-1"
+        class="space-y-1"
       >
         <div
-          className="flex flex-col items-start gap-1"
+          class="flex flex-col items-start gap-1"
         >
           <label
-            className="text-gray-500 font-light text-sm"
+            class="text-gray-500 font-light text-sm"
           >
             Lastname
           </label>
           <input
-            className="rounded-lg border px-4 py-3 w-full placeholder:text-gray-400 text-gray-700 text-md"
+            class="rounded-lg border px-4 py-3 w-full placeholder:text-gray-400 text-gray-700 text-md"
             name="lastName"
             placeholder="Doe"
             value=""
@@ -1326,18 +1326,18 @@ exports[`Identity should render the component 1`] = `
       </div>
     </div>
     <div
-      className="space-y-1"
+      class="space-y-1"
     >
       <div
-        className="flex flex-col items-start space-y-1"
+        class="flex flex-col items-start space-y-1"
       >
         <label
-          className="text-gray-500 font-light text-sm"
+          class="text-gray-500 font-light text-sm"
         >
           Email
         </label>
         <input
-          className="rounded-lg border px-4 py-3 w-full placeholder:text-gray-400 text-gray-700 text-md"
+          class="rounded-lg border px-4 py-3 w-full placeholder:text-gray-400 text-gray-700 text-md"
           name="email"
           placeholder="john.doe@wiiqare.com"
           value=""
@@ -1345,21 +1345,21 @@ exports[`Identity should render the component 1`] = `
       </div>
     </div>
     <div
-      className="grid md:grid-cols-2 gap-4"
+      class="grid md:grid-cols-2 gap-4"
     >
       <div
-        className="space-y-1"
+        class="space-y-1"
       >
         <div
-          className="flex flex-col items-start gap-1"
+          class="flex flex-col items-start gap-1"
         >
           <label
-            className="text-gray-500 font-light text-sm"
+            class="text-gray-500 font-light text-sm"
           >
             Home Address
           </label>
           <input
-            className="rounded-lg border px-4 py-3 w-full placeholder:text-gray-400 text-gray-700 text-md"
+            class="rounded-lg border px-4 py-3 w-full placeholder:text-gray-400 text-gray-700 text-md"
             name="homeAddress"
             placeholder="23, Mimosas C/Ngaliema"
             value=""
@@ -1367,18 +1367,18 @@ exports[`Identity should render the component 1`] = `
         </div>
       </div>
       <div
-        className="space-y-1"
+        class="space-y-1"
       >
         <div
-          className="flex flex-col items-start gap-1"
+          class="flex flex-col items-start gap-1"
         >
           <label
-            className="text-gray-500 font-light text-sm"
+            class="text-gray-500 font-light text-sm"
           >
             City
           </label>
           <input
-            className="rounded-lg border px-4 py-3 w-full placeholder:text-gray-400 text-gray-700 text-md"
+            class="rounded-lg border px-4 py-3 w-full placeholder:text-gray-400 text-gray-700 text-md"
             name="city"
             placeholder="Eg. Kinshasa"
             value=""
@@ -1387,10 +1387,10 @@ exports[`Identity should render the component 1`] = `
       </div>
     </div>
     <div
-      className="flex flex-row-reverse "
+      class="flex flex-row-reverse "
     >
       <button
-        className="bg-primary flex gap-3 items-center w-fit font-medium text-white my-2 py-3 px-5 hover:bg-blue-500 duration-200 transition-all hover:shadow rounded-lg"
+        class="bg-primary flex gap-3 items-center w-fit font-medium text-white my-2 py-3 px-5 hover:bg-blue-500 duration-200 transition-all hover:shadow rounded-lg"
         type="submit"
       >
         Next

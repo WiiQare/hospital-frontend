@@ -6,7 +6,7 @@ Object {
   "baseElement": <body>
     <div>
       <button
-        className="flex bg-sky px-4 py-4 justify-center text-white items-center rounded-xl hover:shadow-md gap-2 w-auto md:w-52"
+        class="flex bg-sky px-4 py-4 justify-center text-white items-center rounded-xl hover:shadow-md gap-2 w-auto md:w-52"
       >
         <svg
           fill="currentColor"
@@ -31,7 +31,7 @@ Object {
           </g>
         </svg>
         <span
-          className="text-xs font-light"
+          class="text-xs font-light"
         >
           Earn Budges for 10$
         </span>
@@ -40,7 +40,7 @@ Object {
   </body>,
   "container": <div>
     <button
-      className="flex bg-sky px-4 py-4 justify-center text-white items-center rounded-xl hover:shadow-md gap-2 w-auto md:w-52"
+      class="flex bg-sky px-4 py-4 justify-center text-white items-center rounded-xl hover:shadow-md gap-2 w-auto md:w-52"
     >
       <svg
         fill="currentColor"
@@ -65,7 +65,7 @@ Object {
         </g>
       </svg>
       <span
-        className="text-xs font-light"
+        class="text-xs font-light"
       >
         Earn Budges for 10$
       </span>

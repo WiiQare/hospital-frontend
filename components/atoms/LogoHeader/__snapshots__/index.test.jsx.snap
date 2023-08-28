@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LogoHeader renders correctly 1`] = `
+<div>
+  <div
+    class="website-logo"
+  >
+    <a
+      href="/"
+    >
+      <div
+        class="logo"
+        style="width: 150px; height: 50px;"
+      />
+    </a>
+  </div>
+</div>
+`;

@@ -1,11 +1,11 @@
-import "@testing-library/jest-dom";
-import { render, screen } from "@testing-library/react";
-import Badge from "./Badge";
+import '@testing-library/jest-dom';
+import { render, screen } from '@testing-library/react';
+import Badge from './Badge';
 
-describe("Badge", () => {
-  const title = "Title";
-  const time = "Time";
-  const avatar = "/Avatar.png";
+describe('Badge', () => {
+  const title = 'Title';
+  const time = 'Time';
+  const avatar = '/Avatar.png';
   let component;
 
   beforeEach(() => {
@@ -13,15 +13,15 @@ describe("Badge", () => {
     component = res.container;
   });
 
-  it("should render the component", () => {
+  it('should render the component', () => {
     expect(component).toMatchSnapshot();
   });
 
-  it("should render the title", () => {
+  it('should render the title', () => {
     expect(screen.getByText(title)).toBeInTheDocument();
   });
 
-  it("should render the time", () => {
+  it('should render the time', () => {
     expect(screen.getByText(time)).toBeInTheDocument();
   });
 });

@@ -1,0 +1,369 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Page Information should render successfully 1`] = `
+<div>
+  <div
+    class="MuiBox-root css-1vdpy2o"
+  >
+    <p
+      class="MuiTypography-root MuiTypography-body1 css-vkc4v8-MuiTypography-root"
+    >
+      Information sur la personne qui engage l'entreprise
+    </p>
+  </div>
+  <form
+    id="signupform"
+  >
+    <div
+      class="css-b55nah-MuiStack-root"
+    >
+      <div
+        class="css-1avgqs0-MuiStack-root"
+      >
+        <div
+          class="flex flex-col gap-1"
+        >
+          <div
+            class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root css-wb57ya-MuiFormControl-root-MuiTextField-root"
+          >
+            <label
+              class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root"
+              data-shrink="false"
+              for="outlined-basic"
+              id="outlined-basic-label"
+            >
+              Prenom
+            </label>
+            <div
+              class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl css-md26zr-MuiInputBase-root-MuiOutlinedInput-root"
+            >
+              <input
+                aria-invalid="false"
+                class="MuiInputBase-input MuiOutlinedInput-input css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input"
+                id="outlined-basic"
+                name="contactPersonFirstName"
+                type="text"
+                value=""
+              />
+              <fieldset
+                aria-hidden="true"
+                class="MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline"
+              >
+                <legend
+                  class="css-yjsfm1"
+                >
+                  <span>
+                    Prenom
+                  </span>
+                </legend>
+              </fieldset>
+            </div>
+          </div>
+        </div>
+        <div
+          class="flex flex-col gap-1"
+        >
+          <div
+            class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root css-wb57ya-MuiFormControl-root-MuiTextField-root"
+          >
+            <label
+              class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root"
+              data-shrink="false"
+              for="outlined-basic"
+              id="outlined-basic-label"
+            >
+              Nom
+            </label>
+            <div
+              class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl css-md26zr-MuiInputBase-root-MuiOutlinedInput-root"
+            >
+              <input
+                aria-invalid="false"
+                class="MuiInputBase-input MuiOutlinedInput-input css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input"
+                id="outlined-basic"
+                name="contactPersonLastName"
+                type="text"
+                value=""
+              />
+              <fieldset
+                aria-hidden="true"
+                class="MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline"
+              >
+                <legend
+                  class="css-yjsfm1"
+                >
+                  <span>
+                    Nom
+                  </span>
+                </legend>
+              </fieldset>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="flex flex-col gap-1"
+      >
+        <div
+          class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root css-wb57ya-MuiFormControl-root-MuiTextField-root"
+        >
+          <label
+            class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiFormLabel-filled MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined css-1sumxir-MuiFormLabel-root-MuiInputLabel-root"
+            data-shrink="true"
+            for=":r2:"
+            id=":r2:-label"
+          >
+            N° Téléphone personnel
+          </label>
+          <div
+            class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-adornedStart css-8j6b76-MuiInputBase-root-MuiOutlinedInput-root"
+          >
+            <div
+              class="MuiInputAdornment-root MuiInputAdornment-positionStart MuiInputAdornment-outlined MuiInputAdornment-sizeMedium MuiPhoneNumber-positionStart css-ittuaa-MuiInputAdornment-root"
+            >
+              <span
+                class="notranslate"
+              >
+                ​
+              </span>
+              <button
+                aria-haspopup="true"
+                aria-label="Select country"
+                class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium MuiPhoneNumber-flagButton css-78trlr-MuiButtonBase-root-MuiIconButton-root"
+                tabindex="0"
+                type="button"
+              >
+                <svg
+                  class="margin"
+                  viewBox="0 0 512 341.3"
+                >
+                  <path
+                    d="M0 0h512v341.3H0z"
+                    fill="#338AF3"
+                  />
+                  <path
+                    d="M512 66.9V0H411.7L0 274.4v66.9h100.3z"
+                    fill="#FFDA44"
+                  />
+                  <path
+                    d="M512 0v40.1L60.2 341.3H0v-40.1L451.8 0z"
+                    fill="#D80027"
+                  />
+                  <path
+                    d="M93.6 31.2l16.3 50.4H163l-42.9 31.2 16.4 50.5-42.9-31.2-43 31.2L67 112.8 24.1 81.6h53.1z"
+                    fill="#FFDA44"
+                  />
+                </svg>
+                <span
+                  class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+                />
+              </button>
+            </div>
+            <input
+              aria-invalid="false"
+              class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputAdornedStart css-1o9s3wi-MuiInputBase-input-MuiOutlinedInput-input"
+              id=":r2:"
+              name="contactPersonPhone"
+              placeholder="+1 (702) 123-4567"
+              type="tel"
+              value="+243"
+            />
+            <fieldset
+              aria-hidden="true"
+              class="MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline"
+            >
+              <legend
+                class="css-14lo706"
+              >
+                <span>
+                  N° Téléphone personnel
+                </span>
+              </legend>
+            </fieldset>
+          </div>
+        </div>
+      </div>
+      <div
+        class="flex flex-col gap-1"
+      >
+        <div
+          class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root css-wb57ya-MuiFormControl-root-MuiTextField-root"
+        >
+          <label
+            class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root"
+            data-shrink="false"
+            for="outlined-basic"
+            id="outlined-basic-label"
+          >
+            Adresse email
+          </label>
+          <div
+            class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl css-md26zr-MuiInputBase-root-MuiOutlinedInput-root"
+          >
+            <input
+              aria-invalid="false"
+              class="MuiInputBase-input MuiOutlinedInput-input css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input"
+              id="outlined-basic"
+              name="contactPersonEmail"
+              type="text"
+              value=""
+            />
+            <fieldset
+              aria-hidden="true"
+              class="MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline"
+            >
+              <legend
+                class="css-yjsfm1"
+              >
+                <span>
+                  Adresse email
+                </span>
+              </legend>
+            </fieldset>
+          </div>
+        </div>
+      </div>
+      <div
+        class="flex gap-4"
+      >
+        <div
+          class="MuiFormControl-root w-1/2 flex flex-col gap-1 css-1nrlq1o-MuiFormControl-root"
+        >
+          <label
+            class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root"
+            data-shrink="false"
+            id="demo-simple-select-label"
+          >
+            Occupation
+          </label>
+          <div
+            class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl  css-1yk1gt9-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root"
+          >
+            <div
+              aria-expanded="false"
+              aria-haspopup="listbox"
+              aria-labelledby="demo-simple-select-label demo-simple-select"
+              class="MuiSelect-select MuiSelect-outlined MuiInputBase-input MuiOutlinedInput-input css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input"
+              id="demo-simple-select"
+              role="button"
+              tabindex="0"
+            >
+              <span
+                class="notranslate"
+              >
+                ​
+              </span>
+            </div>
+            <input
+              aria-hidden="true"
+              class="MuiSelect-nativeInput css-yf8vq0-MuiSelect-nativeInput"
+              name="contactPersonOccupation"
+              tabindex="-1"
+              value=""
+            />
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiSelect-icon MuiSelect-iconOutlined css-hfutr2-MuiSvgIcon-root-MuiSelect-icon"
+              data-testid="ArrowDropDownIcon"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M7 10l5 5 5-5z"
+              />
+            </svg>
+            <fieldset
+              aria-hidden="true"
+              class="MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline"
+            >
+              <legend
+                class="css-yjsfm1"
+              >
+                <span>
+                  Occupation
+                </span>
+              </legend>
+            </fieldset>
+          </div>
+        </div>
+        <div
+          class="flex flex-col gap-1"
+        >
+          <div
+            class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root css-wb57ya-MuiFormControl-root-MuiTextField-root"
+          >
+            <label
+              class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root"
+              data-shrink="false"
+              for="outlined-basic"
+              id="outlined-basic-label"
+            >
+              Home Address
+            </label>
+            <div
+              class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl css-md26zr-MuiInputBase-root-MuiOutlinedInput-root"
+            >
+              <input
+                aria-invalid="false"
+                class="MuiInputBase-input MuiOutlinedInput-input css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input"
+                id="outlined-basic"
+                name="contactPersonHomeAddress"
+                type="text"
+                value=""
+              />
+              <fieldset
+                aria-hidden="true"
+                class="MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline"
+              >
+                <legend
+                  class="css-yjsfm1"
+                >
+                  <span>
+                    Home Address
+                  </span>
+                </legend>
+              </fieldset>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="flex items-center !mt-10 mb-2"
+      >
+        <input
+          class="w-4 h-4 text-orange bg-gray-100 border-gray-300 rounded focus:ring-orange focus:ring-1"
+          id="link-checkbox"
+          type="checkbox"
+          value=""
+        />
+        <label
+          class="h-4 ml-2 text-sm font-normal text-gray-600 dark:text-gray-300"
+          for="link-checkbox"
+        >
+          I agree with the
+           
+          <a
+            class="text-primary hover:underline"
+            href="#"
+          >
+            terms and conditions
+          </a>
+          .
+        </label>
+      </div>
+      <div
+        class="MuiBox-root css-0"
+      >
+        <button
+          class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge Mui-disabled MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge disabled:bg-gray-200 css-jh47zj-MuiButtonBase-root-MuiButton-root"
+          disabled=""
+          tabindex="-1"
+          type="submit"
+        >
+          CREATE NEW ACCOUNT
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
+`;

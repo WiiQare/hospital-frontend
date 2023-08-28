@@ -3,17 +3,17 @@
 exports[`Filter should render the component 1`] = `
 <div>
   <div
-    className="undefined dropdown dropdown-end flex"
+    class="undefined dropdown dropdown-end flex"
   >
     <label
-      className=" bg-white border rounded-xl w-full py-2 px-4 flex justify-between items-center undefined"
+      class=" bg-white border rounded-xl w-full py-2 px-4 flex justify-between items-center undefined"
       tabindex="0"
     >
       <span
-        className="flex mr-2 gap-4 items-center"
+        class="flex mr-2 gap-4 items-center"
       >
         <span
-          className="font-light"
+          class="font-light"
         >
           Filter
         </span>
@@ -35,59 +35,59 @@ exports[`Filter should render the component 1`] = `
       </svg>
     </label>
     <ul
-      className="undefined w-48 mt-14 dropdown-content menu p-2 bg-white border rounded-box text-gray-700 font-light"
+      class="undefined w-48 mt-14 dropdown-content menu p-2 bg-white border rounded-box text-gray-700 font-light"
       tabindex="0"
     >
       <div
-        className="overflow-hidden"
+        class="overflow-hidden"
       >
         <div
-          className="flex justify-between items-center my-6 "
+          class="flex justify-between items-center my-6 "
         >
           <div
-            className="rounded-md flex items-center"
+            class="rounded-md flex items-center"
           >
             <span
-              className="p-2 font-extralight text-xs"
+              class="p-2 font-extralight text-xs"
             >
                Min
             </span>
             <label
-              className="text-sky font-bold text-2xl flex items-start"
+              class="text-sky font-bold text-2xl flex items-start"
               for=""
             >
               10
                
               <span
-                className="text-gray-500 font-light text-xs"
+                class="text-gray-500 font-light text-xs"
               >
                 $/mo
               </span>
             </label>
           </div>
           <div
-            className="ml-2 font-semibold text-lg"
+            class="ml-2 font-semibold text-lg"
           >
              - 
           </div>
           <div
-            className=" "
+            class=" "
           >
             <div
-              className="rounded-md flex items-center"
+              class="rounded-md flex items-center"
             >
               <span
-                className="p-2 font-extralight text-xs"
+                class="p-2 font-extralight text-xs"
               >
                  Max
               </span>
               <label
-                className="text-sky font-bold text-2xl flex items-start"
+                class="text-sky font-bold text-2xl flex items-start"
                 for=""
               >
                 10000
                 <span
-                  className="text-gray-500 font-light text-xs"
+                  class="text-gray-500 font-light text-xs"
                 >
                   $/mo
                 </span>
@@ -96,21 +96,21 @@ exports[`Filter should render the component 1`] = `
           </div>
         </div>
         <div
-          className="mb-4"
+          class="mb-4"
         >
           <div
-            className="slider relative h-1 rounded-md bg-gray-300"
+            class="slider relative h-1 rounded-md bg-gray-300"
           >
             <div
-              className="progress absolute h-1 bg-green-300 rounded "
+              class="progress absolute h-1 bg-green-300 rounded "
               style="left: 0.001%; right: 0%;"
             />
           </div>
           <div
-            className="range-input relative  "
+            class="range-input relative  "
           >
             <input
-              className="range-min absolute w-full  -top-1  h-1   bg-transparent  appearance-none pointer-events-none"
+              class="range-min absolute w-full  -top-1  h-1   bg-transparent  appearance-none pointer-events-none"
               max="10000"
               min="10"
               step="1"
@@ -118,7 +118,7 @@ exports[`Filter should render the component 1`] = `
               value="10"
             />
             <input
-              className="range-max absolute w-full  -top-1 h-1  bg-transparent appearance-none  pointer-events-none"
+              class="range-max absolute w-full  -top-1 h-1  bg-transparent appearance-none  pointer-events-none"
               max="10000"
               min="10"
               step="1"

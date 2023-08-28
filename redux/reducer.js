@@ -1,22 +1,22 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-    client: {register: {}}
-}
+  client: { register: {} },
+};
 
 export const ReducerSlice = createSlice({
-    name: 'jamii',
-    initialState,
-    reducers: {
-        setRegister: (state, action) => {
-            state.client.register = {...action.payload}
-        },
-        setPatientDispatch: (state, action) => {
-            state.client.patient = {...action.payload}
-        }
-    }
-})
+  name: 'jamii',
+  initialState,
+  reducers: {
+    setRegister: (state, action) => {
+      state.client.register = { ...action.payload };
+    },
+    setPatientDispatch: (state, action) => {
+      state.client.patient = { ...action.payload };
+    },
+  },
+});
 
-export const { setRegister, setPatientDispatch } = ReducerSlice.actions
+export const { setRegister, setPatientDispatch } = ReducerSlice.actions;
 
 export default ReducerSlice.reducer;

@@ -3,10 +3,10 @@
 exports[`Send should render the component 1`] = `
 <div>
   <div
-    className="flex flex-col gap-6 items-center h-screen w-full overflow-hidden"
+    class="flex flex-col gap-6 items-center h-screen w-full overflow-hidden"
   >
     <svg
-      className="text-red-600"
+      class="text-red-600"
       fill="currentColor"
       height="100"
       stroke="currentColor"

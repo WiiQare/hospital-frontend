@@ -1,13 +1,12 @@
-import React, { useContext } from "react";
-import Email from "./Forms/email";
-import Information from "./Forms/informations";
-import PersonnalInformation from "./Forms/personalInformations";
-import Otp from "./Forms/otp";
-import { FormContextRegister } from "./RegisterForm";
-import Images from "./Forms/images";
+import React, { useContext } from 'react';
+import Email from './Forms/email';
+import Information from './Forms/informations';
+import PersonnalInformation from './Forms/personalInformations';
+import Otp from './Forms/otp';
+import { FormContextRegister } from './RegisterForm';
+import Images from './Forms/images';
 
 function StepRegistration() {
-
   const { activeStep } = useContext(FormContextRegister);
   let stepContent;
 

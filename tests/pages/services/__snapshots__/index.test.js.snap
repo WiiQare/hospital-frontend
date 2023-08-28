@@ -1,0 +1,66 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Services Page renders 1`] = `
+<div>
+  <div
+    class="p-2 space-y-6 md:py-8 md:px-6 mb-20"
+  >
+    <div
+      class="border w-full rounded-lg py-8 px-6 flex flex-col flex-wrap md:flex-row justify-between gap-4 bg-white cursor-pointer"
+    >
+      <div
+        class="flex flex-col"
+      >
+        <h1
+          class="md:text-2xl text-gray-700 font-bold flex-wrap flex items-center gap-2 text-lg"
+        >
+          Nos services
+        </h1>
+      </div>
+      <div
+        class="flex flex-row flex-wrap  gap-2 center justify-end space-x-2"
+      >
+        <button
+          class="text-white bg-blue-700 border border-transparent hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 disabled:hover:bg-blue-700 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 dark:disabled:hover:bg-blue-600 focus:!ring-2 group flex h-min items-center justify-center p-0.5 text-center font-medium focus:z-10 rounded-lg bg-primary"
+          type="button"
+        >
+          <span
+            class="flex items-center rounded-md text-sm px-4 py-2"
+          >
+            <svg
+              class="mr-2 h-5 w-5"
+              fill="currentColor"
+              height="1em"
+              stroke="currentColor"
+              stroke-width="0"
+              viewBox="0 0 24 24"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <g
+                dataName="Square Plus"
+                id="Square_Plus"
+              >
+                <g>
+                  <path
+                    d="M18.438,20.938H5.563a2.5,2.5,0,0,1-2.5-2.5V5.564a2.5,2.5,0,0,1,2.5-2.5H18.438a2.5,2.5,0,0,1,2.5,2.5V18.438A2.5,2.5,0,0,1,18.438,20.938ZM5.563,4.064a1.5,1.5,0,0,0-1.5,1.5V18.438a1.5,1.5,0,0,0,1.5,1.5H18.438a1.5,1.5,0,0,0,1.5-1.5V5.564a1.5,1.5,0,0,0-1.5-1.5Z"
+                  />
+                  <path
+                    d="M15,12.5H12.5V15a.5.5,0,0,1-1,0V12.5H9a.5.5,0,0,1,0-1h2.5V9a.5.5,0,0,1,1,0v2.5H15A.5.5,0,0,1,15,12.5Z"
+                  />
+                </g>
+              </g>
+            </svg>
+            Nouveau Service
+          </span>
+        </button>
+      </div>
+    </div>
+    <div
+      class="border rounded-lg overflow-x-auto w-full relative"
+    >
+      Loading...
+    </div>
+  </div>
+</div>
+`;

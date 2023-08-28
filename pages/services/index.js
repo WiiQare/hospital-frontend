@@ -1,6 +1,6 @@
-import Head from "next/head";
-import DashboardLayout from "../../layouts/Dashboard";
-import Service from "../../components/organisms/Service";
+import Head from 'next/head';
+import DashboardLayout from '../../layouts/Dashboard';
+import Service from '../../components/organisms/Service';
 
 const Page = () => {
   return (
