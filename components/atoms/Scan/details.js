@@ -36,7 +36,7 @@ const ScanDetails = ({ shorten }) => {
 
   useEffect(() => {
     fetch(
-      `https://api.wiiqare-app.com/api/v1/provider/provider-voucher-details?shortenHash=${shorten}`,
+      `${process.env.NEXT_PUBLIC_API_URL}/api/v1/provider/provider-voucher-details?shortenHash=${shorten}`,
       Options,
     ).then(async (res) => {
       let json = await res.json();
@@ -53,9 +53,9 @@ const ScanDetails = ({ shorten }) => {
 
       setConvertRequest(false);
       setDataAmount({
-        amount: response.result,
-        currency: response.query.to,
-        rate: response.info.rate,
+        amount: response?.result,
+        currency: response?.query?.to,
+        rate: response?.info?.rate,
       });
     });
   }, []);
