@@ -13,9 +13,6 @@ const Transaction = () => {
 	const { data: session } = useSession();
 
 
-	console.log("selecte", selected);
-
-
 	const handleClick = () => {
 		console.log(selected);
 		const swalWithBootstrapButtons = Swal.mixin({

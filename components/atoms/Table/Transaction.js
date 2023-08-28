@@ -74,7 +74,7 @@ const columns = [
 	},
 	{
 		name: 'HASH',
-		selector: row => (<button className="btn btn-xs !lowercase">{row.shortenHash}</button>),
+		selector: row => (<button className="btn btn-xs !lowercase">{row?.shortenHash ?? "---"}</button>),
 		sortable: true,
 	},
 ];
