@@ -263,7 +263,7 @@ const Page = () => {
                                 </div>
                                 <div className="flex-1 min-w-0">
                                   <p className="text-sm font-medium text-gray-900 truncate">
-                                    {transaction.voucher.patientId}
+                                    {transaction.owner.firstName} {transaction.owner.lastName}
                                   </p>
                                   <p className="text-xs text-gray-500 truncate ">
                                     +243 814 978 651
