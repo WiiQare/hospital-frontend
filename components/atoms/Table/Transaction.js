@@ -19,7 +19,9 @@ const columns = [
             </div>
           </div>
           <div>
-            <div className="font-bold">{row.owner.firstName} {row.owner.lastName}</div>
+            <div className="font-bold">
+              {row.owner.firstName} {row.owner.lastName}
+            </div>
             <div className="text-sm opacity-50">United States</div>
           </div>
         </div>
