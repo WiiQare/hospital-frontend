@@ -1,16 +1,14 @@
-import React, { useContext, useEffect, useState } from "react";
-import { useSession } from "next-auth/react";
+import React, { useContext, useEffect, useState } from 'react';
+import { useSession } from 'next-auth/react';
 import Fetcher from '../../../lib/Fetcher';
 import { BiTransferAlt } from 'react-icons/bi';
 import CopyToClipboard from 'react-copy-to-clipboard';
 import { AiOutlineExclamationCircle } from 'react-icons/ai';
 import { MdPayments } from 'react-icons/md';
-import { StepContext } from ".";
-import { useRouter } from "next/router";
-import { convertCurrency } from "../../../lib/helper";
-import CurrencyFlag from "react-currency-flags";
-
-
+import { StepContext } from '.';
+import { useRouter } from 'next/router';
+import { convertCurrency } from '../../../lib/helper';
+import CurrencyFlag from 'react-currency-flags';
 
 const ScanDetails = ({ shorten }) => {
   const { step, setStep, total } = useContext(StepContext);
@@ -360,22 +358,35 @@ const ScanDetails = ({ shorten }) => {
 
 export default ScanDetails;
 
-function ItemsDetails({ title, value, otherValue, exclamation = false, last = true }) {
-	return (
-		<div className="flex flex-col hover:shadow-sm w-full">
-			<div className='flex justify-between px-6 py-2 items-center'>
-				<div className='flex flex-col  mb-2 gap-1'>
-					<h1 className='font-normal text-gray-400 text-sm'>{title}</h1>
-					<div className='flex gap-2 items-center'>
-						<h3 className='font-bold text-md text-gray-700'>{value}</h3>
-						{otherValue && <span className='text-sm text-gray-400'> - {otherValue}</span>}
-					</div>
-				</div>
+function ItemsDetails({
+  title,
+  value,
+  otherValue,
+  exclamation = false,
+  last = true,
+}) {
+  return (
+    <div className="flex flex-col hover:shadow-sm w-full">
+      <div className="flex justify-between px-6 py-2 items-center">
+        <div className="flex flex-col  mb-2 gap-1">
+          <h1 className="font-normal text-gray-400 text-sm">{title}</h1>
+          <div className="flex gap-2 items-center">
+            <h3 className="font-bold text-md text-gray-700">{value}</h3>
+            {otherValue && (
+              <span className="text-sm text-gray-400"> - {otherValue}</span>
+            )}
+          </div>
+        </div>
 
-				{exclamation && <AiOutlineExclamationCircle size={24} className='text-gray-300 cursor-pointer hover:text-orange transition-all duration-200' />}
-			</div>
+        {exclamation && (
+          <AiOutlineExclamationCircle
+            size={24}
+            className="text-gray-300 cursor-pointer hover:text-orange transition-all duration-200"
+          />
+        )}
+      </div>
 
-			{last && <hr />}
-		</div>
-	)
+      {last && <hr />}
+    </div>
+  );
 }

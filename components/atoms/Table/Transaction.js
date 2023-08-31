@@ -1,6 +1,6 @@
-import React, { useContext, useEffect, useState } from "react";
-import Fetcher from "../../../lib/Fetcher";
-import { TableContext } from "../../organisms/Transaction";
+import React, { useContext, useEffect, useState } from 'react';
+import Fetcher from '../../../lib/Fetcher';
+import { TableContext } from '../../organisms/Transaction';
 import DataTable from 'react-data-table-component';
 
 const columns = [
@@ -82,7 +82,7 @@ const columns = [
     name: 'HASH',
     selector: (row) => (
       <button className="btn btn-xs !lowercase">
-        {row.voucherEntity.shortenHash}
+        {row?.voucherEntity?.shortenHash}
       </button>
     ),
     sortable: true,
@@ -90,43 +90,49 @@ const columns = [
 ];
 
 export default function TransactionTable() {
-	const { selected, setSelected, isChecked, setIsChecked, session } = useContext(TableContext);
+  const { selected, setSelected, isChecked, setIsChecked, session } =
+    useContext(TableContext);
 
-	const { data, isLoading, isError } = Fetcher(`/provider/transactions?providerId=${session.user.data.providerId}`, session.accessToken);
+  const { data, isLoading, isError } = Fetcher(
+    `/provider/transactions?providerId=${session.user.data.providerId}`,
+    session.accessToken,
+  );
 
-	const handleChange = async ({ selectedRows }) => {
-		setSelected([])
-		selectedRows.map(item => setSelected([...selected, item.transactionHash]))
-	};
+  const handleChange = async ({ selectedRows }) => {
+    setSelected([]);
+    selectedRows.map((item) =>
+      setSelected([...selected, item.transactionHash]),
+    );
+  };
 
-	return (
-		<div className="border rounded-lg overflow-x-auto w-full">
-			{
-				isLoading ? (<>Loading</>) : (
-					<>
-						<DataTable
-							columns={columns}
-							data={data}
-							fixedHeader
-							className="px-8 bg-white"
-							paginationPerPage={20}
-							paginationTotalRows={false}
-							pagination
-							title="Historique des transactions"
-							selectableRows
-							onSelectedRowsChange={handleChange}
-							persistTableHead
-							selectableRowDisabled={row => row.status !== "UNCLAIMED"}
-							paginationComponentOptions={{
-								rowsPerPageText: "Ligne par page",
-								rangeSeparatorText: 'de',
-								selectAllRowsItem: true,
-								selectAllRowsItemText: 'Voir tous',
-							}}
-						/>
-					</>
-				)
-			}
-		</div>
-	);
+  return (
+    <div className="border rounded-lg overflow-x-auto w-full">
+      {isLoading ? (
+        <>Loading</>
+      ) : (
+        <>
+          <DataTable
+            columns={columns}
+            data={data}
+            fixedHeader
+            className="px-8 bg-white"
+            paginationPerPage={20}
+            paginationTotalRows={false}
+            pagination
+            title="Historique des transactions"
+            selectableRows
+            onSelectedRowsChange={handleChange}
+            persistTableHead
+            selectableRowDisabled={(row) => row.status !== 'UNCLAIMED'}
+            paginationComponentOptions={{
+              rowsPerPageText: 'Ligne par page',
+              rangeSeparatorText: 'de',
+              selectAllRowsItem: true,
+              selectAllRowsItemText: 'Voir tous',
+            }}
+          />
+        </>
+      )}
+    </div>
+  );
 }
