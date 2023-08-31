@@ -82,7 +82,7 @@ const columns = [
     name: 'HASH',
     selector: (row) => (
       <button className="btn btn-xs !lowercase">
-        {row.voucherEntity.shortenHash}
+        {row?.voucherEntity?.shortenHash}
       </button>
     ),
     sortable: true,
