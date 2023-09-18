@@ -47,10 +47,12 @@ const Transaction = () => {
             return Swal.showValidationMessage(`Aucun élément sélectionner...`);
 
           return fetch(
-            `${process.env.NEXT_PUBLIC_API_URL}/redeem-voucher`,
+            `${process.env.NEXT_PUBLIC_API_URL}/api/v1/provider/redeem-voucher`,
             Options,
           )
             .then((response) => {
+              console.log( response );
+              
               if (!response.ok) {
                 throw new Error(response.statusText);
               }
