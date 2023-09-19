@@ -101,7 +101,7 @@ export default function TransactionTable() {
   const handleChange = async ({ selectedRows }) => {
     setSelected([]);
     selectedRows.map((item) =>
-      setSelected([...selected, item.transactionHash]),
+      setSelected([...selected, item.id]),
     );
   };
 
@@ -123,7 +123,7 @@ export default function TransactionTable() {
             selectableRows
             onSelectedRowsChange={handleChange}
             persistTableHead
-            selectableRowDisabled={(row) => row.status !== 'UNCLAIMED'}
+            selectableRowDisabled={(row) => row.voucherEntity.status !== 'UNCLAIMED'}
             paginationComponentOptions={{
               rowsPerPageText: 'Ligne par page',
               rangeSeparatorText: 'de',
