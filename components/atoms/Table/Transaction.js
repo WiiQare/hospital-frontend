@@ -52,14 +52,14 @@ const columns = [
     name: 'STATUS',
     selector: (row) => (
       <>
-        {row.status == 'UNCLAIMED' ? (
+        {row.status == 'PENDING' ? (
           <>
             <span className="inline-flex items-center gap-1.5 py-1.5 px-3 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
               <span className="w-1.5 h-1.5 inline-block bg-indigo-400 rounded-full"></span>
               Non-reclamé
             </span>
           </>
-        ) : row.status == 'PENDING' ? (
+        ) : row.status == 'SUCCESSFUL' ? (
           <>
             <span className="inline-flex items-center gap-1.5 py-1.5 px-3 rounded-full text-xs font-medium bg-amber-100 text-amber-800">
               <span className="w-1.5 h-1.5 inline-block bg-amber-400 rounded-full"></span>

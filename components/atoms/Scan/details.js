@@ -342,7 +342,10 @@ const ScanDetails = ({ shorten }) => {
           <div className="flex justify-center">
             <button
               className="capitalize bg-orange w-fit  px-6 py-4 rounded-xl text-white flex gap-2 items-center effect-up shadow-md"
-              onClick={() => setStep(step + 1)}
+              onClick={() => {
+                console.log('STEEEP', step );
+                setStep( (step)=>step + 1)
+              }}
             >
               <MdPayments size={20} />{' '}
               {total > data.amount
