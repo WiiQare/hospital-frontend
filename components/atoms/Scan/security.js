@@ -14,6 +14,8 @@ const SecurityCode = ({ shorten }) => {
   const [state, setState] = useState({ type: 0, message: '' });
   const [isUsed, setIsUsed] = useState(false);
 
+  console.log('RENDER', shorten );
+
   const sendEmailMutation = useMutation(sendSecurityCode, {
     onSuccess: (res) => {
       if (res.code == 200) {
