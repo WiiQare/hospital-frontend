@@ -1,4 +1,4 @@
-import React, { createContext, useEffect, useState } from 'react';
+import React, { createContext, createRef, useEffect, useState } from 'react';
 import { QrReader } from 'react-qr-reader';
 import { Transition } from '@headlessui/react';
 import Tabs from '@mui/material/Tabs';
@@ -41,14 +41,17 @@ const Scan = () => {
     session.accessToken,
   );
 
+  console.log('RERENDER INDEX', step );
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
 
   const handleStep = (result = null) => {
+    console.log('QR HANDLE STEP '+step );
     setStep(step + 1);
 
-    if (result) {
+    if ( data === null && result) {
+      console.log('THIS SHOULD ONLY BE ONCE');
       setData(result && result.slice(0, 8));
     }
   };
@@ -93,6 +96,10 @@ const Scan = () => {
       {message}
     </p>
   );
+
+  useEffect( () => {
+    console.log( 'STEP', step );
+  }, [step ]);
 
   if (step === -1)
     return (
@@ -277,6 +284,7 @@ function TabsModal({ value, handleChange }) {
 }
 
 function TabItems({ value, handleStep }) {
+  const scannedRef = createRef( null );
   const onSubmit = async (values) => {
     if (Object.keys(values).length == 0) return console.log('Pas de données');
 
@@ -317,11 +325,16 @@ function TabItems({ value, handleStep }) {
               </p>
             </div>
             <div className="">
-              <QrReader
-                delay={300}
+              { scannedRef.current == null && <QrReader
+                tracker={false}
+                scanDelay={500}
                 onResult={(result, error) => {
                   if (!!result) {
-                    handleStep(result.text);
+                    if( scannedRef.current == null ){
+                      scannedRef.current = result.text;
+                      handleStep(result.text);
+                    }
+                    
                   }
 
                   if (!!error) {
@@ -330,7 +343,7 @@ function TabItems({ value, handleStep }) {
                 }}
                 constraints={{ facingMode: 'environment' }}
                 style={{ width: '100%' }}
-              />
+              />}
             </div>
           </div>
         </TabPanel>
