@@ -1,15 +1,17 @@
 import { Button, TextField } from '@mui/material';
 import { useFormik } from 'formik';
 import { useSession } from 'next-auth/react';
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { useMutation } from 'react-query';
 import * as yup from 'yup';
 import { sendSecurityCode } from '../../../lib/helper';
 import LoadingButton from '../Loader/LoadingButton';
 import Image from 'next/image';
 import Toast from '../Toast';
+import { StepContext } from '.';
 
 const SecurityCode = ({ shorten }) => {
+  const { services, total } = useContext(StepContext);
   const { data: session } = useSession();
   const [state, setState] = useState({ type: 0, message: '' });
   const [isUsed, setIsUsed] = useState(false);
@@ -45,6 +47,8 @@ const SecurityCode = ({ shorten }) => {
       shortenHash: shorten,
       providerId: session.user.data.providerId,
       accessToken: session.user.data.access_token,
+      services: services.map( e => e.id ),
+      total: total
     });
   };
 
