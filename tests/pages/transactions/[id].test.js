@@ -3,7 +3,7 @@ import { render } from '@testing-library/react';
 import { SessionProvider } from 'next-auth/react';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { Provider } from 'react-redux';
-import DashboardLayout from '../../../layouts/dashboard';
+import DashboardLayout from '../../../layouts/Dashboard';
 import Page from '../../../pages/transactions/[id]';
 import { store } from '../../../redux/store';
 

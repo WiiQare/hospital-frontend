@@ -1,6 +1,6 @@
 import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
-import DashboardLayout from '../../layouts/dashboard';
+import DashboardLayout from '../../layouts/Dashboard';
 import InvoicesPage from '../../pages/invoices';
 
 describe('Invoices Page', () => {
