@@ -1,10 +1,11 @@
 import '@testing-library/jest-dom';
 import { render } from '@testing-library/react';
-import Page from '../../../pages/services';
 import { SessionProvider } from 'next-auth/react';
+import { QueryClient, QueryClientProvider } from 'react-query';
 import { Provider } from 'react-redux';
+import DashboardLayout from '../../../layouts/dashboard';
+import Page from '../../../pages/services';
 import { store } from '../../../redux/store';
-import { QueryClientProvider, QueryClient } from 'react-query';
 require('jest-fetch-mock').enableMocks();
 
 jest.mock('next/router', () => ({
@@ -32,5 +33,13 @@ describe('Services Page', () => {
       </QueryClientProvider>,
     );
     expect(container).toMatchSnapshot();
+  });
+
+  it('should have DashboardLayout', () => {
+    expect(Page.getLayout(<div />)).toEqual(
+      <DashboardLayout className="space-y-8">
+        <div />
+      </DashboardLayout>,
+    );
   });
 });

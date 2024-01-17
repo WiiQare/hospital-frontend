@@ -1,10 +1,11 @@
 import '@testing-library/jest-dom';
 import { render } from '@testing-library/react';
-import Page from '../../../pages/voucher/buy';
 import { SessionProvider } from 'next-auth/react';
+import { QueryClient, QueryClientProvider } from 'react-query';
 import { Provider } from 'react-redux';
+import DashboardLayout from '../../../layouts/dashboard';
+import Page from '../../../pages/voucher/buy';
 import { store } from '../../../redux/store';
-import { QueryClientProvider, QueryClient } from 'react-query';
 
 jest.mock('next/router', () => ({
   useRouter: jest.fn().mockReturnValue({
@@ -27,5 +28,13 @@ describe('Voucher Buy Page', () => {
       </QueryClientProvider>,
     );
     expect(container).toMatchSnapshot();
+  });
+
+  it('should have DashboardLayout', () => {
+    expect(Page.getLayout(<div />)).toEqual(
+      <DashboardLayout className="space-y-8">
+        <div />
+      </DashboardLayout>,
+    );
   });
 });
