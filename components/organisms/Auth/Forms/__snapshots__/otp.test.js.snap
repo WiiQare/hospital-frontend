@@ -20,9 +20,9 @@ exports[`OTP should render successfully 1`] = `
       Expire in
        
       <span>
-        02
+        01
         :
-        00
+        59
       </span>
     </span>
   </div>
