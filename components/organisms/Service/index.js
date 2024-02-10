@@ -20,46 +20,62 @@ import Toast from '../../atoms/Toast';
 import DataTable from 'react-data-table-component';
 import Fetcher from '../../../lib/Fetcher';
 
-const columns = [
-  {
-    name: 'NOM DU SERVICE',
-    selector: (row) => (
-      <span className="font-semibold text-md">{row.name}</span>
-    ),
-    sortable: true,
-  },
-  {
-    name: 'MONTANT',
-    selector: (row) => (
-      <div className="py-8 space-y-2">
-        {new Intl.NumberFormat('en-US', {
-          style: 'currency',
-          currency: 'CDF',
-        }).format(row.price)}
-        <br />
-        <span className="badge badge-ghost badge-sm">
-          {new Intl.DateTimeFormat('fr-FR', {
-            timeStyle: 'short',
-            dateStyle: 'long',
-          }).format(new Date(row.createdAt))}
-        </span>
-      </div>
-    ),
-    sortable: true,
-  },
-  {
-    name: 'DESCRIPTION',
-    selector: (row) => <>{row.description}</>,
-    sortable: true,
-  },
-];
-
 const Service = () => {
   const { data } = useSession();
   let [isOpen, setIsOpen] = useState(false);
   let [isOpenForPackage, setIsOpenForPackage] = useState(false);
   const [state, setState] = useState({ type: 0, message: '' });
   const [selected, setSelected] = useState([]);
+  const country = () => {
+    var numeroTelephone = data.user.data.phoneNumber;
+
+    // Expression régulière pour récupérer le code de pays
+    var regexCodePays = /^\+(\d{3})/;
+
+    // Recherche du code de pays dans le numéro de téléphone
+    var match = numeroTelephone.match(regexCodePays);
+
+    // Vérification si le code de pays a été trouvé
+    if (match && match[1]) {
+      return match[1] == '243' ? 'cd' : match[1] == '237' ? 'cm' : null;
+    } else {
+      return null
+    }
+  }
+
+  const columns = [
+    {
+      name: 'NOM DU SERVICE',
+      selector: (row) => (
+        <span className="font-semibold text-md">{row.name}</span>
+      ),
+      sortable: true,
+    },
+    {
+      name: 'MONTANT',
+      selector: (row) => (
+        <div className="py-8 space-y-2">
+          {new Intl.NumberFormat('en-US', {
+            style: 'currency',
+            currency: country == 'cd' ? "CDF" : "XOF",
+          }).format(row.price)}
+          <br />
+          <span className="badge badge-ghost badge-sm">
+            {new Intl.DateTimeFormat('fr-FR', {
+              timeStyle: 'short',
+              dateStyle: 'long',
+            }).format(new Date(row.createdAt))}
+          </span>
+        </div>
+      ),
+      sortable: true,
+    },
+    {
+      name: 'DESCRIPTION',
+      selector: (row) => <>{row.description}</>,
+      sortable: true,
+    },
+  ];
 
   const {
     data: result,
@@ -364,7 +380,7 @@ const Service = () => {
                       <div className="flex flex-col gap-1">
                         <FormControl fullWidth>
                           <InputLabel htmlFor="outlined-adornment-amount">
-                            Prix (en CDF)
+                            Prix (en {country == 'cd' ? "CDF" : "XOF"})
                           </InputLabel>
                           <OutlinedInput
                             id="outlined-adornment-amount"
@@ -375,10 +391,10 @@ const Service = () => {
                             }
                             startAdornment={
                               <InputAdornment position="start">
-                                CDF
+                                {country == 'cd' ? "CDF" : "XOF"}
                               </InputAdornment>
                             }
-                            label="Prix (en CDF)"
+                            label={`Prix (en ${country == 'cd' ? "CDF" : "XOF"})`}
                           />
                         </FormControl>
 
@@ -517,7 +533,7 @@ const Service = () => {
                       <div className="flex flex-col gap-1">
                         <FormControl fullWidth>
                           <InputLabel htmlFor="outlined-adornment-amount">
-                            Prix (en CDF)
+                            Prix (en {country == 'cd' ? "CDF" : "XOF"})
                           </InputLabel>
                           <OutlinedInput
                             id="outlined-adornment-amount"
@@ -531,10 +547,10 @@ const Service = () => {
                             }
                             startAdornment={
                               <InputAdornment position="start">
-                                CDF
+                                {country == 'cd' ? "CDF" : "XOF"}
                               </InputAdornment>
                             }
-                            label="Prix (en CDF)"
+                            label={`Prix (en ${country == 'cd' ? "CDF" : "XOF"})`}
                           />
                         </FormControl>
 
@@ -593,7 +609,7 @@ const Service = () => {
                                 <td className="px-6 py-4 text-xs">
                                   {new Intl.NumberFormat('en-US', {
                                     style: 'currency',
-                                    currency: 'CDF',
+                                    currency: country == 'cd' ? 'CDF' : 'XOF',
                                   }).format(service.price)}
                                 </td>
                                 <td className="px-6 py-4">

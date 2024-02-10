@@ -12,7 +12,7 @@ import CurrencyFlag from "react-currency-flags";
 
 
 
-const ScanDetails = ({ shorten }) => {
+const ScanDetails = ({ shorten, country }) => {
   const { step, setStep, total } = useContext(StepContext);
   const router = useRouter();
 
@@ -22,10 +22,10 @@ const ScanDetails = ({ shorten }) => {
   const [dataAmount, setDataAmount] = useState(null);
   const [dataAmountHospital, setDataAmountHospital] = useState({
     amount: total,
-    currency: 'CDF',
+    currency: country,
     rate: 1.0,
   });
-  const [currencyProvider, setCurrencyProvider] = useState('CDF');
+  const [currencyProvider, setCurrencyProvider] = useState(country);
   const [convertRequest, setConvertRequest] = useState(false);
 
   const Options = {
@@ -51,7 +51,7 @@ const ScanDetails = ({ shorten }) => {
 
       setConvertRequest(true);
 
-      const response = await convertCurrency(json.currency, json.amount, 'CDF');
+      const response = await convertCurrency(json.currency, json.amount, country);
 
       setConvertRequest(false);
       setDataAmount({
@@ -63,19 +63,19 @@ const ScanDetails = ({ shorten }) => {
   }, []);
 
   const handleCurrency = async (e) => {
-    setCurrencyProvider(currencyProvider == 'CDF' ? 'USD' : 'CDF');
+    setCurrencyProvider(currencyProvider == country ? 'USD' : country);
 
     setConvertRequest(true);
     const res = await convertCurrency(
       data.currency,
       data.amount,
-      currencyProvider == 'CDF' ? 'USD' : 'CDF',
+      currencyProvider == country ? 'USD' : country,
     );
 
     const resHospital = await convertCurrency(
-      'CDF',
+      country,
       total,
-      currencyProvider == 'CDF' ? 'USD' : 'CDF',
+      currencyProvider == country ? 'USD' : country,
     );
 
     setConvertRequest(false);
@@ -214,12 +214,12 @@ const ScanDetails = ({ shorten }) => {
                 />
                 <span
                   className={`px-4 py-2  ${
-                    currencyProvider == 'CDF'
+                    currencyProvider == country
                       ? 'bg-primary text-white'
                       : 'bg-transparent text-primary'
                   } font-semibold select-none text-sm`}
                 >
-                  CDF
+                  {country}
                 </span>
                 <span
                   className={`px-4 py-2  font-semibold ${
