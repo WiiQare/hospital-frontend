@@ -18,7 +18,24 @@ import { MdQrCodeScanner } from 'react-icons/md';
 const Page = () => {
   const router = useRouter();
   const { data } = useSession();
+  const country = () => {
+    var numeroTelephone = data.user.data.phoneNumber;
 
+    // Expression régulière pour récupérer le code de pays
+    var regexCodePays = /^\+(\d{3})/;
+
+    // Recherche du code de pays dans le numéro de téléphone
+    var match = numeroTelephone.match(regexCodePays);
+
+    console.log(match);
+
+    // Vérification si le code de pays a été trouvé
+    if (match && match[1]) {
+      return match[1] == '243' ? 'CDF' : match[1] == '237' ? 'XOF' : null;
+    } else {
+      return null
+    }
+  }
   const {
     data: result,
     isLoading,
@@ -142,7 +159,7 @@ const Page = () => {
                     <span className="font-semibold text-md text-gray-700 ">
                       {new Intl.NumberFormat('en-US', {
                         style: 'currency',
-                        currency: 'CDF',
+                        currency: country(),
                       }).format(resultStat.totalUnclaimedAmount)}
                     </span>
 
@@ -190,7 +207,7 @@ const Page = () => {
                     <span className="font-semibold text-md text-gray-700 ">
                       {new Intl.NumberFormat('en-US', {
                         style: 'currency',
-                        currency: 'CDF',
+                        currency: country(),
                       }).format(resultStat.totalRedeemedAmount)}
                     </span>
                     <div className="flex gap-2 text-green-400 items-center mt-3 text-sm">
@@ -215,7 +232,7 @@ const Page = () => {
                     <span className="font-semibold text-md text-gray-700 ">
                       {new Intl.NumberFormat('en-US', {
                         style: 'currency',
-                        currency: 'CDF',
+                        currency: country(),
                       }).format(resultStat.totalPendingAmount)}
                     </span>
                     <div className="flex gap-2 text-green-400 items-center mt-3 text-sm">

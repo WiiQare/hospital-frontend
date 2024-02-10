@@ -41,7 +41,23 @@ const Scan = () => {
     session.accessToken,
   );
 
-  console.log('RERENDER INDEX', step );
+  const country = () => {
+    var numeroTelephone = session.user.data.phoneNumber;
+
+    // Expression régulière pour récupérer le code de pays
+    var regexCodePays = /^\+(\d{3})/;
+
+    // Recherche du code de pays dans le numéro de téléphone
+    var match = numeroTelephone.match(regexCodePays);
+
+    // Vérification si le code de pays a été trouvé
+    if (match && match[1]) {
+      return match[1] == '243' ? 'cd' : match[1] == '237' ? 'cm' : null;
+    } else {
+      return null
+    }
+  }
+
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
@@ -169,7 +185,7 @@ const Scan = () => {
                           <p className="font-normal text-sm text-gray-600 flex gap-2 items-center">
                             {new Intl.NumberFormat('en-US', {
                               style: 'currency',
-                              currency: 'CDF',
+                              currency: country == 'cd' ? "CDF" : "XOF",
                             }).format(service.price)}
                             <BiTrashAlt
                               size={17}
@@ -187,7 +203,7 @@ const Scan = () => {
                       <p className="text-xl font-semibold text-gray-900">
                         {new Intl.NumberFormat('en-US', {
                           style: 'currency',
-                          currency: 'CDF',
+                          currency: country == 'cd' ? "CDF" : "XOF",
                         }).format(total)}
                       </p>
                       <p className="text-lg font-medium text-gray-600">Total</p>
@@ -250,7 +266,7 @@ const Scan = () => {
   if (step === 1)
     return (
       <StepContext.Provider value={{ step, setStep, total, services }}>
-        <ScanDetails shorten={data} />
+        <ScanDetails shorten={data} country={country == 'cd' ? "CDF" : "XOF"} />
       </StepContext.Provider>
     );
 
