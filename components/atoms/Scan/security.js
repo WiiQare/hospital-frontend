@@ -47,9 +47,7 @@ const SecurityCode = ({ shorten, country }) => {
       shortenHash: shorten,
       providerId: session.user.data.providerId,
       accessToken: session.user.data.access_token,
-      services: services.map( e => e.id ),
-      total: total,
-      currencies: [country, "USD"]
+      services: services.map( e => e.id )
     });
   };
 
