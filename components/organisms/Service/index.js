@@ -57,7 +57,7 @@ const Service = () => {
         <div className="py-8 space-y-2">
           {new Intl.NumberFormat('en-US', {
             style: 'currency',
-            currency: country == 'cd' ? "CDF" : "XOF",
+            currency: country() == 'cd' ? "CDF" : "XOF",
           }).format(row.price)}
           <br />
           <span className="badge badge-ghost badge-sm">
@@ -380,7 +380,7 @@ const Service = () => {
                       <div className="flex flex-col gap-1">
                         <FormControl fullWidth>
                           <InputLabel htmlFor="outlined-adornment-amount">
-                            Prix (en {country == 'cd' ? "CDF" : "XOF"})
+                            Prix (en {country() == 'cd' ? "CDF" : "XOF"})
                           </InputLabel>
                           <OutlinedInput
                             id="outlined-adornment-amount"
@@ -391,10 +391,10 @@ const Service = () => {
                             }
                             startAdornment={
                               <InputAdornment position="start">
-                                {country == 'cd' ? "CDF" : "XOF"}
+                                {country() == 'cd' ? "CDF" : "XOF"}
                               </InputAdornment>
                             }
-                            label={`Prix (en ${country == 'cd' ? "CDF" : "XOF"})`}
+                            label={`Prix (en ${country() == 'cd' ? "CDF" : "XOF"})`}
                           />
                         </FormControl>
 
@@ -533,7 +533,7 @@ const Service = () => {
                       <div className="flex flex-col gap-1">
                         <FormControl fullWidth>
                           <InputLabel htmlFor="outlined-adornment-amount">
-                            Prix (en {country == 'cd' ? "CDF" : "XOF"})
+                            Prix (en {country() == 'cd' ? "CDF" : "XOF"})
                           </InputLabel>
                           <OutlinedInput
                             id="outlined-adornment-amount"
@@ -547,10 +547,10 @@ const Service = () => {
                             }
                             startAdornment={
                               <InputAdornment position="start">
-                                {country == 'cd' ? "CDF" : "XOF"}
+                                {country() == 'cd' ? "CDF" : "XOF"}
                               </InputAdornment>
                             }
-                            label={`Prix (en ${country == 'cd' ? "CDF" : "XOF"})`}
+                            label={`Prix (en ${country() == 'cd' ? "CDF" : "XOF"})`}
                           />
                         </FormControl>
 
@@ -609,7 +609,7 @@ const Service = () => {
                                 <td className="px-6 py-4 text-xs">
                                   {new Intl.NumberFormat('en-US', {
                                     style: 'currency',
-                                    currency: country == 'cd' ? 'CDF' : 'XOF',
+                                    currency: country() == 'cd' ? 'CDF' : 'XOF',
                                   }).format(service.price)}
                                 </td>
                                 <td className="px-6 py-4">
