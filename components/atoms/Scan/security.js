@@ -10,7 +10,7 @@ import Image from 'next/image';
 import Toast from '../Toast';
 import { StepContext } from '.';
 
-const SecurityCode = ({ shorten }) => {
+const SecurityCode = ({ shorten, country }) => {
   const { services, total } = useContext(StepContext);
   const { data: session } = useSession();
   const [state, setState] = useState({ type: 0, message: '' });
@@ -48,7 +48,8 @@ const SecurityCode = ({ shorten }) => {
       providerId: session.user.data.providerId,
       accessToken: session.user.data.access_token,
       services: services.map( e => e.id ),
-      total: total
+      total: total,
+      currencies: [country, "USD"]
     });
   };
 

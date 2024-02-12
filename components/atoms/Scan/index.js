@@ -185,7 +185,7 @@ const Scan = () => {
                           <p className="font-normal text-sm text-gray-600 flex gap-2 items-center">
                             {new Intl.NumberFormat('en-US', {
                               style: 'currency',
-                              currency: country == 'cd' ? "CDF" : "XOF",
+                              currency: country() == 'cd' ? "CDF" : "XOF",
                             }).format(service.price)}
                             <BiTrashAlt
                               size={17}
@@ -203,7 +203,7 @@ const Scan = () => {
                       <p className="text-xl font-semibold text-gray-900">
                         {new Intl.NumberFormat('en-US', {
                           style: 'currency',
-                          currency: country == 'cd' ? "CDF" : "XOF",
+                          currency: country() == 'cd' ? "CDF" : "XOF",
                         }).format(total)}
                       </p>
                       <p className="text-lg font-medium text-gray-600">Total</p>
@@ -266,14 +266,14 @@ const Scan = () => {
   if (step === 1)
     return (
       <StepContext.Provider value={{ step, setStep, total, services }}>
-        <ScanDetails shorten={data} country={country == 'cd' ? "CDF" : "XOF"} />
+        <ScanDetails shorten={data} country={country() == 'cd' ? "CDF" : "XOF"} />
       </StepContext.Provider>
     );
 
   if (step === 2)
     return (
       <StepContext.Provider value={{ step, setStep, total, services }}>
-        <SecurityCode shorten={data} />
+        <SecurityCode shorten={data} country={country() == 'cd' ? "CDF" : "XOF"} />
       </StepContext.Provider>
     );
 
