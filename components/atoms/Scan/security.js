@@ -49,7 +49,6 @@ const SecurityCode = ({ shorten, country }) => {
       accessToken: session.user.data.access_token,
       services: services.map( e => e.id ),
       total: total
-      // currencies: [country, "USD"]
     });
   };
 
