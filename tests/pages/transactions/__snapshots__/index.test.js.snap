@@ -40,7 +40,6 @@ exports[`Transactions Page renders 1`] = `
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <g
-                  dataName="Circle List"
                   id="Circle_List"
                 >
                   <g>
@@ -72,6 +71,7 @@ exports[`Transactions Page renders 1`] = `
               </span>
             </span>
             <svg
+              aria-hidden="true"
               fill="currentColor"
               height="20"
               stroke="currentColor"
@@ -121,45 +121,45 @@ exports[`Transactions Page renders 1`] = `
     >
       <div
         aria-level="1"
-        class="sc-fEXmlR kNUuTe rdt_TableHeader"
+        class="sc-eldPxv lfDaYD rdt_TableHeader"
         role="heading"
       >
         <div
-          class="sc-bjfHbI kNxEtY"
+          class="sc-fPXMVe dcTwyf"
         >
           Historique des transactions
         </div>
         <div
-          class="sc-fnGiBr cvQOBp"
+          class="sc-eDPEul hGcwUo"
         >
           <div
-            class="sc-ksBlkl bhQwst"
+            class="sc-cPiKLX hcAczL"
           />
           <div
-            class="sc-hBxehG caCTXR"
+            class="sc-dLMFU gWUdfJ"
           />
         </div>
       </div>
       <div
-        class="sc-dmctIk dSZDRP px-8 bg-white"
+        class="sc-feUZmu bSqufN px-8 bg-white"
       >
         <div
-          class="sc-fLcnxK dApqnJ"
+          class="sc-hzhJZQ gmlwXk"
         >
           <div
-            class="sc-bcXHqe kVrXuC rdt_Table"
+            class="sc-aXZVg jNIkof rdt_Table"
             role="table"
           >
             <div
-              class="sc-gswNZR hIWEKa rdt_TableHead"
+              class="sc-gEvEer fwGovb rdt_TableHead"
               role="rowgroup"
             >
               <div
-                class="sc-dkrFOg iSAVrt rdt_TableHeadRow"
+                class="sc-eqUAAy gocYik rdt_TableHeadRow"
                 role="row"
               >
                 <div
-                  class="sc-hLBbgP sc-bqWxrE gMnBPf MHRqX rdt_TableCol"
+                  class="sc-fqkvVR sc-jEACwC dmhtLU jDsDCL rdt_TableCol"
                 >
                   <input
                     aria-label="select-all-rows"
@@ -170,11 +170,11 @@ exports[`Transactions Page renders 1`] = `
                   />
                 </div>
                 <div
-                  class="sc-hLBbgP sc-eDvSVe sc-ipEyDJ glyQNg bQdYbR dlSNBX rdt_TableCol"
+                  class="sc-fqkvVR sc-dcJsrY sc-dAlyuH cygFkb ikexHN kjeJsv rdt_TableCol"
                   data-column-id="1"
                 >
                   <div
-                    class="sc-csuSiG FeitL rdt_TableCol_Sortable"
+                    class="sc-jlZhew blGEez rdt_TableCol_Sortable"
                     data-column-id="1"
                     data-sort-id="1"
                     disabled=""
@@ -182,7 +182,7 @@ exports[`Transactions Page renders 1`] = `
                     tabindex="0"
                   >
                     <div
-                      class="sc-eDWCr hbotQl"
+                      class="sc-cwHptR brFloq"
                       data-column-id="1"
                     >
                       IDENTITÉ PATIENT
@@ -190,11 +190,11 @@ exports[`Transactions Page renders 1`] = `
                   </div>
                 </div>
                 <div
-                  class="sc-hLBbgP sc-eDvSVe sc-ipEyDJ glyQNg bQdYbR dlSNBX rdt_TableCol"
+                  class="sc-fqkvVR sc-dcJsrY sc-dAlyuH cygFkb ikexHN kjeJsv rdt_TableCol"
                   data-column-id="2"
                 >
                   <div
-                    class="sc-csuSiG FeitL rdt_TableCol_Sortable"
+                    class="sc-jlZhew blGEez rdt_TableCol_Sortable"
                     data-column-id="2"
                     data-sort-id="2"
                     disabled=""
@@ -202,7 +202,7 @@ exports[`Transactions Page renders 1`] = `
                     tabindex="0"
                   >
                     <div
-                      class="sc-eDWCr hbotQl"
+                      class="sc-cwHptR brFloq"
                       data-column-id="2"
                     >
                       MONTANT
@@ -210,11 +210,11 @@ exports[`Transactions Page renders 1`] = `
                   </div>
                 </div>
                 <div
-                  class="sc-hLBbgP sc-eDvSVe sc-ipEyDJ glyQNg bQdYbR dlSNBX rdt_TableCol"
+                  class="sc-fqkvVR sc-dcJsrY sc-dAlyuH cygFkb ikexHN kjeJsv rdt_TableCol"
                   data-column-id="3"
                 >
                   <div
-                    class="sc-csuSiG FeitL rdt_TableCol_Sortable"
+                    class="sc-jlZhew blGEez rdt_TableCol_Sortable"
                     data-column-id="3"
                     data-sort-id="3"
                     disabled=""
@@ -222,7 +222,7 @@ exports[`Transactions Page renders 1`] = `
                     tabindex="0"
                   >
                     <div
-                      class="sc-eDWCr hbotQl"
+                      class="sc-cwHptR brFloq"
                       data-column-id="3"
                     >
                       STATUS
@@ -230,11 +230,11 @@ exports[`Transactions Page renders 1`] = `
                   </div>
                 </div>
                 <div
-                  class="sc-hLBbgP sc-eDvSVe sc-ipEyDJ glyQNg bQdYbR dlSNBX rdt_TableCol"
+                  class="sc-fqkvVR sc-dcJsrY sc-dAlyuH cygFkb ikexHN kjeJsv rdt_TableCol"
                   data-column-id="4"
                 >
                   <div
-                    class="sc-csuSiG FeitL rdt_TableCol_Sortable"
+                    class="sc-jlZhew blGEez rdt_TableCol_Sortable"
                     data-column-id="4"
                     data-sort-id="4"
                     disabled=""
@@ -242,7 +242,7 @@ exports[`Transactions Page renders 1`] = `
                     tabindex="0"
                   >
                     <div
-                      class="sc-eDWCr hbotQl"
+                      class="sc-cwHptR brFloq"
                       data-column-id="4"
                     >
                       HASH
@@ -252,7 +252,7 @@ exports[`Transactions Page renders 1`] = `
               </div>
             </div>
             <div
-              class="sc-iveFHk bzRnkJ"
+              class="sc-hmdomO cTsUPQ"
             >
               <div
                 style="padding: 24px;"

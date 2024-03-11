@@ -83,7 +83,6 @@ exports[`CardProvider should render the component 1`] = `
           xmlns="http://www.w3.org/2000/svg"
         >
           <g
-            dataName="Circle Info"
             id="Circle_Info"
           >
             <g>
@@ -191,6 +190,7 @@ exports[`CardProvider should render the component 1`] = `
         </span>
       </h3>
       <svg
+        aria-hidden="true"
         class="hidden md:block"
         fill="currentColor"
         height="24"

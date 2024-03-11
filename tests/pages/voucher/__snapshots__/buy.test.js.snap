@@ -1533,6 +1533,7 @@ exports[`Voucher Buy Page renders 1`] = `
                     Next
                      
                     <svg
+                      aria-hidden="true"
                       fill="currentColor"
                       height="1em"
                       stroke="currentColor"

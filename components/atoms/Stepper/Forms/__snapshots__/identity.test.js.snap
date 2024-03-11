@@ -1396,6 +1396,7 @@ exports[`Identity should render the component 1`] = `
         Next
          
         <svg
+          aria-hidden="true"
           fill="currentColor"
           height="1em"
           stroke="currentColor"

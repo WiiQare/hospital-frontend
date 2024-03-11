@@ -38,7 +38,6 @@ exports[`Wallet Page renders 1`] = `
               xmlns="http://www.w3.org/2000/svg"
             >
               <g
-                dataName="Save Down 2"
                 id="Save_Down_2"
               >
                 <g>
@@ -74,7 +73,6 @@ exports[`Wallet Page renders 1`] = `
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <g
-                  dataName="Circle List"
                   id="Circle_List"
                 >
                   <g>
@@ -106,6 +104,7 @@ exports[`Wallet Page renders 1`] = `
               </span>
             </span>
             <svg
+              aria-hidden="true"
               fill="currentColor"
               height="20"
               stroke="currentColor"
@@ -163,6 +162,7 @@ exports[`Wallet Page renders 1`] = `
                 class="flex mr-2 gap-4 items-center"
               >
                 <svg
+                  aria-hidden="true"
                   class="cursor-pointer text-gray-700"
                   fill="currentColor"
                   height="24"
@@ -625,7 +625,6 @@ exports[`Wallet Page renders 1`] = `
                           xmlns="http://www.w3.org/2000/svg"
                         >
                           <g
-                            dataName="Circle Info"
                             id="Circle_Info"
                           >
                             <g>
@@ -783,7 +782,6 @@ exports[`Wallet Page renders 1`] = `
                           xmlns="http://www.w3.org/2000/svg"
                         >
                           <g
-                            dataName="Circle Info"
                             id="Circle_Info"
                           >
                             <g>
@@ -874,7 +872,6 @@ exports[`Wallet Page renders 1`] = `
             width="30"
             xmlns="http://www.w3.org/2000/svg"
           >
-            <desc />
             <path
               d="M0 0h24v24H0z"
               fill="none"
@@ -970,7 +967,6 @@ exports[`Wallet Page renders 1`] = `
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <g
-                        dataName="Circle Check"
                         id="Circle_Check"
                       >
                         <g>
@@ -1030,7 +1026,6 @@ exports[`Wallet Page renders 1`] = `
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <g
-                        dataName="Circle Check"
                         id="Circle_Check"
                       >
                         <g>
@@ -1090,7 +1085,6 @@ exports[`Wallet Page renders 1`] = `
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <g
-                        dataName="Circle Check"
                         id="Circle_Check"
                       >
                         <g>
@@ -1150,7 +1144,6 @@ exports[`Wallet Page renders 1`] = `
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <g
-                        dataName="Circle Check"
                         id="Circle_Check"
                       >
                         <g>
@@ -1210,7 +1203,6 @@ exports[`Wallet Page renders 1`] = `
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <g
-                        dataName="Circle Check"
                         id="Circle_Check"
                       >
                         <g>

@@ -24,7 +24,12 @@ describe('Services Page', () => {
     const { container } = render(
       <QueryClientProvider client={queryClient}>
         <SessionProvider
-          session={{ user: { email: '', data: { providerId: '' } } }}
+          session={{
+            user: {
+              email: '',
+              data: { providerId: '', phoneNumber: '9876543210' },
+            },
+          }}
         >
           <Provider store={store}>
             <Page />
